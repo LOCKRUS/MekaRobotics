@@ -2,6 +2,7 @@ package com.io.mekarobotics.common.content.blocks;
 
 import com.io.mekarobotics.common.content.blockentity.MachineArmBlockEntity;
 import com.io.mekarobotics.definitions.ModMachines;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacementType;
@@ -23,7 +24,12 @@ import org.jetbrains.annotations.Nullable;
 public class MachineArmBlock extends BaseEntityBlock {
 
     public MachineArmBlock() {
-        super(Properties.copy(Blocks.IRON_BLOCK));
+        super(Properties.ofFullCopy(Blocks.IRON_BLOCK));
+    }
+
+    @Override
+    public MapCodec<? extends BaseEntityBlock> codec() {
+        return MapCodec.unit(this);
     }
 
     @Nullable

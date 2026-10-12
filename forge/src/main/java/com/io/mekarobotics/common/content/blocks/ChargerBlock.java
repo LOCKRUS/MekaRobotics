@@ -1,6 +1,7 @@
 package com.io.mekarobotics.common.content.blocks;
 
 import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.MapCodec;
 import com.io.mekarobotics.common.content.blockentity.ChargerBlockEntity;
 import com.io.mekarobotics.definitions.ModMachines;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -33,7 +34,12 @@ public class ChargerBlock extends BaseEntityBlock {
     public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
 
     public ChargerBlock() {
-        super(Properties.copy(Blocks.IRON_BLOCK));
+        super(Properties.ofFullCopy(Blocks.IRON_BLOCK));
+    }
+
+    @Override
+    public MapCodec<? extends BaseEntityBlock> codec() {
+        return MapCodec.unit(this);
     }
 
     @Nullable

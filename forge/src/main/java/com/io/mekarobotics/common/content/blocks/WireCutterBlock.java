@@ -17,7 +17,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @ParametersAreNonnullByDefault
 public class WireCutterBlock extends MachineBlock {
     public WireCutterBlock() {
-        super(Properties.copy(Blocks.IRON_BLOCK));
+        super(Properties.ofFullCopy(Blocks.IRON_BLOCK));
     }
 
     @Nullable

@@ -7,6 +7,7 @@ import com.io.mekarobotics.common.helpers.EntityFinder;
 import com.io.mekarobotics.definitions.ModMachines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -50,15 +51,15 @@ public class ChargerBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag compound) {
-        super.saveAdditional(compound);
-        compound.put("energy", storage.serializeNBT());
+    protected void saveAdditional(CompoundTag compound, HolderLookup.Provider provider) {
+        super.saveAdditional(compound, provider);
+        compound.put("energy", storage.serializeNBT(provider));
     }
 
     @Override
-    public void load(CompoundTag compound) {
-        super.load(compound);
-        storage.deserializeNBT(compound.getCompound("energy"));
+    protected void loadAdditional(CompoundTag compound, HolderLookup.Provider provider) {
+        super.loadAdditional(compound, provider);
+        storage.deserializeNBT(provider, compound.get("energy"));
     }
 
     public EnergyStorage energyStorage() {

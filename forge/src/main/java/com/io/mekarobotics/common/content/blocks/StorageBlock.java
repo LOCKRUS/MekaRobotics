@@ -65,7 +65,7 @@ public class StorageBlock extends MachineBlock {
     public static final VoxelShape BOTTOM = Block.box(0, 0, 0, 16, 32, 16);
 
     public StorageBlock() {
-        super(Properties.copy(Blocks.IRON_BLOCK));
+        super(Properties.ofFullCopy(Blocks.IRON_BLOCK));
     }
 
     @Nullable

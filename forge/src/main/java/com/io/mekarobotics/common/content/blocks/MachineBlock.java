@@ -2,6 +2,7 @@ package com.io.mekarobotics.common.content.blocks;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -30,6 +31,11 @@ public abstract class MachineBlock extends BaseEntityBlock {
 
     public MachineBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public MapCodec<? extends BaseEntityBlock> codec() {
+        return MapCodec.unit(this);
     }
 
     @Override
