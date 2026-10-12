@@ -5,6 +5,7 @@ import com.io.mekarobotics.common.helpers.types.SimpleDataManager;
 import com.io.mekarobotics.common.helpers.util.Lang;
 import com.io.mekarobotics.integration.config.RoboticsConfig;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -14,7 +15,7 @@ import java.util.UUID;
 
 public class PerkAcceleration extends Perk {
 
-	public static final UUID MODIFIER_UUID = UUID.fromString("0b956262-68ed-11ed-9022-0242ac120002");
+	public static final ResourceLocation MODIFIER_ID = ResourceLocation.fromNamespaceAndPath("mekarobotics", "perk_acceleration");
 	public static final String ACCELERATION = "perk_acceleration";
 	public int MAX_ACC_TICKS;
 	public float MAX_ACCELERATION;
@@ -40,9 +41,9 @@ public class PerkAcceleration extends Perk {
 		float scalar = (MAX_ACCELERATION + SPEED_SLOWDOWN) * (acceleration / MAX_ACC_TICKS) - SPEED_SLOWDOWN;
 		AttributeInstance attributeInstance = entity.getAttribute(Attributes.MOVEMENT_SPEED);
 		if(attributeInstance == null) return;
-		if(attributeInstance.getModifier(MODIFIER_UUID) == null || attributeInstance.getModifier(MODIFIER_UUID).getAmount() != scalar) {
-			attributeInstance.removeModifier(MODIFIER_UUID);
-			attributeInstance.addTransientModifier(new AttributeModifier(MODIFIER_UUID, ACCELERATION, scalar, AttributeModifier.Operation.MULTIPLY_BASE));
+			if(attributeInstance.getModifier(MODIFIER_ID) == null || attributeInstance.getModifier(MODIFIER_ID).amount() != scalar) {
+				attributeInstance.removeModifier(MODIFIER_ID);
+				attributeInstance.addTransientModifier(new AttributeModifier(MODIFIER_ID, scalar, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 		}
 	}
 

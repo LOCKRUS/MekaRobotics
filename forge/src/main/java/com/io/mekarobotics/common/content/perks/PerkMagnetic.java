@@ -28,8 +28,8 @@ public class PerkMagnetic extends Perk {
                 item.addDeltaMovement(movement);
                 item.setPickUpDelay((int) (distance * distance));
                 item.setNoGravity(true);
-            } else if(item.getOwner() == null || !ModCapabilities.get(item.getOwner(), ModCapabilities.PERKS).orElse(ModCapabilities.NO_PERKS).contains(ModPerks.PERK_MAGNETIC.get())) {
-                item.setThrower(entity.getUUID());
+            } else if(item.getOwner() == null || !ModCapabilities.get(item.getOwner(), ModCapabilities.PERKS).orElse(ModCapabilities.NO_PERKS).contains(ModPerks.PERK_MAGNETIC.value())) {
+                item.setThrower(entity);
             }
         }
         super.onEntityUpdate(level, entity, values);

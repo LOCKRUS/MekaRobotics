@@ -179,13 +179,13 @@ public class RetrieveGoal extends Goal {
 		if(level == null) return null;
 		BlockEntity tile = level.getBlockEntity(pos.pos());
 		if(!canInteractWith(tile)) return null;
-		Optional<IItemHandler> handler = ModCapabilities.items(tile).get();
-		if(handler.isEmpty()) return null;
+            IItemHandler handler = ModCapabilities.items(tile).orElse(null);
+            if(handler == null) return null;
 		if(tile instanceof Container container && openedContainer == null) {
 			openedContainer = container;
 			container.startOpen(getFakePlayer());
 		}
-		return handler.get();
+            return handler;
 	}
 
 	public void closeContainer() {

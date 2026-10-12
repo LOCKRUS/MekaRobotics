@@ -12,7 +12,7 @@ import java.util.function.Predicate;
 
 public class PerkVoidant extends Perk {
 
-    public static final Predicate<MobEffectInstance> REMOVABLE = e -> !e.isInfiniteDuration() && !e.isAmbient() && e.isVisible() && e.getEffect().isBeneficial();
+    public static final Predicate<MobEffectInstance> REMOVABLE = e -> !e.isInfiniteDuration() && !e.isAmbient() && e.isVisible() && e.getEffect().value().isBeneficial();
 
     public PerkVoidant(String name) {
         super(name, 1);
@@ -25,7 +25,7 @@ public class PerkVoidant extends Perk {
             Optional<MobEffectInstance> effectToRemove = effectsToReduce.stream().skip((long) (effectsToReduce.size() * Math.random())).findFirst();
             if(effectToRemove.isEmpty()) return super.onDamage(level, robot, dmgSource, damage, values);
             MobEffectInstance e = effectToRemove.get();
-            MobEffectInstance copy = new MobEffectInstance(e.getEffect(), e.mapDuration(i -> i - 30 * 20), e.getAmplifier(), e.isAmbient(), e.isVisible(), e.showIcon(), null, e.getFactorData());
+            MobEffectInstance copy = new MobEffectInstance(e.getEffect(), e.mapDuration(i -> i - 30 * 20), e.getAmplifier(), e.isAmbient(), e.isVisible(), e.showIcon());
             if(copy.getDuration() < 0) {
                 mob.removeEffect(copy.getEffect());
             } else mob.forceAddEffect(copy, null);

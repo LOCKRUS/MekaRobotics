@@ -16,7 +16,7 @@ public class PerkArmorShred extends Perk {
     @Override
     public float onAttack(int level, Mob attacker, Entity toAttack, SimpleDataManager values) {
         if(toAttack instanceof LivingEntity living) {
-            living.addEffect(new MobEffectInstance(ModMobEffects.ARMOR_SHRED.get(), 200, level - 1));
+            living.addEffect(new MobEffectInstance(ModMobEffects.ARMOR_SHRED, 200, level - 1));
         }
         return super.onAttack(level, attacker, toAttack, values);
     }

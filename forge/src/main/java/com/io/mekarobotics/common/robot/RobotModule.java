@@ -28,13 +28,7 @@ import java.util.Optional;
 
 public class RobotModule {
 
-    public static final Codec<Ingredient> INGREDIENT_CODEC = ExtraCodecs.JSON.comapFlatMap(json -> {
-        try {
-            return DataResult.success(Ingredient.fromJson(json));
-        } catch(JsonSyntaxException e) {
-            return DataResult.success(Ingredient.EMPTY);
-        }
-    }, Ingredient::toJson);
+    public static final Codec<Ingredient> INGREDIENT_CODEC = Ingredient.CODEC;
     public static final Codec<Ingredient> NETWORK_INGREDIENT_CODEC = RecordCodecBuilder.create(instance -> instance.group(
             Codec.list(ItemStack.CODEC).fieldOf("stacks").forGetter(i -> Arrays.asList(i.getItems()))
     ).apply(instance, l -> Ingredient.of(l.stream())));
@@ -90,7 +84,7 @@ public class RobotModule {
             energyStorage = ModCapabilities.energy(caster).get();
             if(energyStorage.getEnergyStored() < modEnergyCost) return false;
         }
-        if(NeoForge.EVENT_BUS.post(new ModuleActivationEvent(caster, this))) return false;
+        NeoForge.EVENT_BUS.post(new ModuleActivationEvent(caster, this));
         if(!action.execute(caster, (int) (duration * caster.getAttributeValue(ModAttributes.MODULE_DURATION)))) return false;
         if(modEnergyCost > 0) {
             energyStorage.extractEnergy(modEnergyCost, false);

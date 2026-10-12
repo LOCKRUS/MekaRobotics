@@ -28,12 +28,11 @@ public class WireCutterRecipes implements IRecipeSerializer<MachineRecipe<?>> {
         return recipes;
     }
 
-    @Override
     public @NotNull MachineRecipe<?> fromJson(ResourceLocation loc, JsonObject json) {
         int processing_time = json.get("processing_time").getAsInt();
         int energy = json.get("energy").getAsInt();
         Ingredient ingredient = CountedIngredient.fromJson(json.get("ingredient"));
-        ItemStack result = CraftingHelper.getItemStack(json.getAsJsonObject("result"), true);
+        ItemStack result = ItemStack.SIMPLE_ITEM_CODEC.parse(com.mojang.serialization.JsonOps.INSTANCE, json.getAsJsonObject("result")).result().orElse(ItemStack.EMPTY);
 
         MachineRecipe<?> recipe = new MachineRecipe.Builder(ModMachines.WIRE_CUTTER, loc)
                 .setProcessingTime(processing_time)
@@ -44,37 +43,4 @@ public class WireCutterRecipes implements IRecipeSerializer<MachineRecipe<?>> {
         return recipe;
     }
 
-    @Override
-    public @Nullable MachineRecipe<?> fromNetwork(ResourceLocation loc, FriendlyByteBuf buf) {
-        int energy = buf.readInt();
-        int processing_time = buf.readInt();
-        Ingredient[] inputs = new Ingredient[INPUT_SIZE];
-        ItemStack[] outputs = new ItemStack[OUTPUT_SIZE];
-        for(int i = 0; i < INPUT_SIZE; i++) {
-            inputs[i] = Ingredient.fromNetwork(buf);
-        }
-        for(int i = 0; i < OUTPUT_SIZE; i++) {
-            outputs[i] = buf.readItem();
-        }
-
-        MachineRecipe<?> recipe = new MachineRecipe.Builder(ModMachines.WIRE_CUTTER, loc)
-                .setInputs(inputs)
-                .setOutputs(outputs)
-                .setEnergyRequirement(energy)
-                .setProcessingTime(processing_time).build();
-        recipes.add(recipe);
-        return recipe;
-    }
-
-    @Override
-    public void toNetwork(FriendlyByteBuf buf, MachineRecipe<?> recipe) {
-        buf.writeInt(recipe.getEnergy());
-        buf.writeInt(recipe.getProcessingTime());
-        for(Ingredient ingredient : recipe.getInputs()) {
-            ingredient.toNetwork(buf);
-        }
-        for(ItemStack stack : recipe.getOutputs()) {
-            buf.writeItem(stack);
-        }
-    }
 }

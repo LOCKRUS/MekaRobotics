@@ -12,6 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.core.Holder;
 import net.minecraft.world.entity.Mob;
 
 import java.util.HashMap;
@@ -24,10 +25,10 @@ public class PerkMassProduced extends Perk {
 	public static final int MAX_ALLIES = 6;
 	public static final int AREA_SIZE = 8;
 	public static final String TICK_COUNTER = "mass_produced:past_ticks";
-	public static final Map<MobEffect, Integer[][]> effectStrengths = new HashMap<>();
+		public static final Map<Holder<MobEffect>, Integer[][]> effectStrengths = new HashMap<>();
 
 	static {
-		effectStrengths.put(MobEffects.DAMAGE_BOOST, new Integer[][] {{1, 1, 2, 2}, {1, 2, 2, 3}, {1, 2, 3, 4}});
+			effectStrengths.put(MobEffects.DAMAGE_BOOST, new Integer[][] {{1, 1, 2, 2}, {1, 2, 2, 3}, {1, 2, 3, 4}});
 		effectStrengths.put(MobEffects.MOVEMENT_SPEED, new Integer[][] {{0, 1, 1, 2}, {0, 1, 2, 3}, {1, 2, 3, 3}});
 		effectStrengths.put(MobEffects.DAMAGE_RESISTANCE, new Integer[][] {{0, 0, 0, 1}, {0, 0, 1, 1}, {0, 1, 1, 2}});
 	}
@@ -50,15 +51,15 @@ public class PerkMassProduced extends Perk {
 		}
 
 		int allies = alliesInArea(entity, AREA_SIZE, robot.getOwner(), ent -> {
-			Optional<IPerkMap> perkMap = ModCapabilities.get(ent, ModCapabilities.PERKS).get();
-			return perkMap.isPresent() && perkMap.get().contains(ModPerks.PERK_MASS_PRODUCED.get());
+			IPerkMap perkMap = ModCapabilities.get(ent, ModCapabilities.PERKS).orElse(null);
+			return perkMap != null && perkMap.contains(ModPerks.PERK_MASS_PRODUCED.value());
 		}).size();
 
 		allies = Math.min(allies, MAX_ALLIES);
 		allies = (int) Math.ceil((double) allies / 2); //Effects only increase every 2 allies and are capped at 8 allies
 		int duration_ticks = UPDATE_RATE * PerkBehavior.PERK_TICK_RATE * 2 + 40;
 
-		for(MobEffect effect : effectStrengths.keySet()) {
+			for(Holder<MobEffect> effect : effectStrengths.keySet()) {
 			int amplifier = effectStrengths.get(effect)[level - 1][allies];
 			if(amplifier <= 0) continue;
 			entity.addEffect(new MobEffectInstance(effect, duration_ticks, amplifier - 1, true, false));

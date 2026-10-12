@@ -21,7 +21,7 @@ public class PerkFist extends Perk {
         if(toAttack instanceof Mob mob) {
             mob.knockback(attacker.getAttributeValue(Attributes.ATTACK_KNOCKBACK), 1, 1);
             mob.addDeltaMovement(new Vec3(0, RoboticsConfig.general.fistKnockUp.get().floatValue(), 0));
-            mob.addEffect(new MobEffectInstance(ModMobEffects.KNOCKBACK_RESISTANCE.get(), 1));
+            mob.addEffect(new MobEffectInstance(ModMobEffects.KNOCKBACK_RESISTANCE, 1));
         }
         return super.onAttack(level, attacker, toAttack, values);
     }

@@ -30,8 +30,8 @@ public class PerkGenerator extends Perk {
 	
 	@Override
 	public void onEntityUpdate(int level, Mob entity, SimpleDataManager values) {
-		Optional<IEnergyStorage> optionalEnergy = ModCapabilities.energy(entity).get();
-		Optional<IItemHandler> optionalInventory = ModCapabilities.items(entity).get();
+		Optional<IEnergyStorage> optionalEnergy = ModCapabilities.energy(entity);
+		Optional<IItemHandler> optionalInventory = ModCapabilities.items(entity);
 		if(optionalEnergy.isEmpty()) return;
 		if(optionalInventory.isEmpty()) return;
 		IEnergyStorage energy = optionalEnergy.get();

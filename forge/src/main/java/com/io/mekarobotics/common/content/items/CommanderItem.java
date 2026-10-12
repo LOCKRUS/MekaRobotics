@@ -38,6 +38,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -64,12 +66,12 @@ public class CommanderItem extends Item {
     }
 
     private static CompoundTag getTagCompound(ItemStack stack) {
-        if(!stack.hasTag()) {
-            CompoundTag nbt = new CompoundTag();
-            stack.setTag(nbt);
-            return nbt;
+        CustomData data = stack.get(DataComponents.CUSTOM_DATA);
+        if(data == null) {
+            data = CustomData.of(new CompoundTag());
+            stack.set(DataComponents.CUSTOM_DATA, data);
         }
-        return stack.getTag();
+        return data.getUnsafe();
     }
 
     @Override
@@ -81,7 +83,7 @@ public class CommanderItem extends Item {
     @Override
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
         if(player.level().isClientSide()) return InteractionResult.SUCCESS;
-        Optional<IRobot> optRobot = ModCapabilities.get(target, ModCapabilities.ROBOT).get();
+        Optional<IRobot> optRobot = ModCapabilities.get(target, ModCapabilities.ROBOT);
         LivingEntity currentEntity = getRememberedEntity(player.level(), stack);
 
         if(player.isShiftKeyDown() && optRobot.isPresent()) {
