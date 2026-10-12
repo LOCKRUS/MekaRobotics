@@ -48,7 +48,7 @@ public class RobotFakePlayer extends FakePlayer {
 
     @Override
     public boolean hasCorrectToolForDrops(BlockState state) {
-        return EventHooks.doPlayerHarvestCheck(this, state, level(), pos == null ? blockPosition() : pos);
+        return EventHooks.doPlayerHarvestCheck(this, state, level(), blockPosition());
     }
 
     @Override
@@ -67,7 +67,6 @@ public class RobotFakePlayer extends FakePlayer {
     public void forceAddEffect(MobEffectInstance p_147216_, @Nullable Entity p_147217_) { mob().forceAddEffect(p_147216_, p_147217_); }
     public MobEffectInstance removeEffectNoUpdate(@Nullable Holder<MobEffect> p_21164_) { return mob().removeEffectNoUpdate(p_21164_); }
     public boolean removeEffect(Holder<MobEffect> p_21196_) { return mob().removeEffect(p_21196_); }
-    public boolean curePotionEffects(ItemStack curativeItem) { return mob().curePotionEffects(curativeItem); }
 
     // Health & Attributes
     public float getHealth() { return mob == null ? super.getHealth() : mob().getHealth(); }
@@ -98,18 +97,6 @@ public class RobotFakePlayer extends FakePlayer {
 
     public float getSpeed() { return mob().getSpeed(); }
     public void setSpeed(float p_21320_) { mob().setSpeed(p_21320_); }
-
-    public void invalidateCaps() {
-        if(mob != null) {
-            mob().invalidateCaps();
-        } else super.invalidateCaps();
-    }
-
-    public void reviveCaps() {
-        if(mob != null) {
-            mob().reviveCaps();
-        } else super.reviveCaps();
-    }
 
     //TODO Implement experience?
     public void setExperiencePoints(int p_8986_) {}

@@ -171,7 +171,7 @@ public class EntityInteractionManager {
         if (breakEvent.isCanceled()) {
             return false;
         }
-        int exp = breakEvent.getExpToDrop();
+        int exp = 0;
         BlockEntity blockentity = this.level.getBlockEntity(pos);
         Block block = blockstate.getBlock();
         if (block instanceof GameMasterBlock) {
@@ -253,7 +253,7 @@ public class EntityInteractionManager {
         boolean flag1 = (p_9266_.isSecondaryUseActive() && flag) && !(p_9266_.getMainHandItem().doesSneakBypassUse(p_9267_, blockpos, p_9266_) && p_9266_.getOffhandItem().doesSneakBypassUse(p_9267_, blockpos, p_9266_));
         ItemStack itemstack = p_9268_.copy();
         if (event.getUseBlock() == TriState.TRUE || (event.getUseBlock() != TriState.FALSE && !flag1)) {
-            InteractionResult interactionresult = blockstate.useWithoutItem(p_9267_, p_9266_, blockpos, p_9266_, p_9270_);
+            InteractionResult interactionresult = blockstate.useWithoutItem(p_9267_, p_9266_, p_9270_);
             if (interactionresult.consumesAction()) {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(p_9266_, blockpos, itemstack);
                 return interactionresult;

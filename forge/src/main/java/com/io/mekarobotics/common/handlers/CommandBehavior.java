@@ -94,8 +94,8 @@ public class CommandBehavior {
         // Make followers follow through dimensions
         for(Entity otherEntity : level.getEntities(entity, area, (ent) -> true)) {
             if(!(otherEntity instanceof Mob mob)) continue;
-            if(!mob.canChangeDimensions()) continue;
-            if(mob.goalSelector.getAvailableGoals().anyMatch(wrappedGoal -> wrappedGoal.getGoal() instanceof FollowGoal followGoal && entity.equals(followGoal.following()))) {
+            if(!mob.canChangeDimensions(level, otherDimension)) continue;
+            if(mob.goalSelector.getAvailableGoals().stream().anyMatch(wrappedGoal -> wrappedGoal.getGoal() instanceof FollowGoal followGoal && entity.equals(followGoal.following()))) {
                 followThroughDimension(mob, entity, otherDimension);
             }
         }
@@ -130,23 +130,8 @@ public class CommandBehavior {
         double d0 = DimensionType.getTeleportationScale(from.dimensionType(), to.dimensionType());
         BlockPos portalEntrancePos = entity.blockPosition();
         BlockPos dimensionEntrancePos = worldborder.clampToBounds(entity.getX() * d0, entity.getY(), entity.getZ() * d0);
-        return to.getPortalForcer().findPortalAround(dimensionEntrancePos, to.dimension() == Level.NETHER, worldborder).map((p_258249_) -> {
-            BlockState blockstate = from.getBlockState(portalEntrancePos);
-            Direction.Axis axis;
-            Vec3 vec3;
-            if (blockstate.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
-                axis = blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS);
-                BlockUtil.FoundRectangle portalShape = BlockUtil.getLargestRectangleAround(portalEntrancePos, axis, 21, Direction.Axis.Y, 21, (p_185959_) -> {
-                    return from.getBlockState(p_185959_) == blockstate;
-                });
-                vec3 = PortalShape.getRelativePosition(portalShape, axis, entity.position(), entity.getDimensions(entity.getPose()));
-            } else {
-                axis = Direction.Axis.X;
-                vec3 = new Vec3(0.5D, 0.0D, 0.0D);
-            }
-
-            return PortalShape.createPortalInfo(to, p_258249_, axis, vec3, entity, entity.getDeltaMovement(), entity.getYRot(), entity.getXRot()).pos;
-        }).orElse(null);
+        return to.getPortalForcer().findClosestPortalPosition(dimensionEntrancePos, to.dimension() == Level.NETHER, worldborder)
+                .map(Vec3::atBottomCenterOf).orElse(null);
     }
 
 }

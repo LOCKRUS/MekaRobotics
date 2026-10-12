@@ -75,12 +75,12 @@ public class RobotMenu extends BaseMenu {
         if(player.distanceToSqr(robot) > 64) return ItemStack.EMPTY;
 
         if(quickMovedSlotIndex < 36) {
-            if(!rawStack.getAttributeModifiers().isEmpty() || rawStack.getItem() instanceof ShieldItem) {
+            if(!rawStack.getAttributeModifiers().modifiers().isEmpty() || rawStack.getItem() instanceof ShieldItem) {
                 if(!this.moveItemStackTo(rawStack, 53, 54, false)) {
                     return super.quickMoveStack(player, quickMovedSlotIndex);
                 }
             }
-            if(!rawStack.getAttributeModifiers().isEmpty()) {
+            if(!rawStack.getAttributeModifiers().modifiers().isEmpty()) {
                 if(!this.moveItemStackTo(rawStack, 52, 54, false)) {
                     return super.quickMoveStack(player, quickMovedSlotIndex);
                 }
