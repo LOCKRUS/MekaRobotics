@@ -64,12 +64,12 @@ public class ShieldBehavior {
         if(!level.isClientSide) {
             shield.damage(1);
         }
-        event.setImpactResult(ProjectileImpactEvent.ImpactResult.SKIP_ENTITY);
+        event.setCanceled(true);
     }
 
     @SubscribeEvent
     public static void shieldRecharge(EntityTickEvent.Post event) {
-        LivingEntity entity = event.getEntity();
+        if(!(event.getEntity() instanceof LivingEntity entity)) return;
         if(entity.level().isClientSide()) return;
         if(entity.tickCount % 4 != 0) return;
         ModCapabilities.get(entity, ModCapabilities.SHIELDED).ifPresent(IShielded::tick);

@@ -37,12 +37,12 @@ import java.util.Map;
 public class RoboticsMenus {
 
     public static final List<Attribute> UNNECESSARY_INFO = List.of(
-            ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.HEAD),
-            ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.BODY),
-            ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.LEFT_ARM),
-            ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.LEFT_LEG),
-            ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.RIGHT_ARM),
-            ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.RIGHT_LEG)
+            ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.HEAD).get(),
+            ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.BODY).get(),
+            ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.LEFT_ARM).get(),
+            ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.LEFT_LEG).get(),
+            ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.RIGHT_ARM).get(),
+            ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.RIGHT_LEG).get()
     );
     public static final Map<DeferredHolder<MenuType<?>, ? extends MenuType<?>>, EnumSet<EnumPermission>> REQUIRED_PERMISSIONS = new HashMap<>();
     static {
@@ -102,10 +102,11 @@ public class RoboticsMenus {
                     buf -> {
                         buf.writeInt(target.getId());
                         robot.getAccess().write(buf);
-                        for(Map.Entry<ResourceKey<Attribute>, Attribute> entry : Registries.ATTRIBUTE.getEntries()) {
-                            if(living.getAttributes().hasAttribute(entry.getValue()) && !UNNECESSARY_INFO.contains(entry.getValue())) {
+                        for(Map.Entry<ResourceKey<Attribute>, Attribute> entry : net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.entrySet()) {
+                            var holder = net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(entry.getValue());
+                            if(living.getAttributes().hasAttribute(holder) && !UNNECESSARY_INFO.contains(entry.getValue())) {
                                 buf.writeResourceKey(entry.getKey());
-                                buf.writeFloat((float) living.getAttributes().getValue(entry.getValue()));
+                                buf.writeFloat((float) living.getAttributes().getValue(holder));
                             }
                         }
                     });

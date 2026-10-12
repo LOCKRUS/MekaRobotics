@@ -75,7 +75,7 @@ public class RobotBehavior {
 
     @SubscribeEvent
     public static void onRobotTick(EntityTickEvent.Post event) {
-        LivingEntity entity = event.getEntity();
+        if(!(event.getEntity() instanceof LivingEntity entity)) return;
         if(entity.level().isClientSide()) return;
         ModCapabilities.get(entity, ModCapabilities.ROBOT).ifPresent(robot -> {
             ModCapabilities.energy(entity).ifPresent(energy -> {
@@ -119,19 +119,18 @@ public class RobotBehavior {
      * @param event The event
      */
     @SubscribeEvent
-    public static void afterRobotDamaged(LivingDamageEvent event) {
+    public static void afterRobotDamaged(LivingDamageEvent.Pre event) {
         if(!ModCapabilities.get(event.getEntity(), ModCapabilities.ROBOT).isPresent()) return;
         if(event.getSource().is(DamageTypeTags.BYPASSES_ARMOR)) return;
-        if(event.getAmount() <= 0) return;
+        if(event.getNewDamage() <= 0) return;
         if(event.getEntity() instanceof Player) return; //Players armor already gets damaged by default
-        float amount = Math.max(1, event.getAmount());
+        float amount = Math.max(1, event.getNewDamage());
         ModCapabilities.items(event.getEntity()).ifPresent(inventory -> {
             for(int i : new int[] {2, 3, 4, 5}) {
                 ItemStack stack = inventory.getStackInSlot(i);
-                if ((!event.getSource().is(DamageTypeTags.IS_FIRE) || !stack.getItem().isFireResistant()) && stack.getItem() instanceof ArmorItem) {
-                    stack.hurtAndBreak((int) amount, event.getEntity(), (p_35997_) -> {
-                        p_35997_.broadcastBreakEvent(EquipmentSlot.byTypeAndIndex(EquipmentSlot.Type.ARMOR, i));
-                    });
+                if ((!event.getSource().is(DamageTypeTags.IS_FIRE) || !stack.has(net.minecraft.core.component.DataComponents.FIRE_RESISTANT)) && stack.getItem() instanceof ArmorItem) {
+                    EquipmentSlot equipmentSlot = switch(i) { case 2 -> EquipmentSlot.FEET; case 3 -> EquipmentSlot.LEGS; case 4 -> EquipmentSlot.CHEST; default -> EquipmentSlot.HEAD; };
+                    stack.hurtAndBreak((int) amount, event.getEntity(), equipmentSlot);
                 }
             }
         });
@@ -194,7 +193,7 @@ public class RobotBehavior {
     }
 
     private static boolean equipIfPossible(Mob mob, Player player, InteractionHand hand, EquipmentSlot slot, ItemStack stack) {
-        if(!stack.getAttributeModifiers(slot).isEmpty()) {
+        if(!stack.getAttributeModifiers().modifiers().isEmpty()) {
             if(!player.isCreative()) {
                 player.setItemInHand(hand, mob.getItemBySlot(slot));
             }
@@ -247,7 +246,7 @@ public class RobotBehavior {
     }
 
     public static boolean canReach(LivingEntity entity, BlockPos pos) {
-        double reach = entity.getAttributes().hasAttribute(NeoForgeMod.BLOCK_REACH.get()) ? entity.getAttributes().getValue(NeoForgeMod.BLOCK_REACH.get()) : 4.5;
+        double reach = 4.5;
         return entity.getEyePosition().distanceToSqr(Vec3.atCenterOf(pos)) < reach * reach;
     }
 
@@ -257,8 +256,8 @@ public class RobotBehavior {
     }
 
     public static void playAggressionSound(LivingEntity entity) {
-        Optional<IRobot> robot = ModCapabilities.get(entity, ModCapabilities.ROBOT).get();
-        if(robot.isPresent() && !robot.get().isActive()) return;
+        IRobot robot = ModCapabilities.get(entity, ModCapabilities.ROBOT).orElse(null);
+        if(robot != null && !robot.isActive()) return;
         if(entity instanceof RobotEntity) {
             entity.playSound(ModSounds.ROBOT_KILL_COMMAND.get());
         } else if(entity instanceof Mob mob) {
@@ -277,7 +276,9 @@ public class RobotBehavior {
     public static float destroySpeed(LivingEntity entity, ItemStack selected, BlockState state) {
         float f = selected.getDestroySpeed(state);
         if (f > 1.0F) {
-            int i = EnchantmentHelper.getBlockEfficiency(entity);
+            int i = selected.getEnchantments().getLevel(entity.level().registryAccess()
+                    .registryOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT)
+                    .getHolderOrThrow(net.minecraft.world.item.enchantment.Enchantments.EFFICIENCY));
             if (i > 0 && !selected.isEmpty()) {
                 f += (float)(i * i + 1);
             }
