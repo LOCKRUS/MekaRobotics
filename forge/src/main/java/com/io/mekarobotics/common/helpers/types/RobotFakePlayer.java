@@ -5,6 +5,7 @@ import com.io.mekarobotics.common.helpers.EntityFinder;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -47,7 +48,7 @@ public class RobotFakePlayer extends FakePlayer {
 
     @Override
     public boolean hasCorrectToolForDrops(BlockState state) {
-        return EventHooks.doPlayerHarvestCheck(this, state, !state.requiresCorrectToolForDrops() || getMainHandItem().isCorrectToolForDrops(state));
+        return EventHooks.doPlayerHarvestCheck(this, state, level(), pos == null ? blockPosition() : pos);
     }
 
     @Override
@@ -58,14 +59,14 @@ public class RobotFakePlayer extends FakePlayer {
     // Mob Effects
     public boolean removeAllEffects() { return mob().removeAllEffects(); }
     public Collection<MobEffectInstance> getActiveEffects() { return mob().getActiveEffects(); }
-    public Map<MobEffect, MobEffectInstance> getActiveEffectsMap() { return mob().getActiveEffectsMap(); }
-    public boolean hasEffect(MobEffect p_21024_) { return mob().hasEffect(p_21024_); }
-    public MobEffectInstance getEffect(MobEffect p_21125_) { return mob().getEffect(p_21125_); }
+    public Map<Holder<MobEffect>, MobEffectInstance> getActiveEffectsMap() { return mob().getActiveEffectsMap(); }
+    public boolean hasEffect(Holder<MobEffect> p_21024_) { return mob().hasEffect(p_21024_); }
+    public MobEffectInstance getEffect(Holder<MobEffect> p_21125_) { return mob().getEffect(p_21125_); }
     public boolean addEffect(MobEffectInstance p_147208_, @Nullable Entity p_147209_) { return mob().addEffect(p_147208_, p_147209_); }
     public boolean canBeAffected(MobEffectInstance p_21197_) { return mob().canBeAffected(p_21197_); }
     public void forceAddEffect(MobEffectInstance p_147216_, @Nullable Entity p_147217_) { mob().forceAddEffect(p_147216_, p_147217_); }
-    public MobEffectInstance removeEffectNoUpdate(@Nullable MobEffect p_21164_) { return mob().removeEffectNoUpdate(p_21164_); }
-    public boolean removeEffect(MobEffect p_21196_) { return mob().removeEffect(p_21196_); }
+    public MobEffectInstance removeEffectNoUpdate(@Nullable Holder<MobEffect> p_21164_) { return mob().removeEffectNoUpdate(p_21164_); }
+    public boolean removeEffect(Holder<MobEffect> p_21196_) { return mob().removeEffect(p_21196_); }
     public boolean curePotionEffects(ItemStack curativeItem) { return mob().curePotionEffects(curativeItem); }
 
     // Health & Attributes
@@ -97,8 +98,6 @@ public class RobotFakePlayer extends FakePlayer {
 
     public float getSpeed() { return mob().getSpeed(); }
     public void setSpeed(float p_21320_) { mob().setSpeed(p_21320_); }
-
-    public ItemStack eat(Level p_21067_, ItemStack p_21068_) { return mob().eat(p_21067_, p_21068_); }
 
     public void invalidateCaps() {
         if(mob != null) {

@@ -172,8 +172,7 @@ public class EntityFinder {
     }
 
     private static boolean testCondition(LivingEntity living, Predicate<IRobot> predicate) {
-        Optional<IRobot> robot = ModCapabilities.get(living, ModCapabilities.ROBOT).get();
-        return robot.filter(predicate).isPresent();
+        return ModCapabilities.get(living, ModCapabilities.ROBOT).filter(predicate).isPresent();
     }
 
     public static final EntityTypeTest<Entity, LivingEntity> LIVING = new EntityTypeTest<>() {

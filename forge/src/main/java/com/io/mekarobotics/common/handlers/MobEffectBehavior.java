@@ -39,22 +39,22 @@ public class MobEffectBehavior {
     public static void onDamage(LivingIncomingDamageEvent event) {
         Entity causingEntity = event.getSource().getEntity();
         LivingEntity targetEntity = event.getEntity();
-        if(causingEntity != null && targetEntity.hasEffect(ModMobEffects.ARMOR_SHRED.get()) && !causingEntity.equals(targetEntity.getLastHurtByMob())) {
-            int currentAmplifier = targetEntity.getEffect(ModMobEffects.ARMOR_SHRED.get()).getAmplifier();
-            targetEntity.addEffect(new MobEffectInstance(ModMobEffects.ARMOR_SHRED.get(), 200, currentAmplifier + 1));
+        if(causingEntity != null && targetEntity.hasEffect(ModMobEffects.ARMOR_SHRED) && !causingEntity.equals(targetEntity.getLastHurtByMob())) {
+            int currentAmplifier = targetEntity.getEffect(ModMobEffects.ARMOR_SHRED).getAmplifier();
+            targetEntity.addEffect(new MobEffectInstance(ModMobEffects.ARMOR_SHRED, 200, currentAmplifier + 1));
         }
     }
 
     private static int impactEffect(LivingEntity entity, float fallingDistance) {
         if(fallingDistance < 4) return 0;
         if(entity.level().isClientSide) return 0;
-        if(!entity.hasEffect(ModMobEffects.IMPACTFUL.get())) return 0;
-        int effectLevel = entity.getEffect(ModMobEffects.IMPACTFUL.get()).getAmplifier();
+        if(!entity.hasEffect(ModMobEffects.IMPACTFUL)) return 0;
+        int effectLevel = entity.getEffect(ModMobEffects.IMPACTFUL).getAmplifier();
 
         float damage = (float) (effectLevel + fallingDistance * 0.3);
 
         createShockWave(entity, entity.position().add(entity.getDeltaMovement()), damage, 5, 8, 0.1f);
-        entity.removeEffect(ModMobEffects.IMPACTFUL.get());
+        entity.removeEffect(ModMobEffects.IMPACTFUL);
         return effectLevel;
     }
 

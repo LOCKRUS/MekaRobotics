@@ -49,7 +49,9 @@ public class PerkBehavior {
         }
         //Copy the values to the actual attribute map
         for(Attribute attribute : tempAttributeMap.getAttributes()) {
-            AttributeInstance instance = entity.getAttributes().getInstance(attribute);
+            AttributeInstance instance = entity.getAttributes().getSyncableAttributes().stream()
+                    .filter(candidate -> candidate.getAttribute().value() == attribute)
+                    .findFirst().orElse(null);
             if(instance != null) {
                 instance.setBaseValue(tempAttributeMap.getValue(attribute));
                 ModAttributes.onAttributeChanged(entity, instance);
