@@ -48,7 +48,7 @@ public class DimensionNavigator {
         if(mob.level().equals(level)) {
             return mob.getNavigation().moveTo(pos.getX(), pos.getY(), pos.getZ(), speedMod);
         }
-        Block portal = getPortalBlock(level.dimensionTypeId());
+        Block portal = getPortalBlock(level.dimensionTypeRegistration().unwrapKey().orElse(BuiltinDimensionTypes.OVERWORLD));
         BlockPos portalPos = findNearestBlock(mob.level(), mob.blockPosition(), portal, verticalSearchRange, searchRange);
         if(portalPos == null) return false;
         PathNavigation navigator = mob.getNavigation();
@@ -58,7 +58,7 @@ public class DimensionNavigator {
     }
 
     private Block getPortalBlock(ResourceKey<DimensionType> targetDimension) {
-        ResourceKey<DimensionType> dimension = mob.level().dimensionTypeId();
+        ResourceKey<DimensionType> dimension = mob.level().dimensionTypeRegistration().unwrapKey().orElse(BuiltinDimensionTypes.OVERWORLD);
         if(!dimension.equals(BuiltinDimensionTypes.OVERWORLD)) {
             return PORTAL_BLOCKS.get(dimension);
         } else {

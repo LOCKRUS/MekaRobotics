@@ -7,6 +7,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.CrossbowItem;
@@ -27,8 +28,8 @@ public class RangedCrossbowAttack extends AbstractRangedAttackGoal {
 
     @Override
     public void performAttack(Mob attacker, LivingEntity target, InteractionHand hand, float force, float inaccuracy) {
-        CrossbowItem.performShooting(attacker.level(), attacker, hand, attacker.getItemInHand(hand), force, inaccuracy);
-        attacker.getItemInHand(hand).hurtAndBreak(1, attacker, living -> living.broadcastBreakEvent(getWeaponHand()));
+        ((CrossbowItem) attacker.getItemInHand(hand).getItem()).performShooting(attacker.level(), attacker, hand, attacker.getItemInHand(hand), force, inaccuracy, target);
+        attacker.getItemInHand(hand).hurtAndBreak(1, attacker, hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
     }
 
     @Override
@@ -38,7 +39,7 @@ public class RangedCrossbowAttack extends AbstractRangedAttackGoal {
 
     @Override
     public Projectile getProjectile(ItemStack ammunition, float force) {
-        return ProjectileUtil.getMobArrow(attacker, ammunition, force);
+        return ProjectileUtil.getMobArrow(attacker, ammunition, force, attacker.getItemInHand(getWeaponHand()));
     }
 
     @Override
@@ -92,12 +93,11 @@ public class RangedCrossbowAttack extends AbstractRangedAttackGoal {
 
                 int i = attacker.getTicksUsingItem();
                 ItemStack itemstack = attacker.getUseItem();
-                if (i >= CrossbowItem.getChargeDuration(itemstack)) {
+                if (i >= CrossbowItem.getChargeDuration(itemstack, attacker)) {
                     attacker.releaseUsingItem();
                     this.crossbowState = CrossbowState.CHARGED;
                     this.attackDelay = 20 + attacker.getRandom().nextInt(20);
                     ItemStack crossbow = attacker.getItemInHand(getWeaponHand());
-                    CrossbowItem.setCharged(crossbow, true);
                     //attacker.setChargingCrossbow(false); (Maybe in the future for animations)
                 }
             }
@@ -107,7 +107,6 @@ public class RangedCrossbowAttack extends AbstractRangedAttackGoal {
             case READY_TO_ATTACK -> {
                 performAttack(1);
                 ItemStack crossbow = attacker.getItemInHand(getWeaponHand());
-                CrossbowItem.setCharged(crossbow, false);
                 this.crossbowState = CrossbowState.UNCHARGED;
             }
         }

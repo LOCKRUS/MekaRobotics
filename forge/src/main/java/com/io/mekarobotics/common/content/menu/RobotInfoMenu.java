@@ -27,9 +27,9 @@ public class RobotInfoMenu extends BaseMenu {
         this(id, inv, inv.player.level().getEntity(extraData.readInt()));
         access.read(extraData);
         while(extraData.isReadable()) {
-            ResourceKey<Attribute> key = extraData.readResourceKey(Registries.ATTRIBUTE.getRegistryKey());
+            ResourceKey<Attribute> key = extraData.readResourceKey(Registries.ATTRIBUTE);
             float value = extraData.readFloat();
-            attributes.put(Registries.ATTRIBUTE.get(key.location()), value);
+            attributes.put(inv.player.level().registryAccess().registryOrThrow(Registries.ATTRIBUTE).get(key), value);
         }
     }
 

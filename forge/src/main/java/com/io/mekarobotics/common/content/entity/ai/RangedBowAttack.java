@@ -26,9 +26,10 @@ public class RangedBowAttack extends AbstractRangedAttackGoal {
 
     @Override
     public Projectile getProjectile(ItemStack ammunition, float force) {
-        AbstractArrow abstractarrow = ProjectileUtil.getMobArrow(attacker, ammunition, force);
-        if (attacker.getItemInHand(getWeaponHand()).getItem() instanceof BowItem bow)
-            abstractarrow = bow.customArrow(abstractarrow); // Modify the arrow through bow properties
+        ItemStack weapon = attacker.getItemInHand(getWeaponHand());
+        AbstractArrow abstractarrow = ProjectileUtil.getMobArrow(attacker, ammunition, force, weapon);
+        if (weapon.getItem() instanceof BowItem bow)
+            abstractarrow = bow.customArrow(abstractarrow, weapon, ammunition); // Modify the arrow through bow properties
         return abstractarrow;
     }
 

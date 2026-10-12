@@ -17,7 +17,7 @@ public class RobotInventory extends CombinedInvWrapper implements INBTSerializab
     private final BaseInventory storageInventory;
 
     public RobotInventory(LivingEntity entity) {
-        super(new EntityHandsInvWrapper(entity), new RobotArmorInvWrapper(entity), new BaseInventory(entity::blockPosition, (int) ModAttributes.INVENTORY_SLOTS.getDefaultValue()));
+        super(new EntityHandsInvWrapper(entity), new RobotArmorInvWrapper(entity), new BaseInventory(entity::blockPosition, (int) ModAttributes.INVENTORY_SLOTS.value().getDefaultValue()));
         this.entity = entity;
         storageInventory = (BaseInventory) itemHandler[2];
     }
@@ -43,19 +43,19 @@ public class RobotInventory extends CombinedInvWrapper implements INBTSerializab
 
     @Override
     public CompoundTag serializeNBT(HolderLookup.Provider provider) {
-        return serializeNBT();
+        return storageInventory.serializeNBT(provider);
     }
 
     public CompoundTag serializeNBT() {
-        return storageInventory.serializeNBT();
+        return storageInventory.serializeNBT(entity.level().registryAccess());
     }
 
     @Override
     public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
-        deserializeNBT(nbt);
+        storageInventory.deserializeNBT(provider, nbt);
     }
 
     public void deserializeNBT(CompoundTag nbt) {
-        storageInventory.deserializeNBT(nbt);
+        storageInventory.deserializeNBT(entity.level().registryAccess(), nbt);
     }
 }

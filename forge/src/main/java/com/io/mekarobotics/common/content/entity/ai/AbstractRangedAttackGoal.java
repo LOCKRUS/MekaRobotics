@@ -14,6 +14,7 @@ import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileWeaponItem;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.items.IItemHandler;
@@ -65,7 +66,7 @@ public abstract class AbstractRangedAttackGoal extends Goal {
         projectile.shoot(attackVec.x, attackVec.y, attackVec.z, projectile instanceof ThrownPotion ? 0.75f : 1.6f, inaccuracy);
         attacker.playSound(getSound(weapon), 1, 1 / (attacker.getRandom().nextFloat() * 0.4f + 0.8f));
         attacker.level().addFreshEntity(projectile);
-        weapon.hurtAndBreak(1, attacker, living -> living.broadcastBreakEvent(getWeaponHand()));
+        weapon.hurtAndBreak(1, attacker, getWeaponHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
         consumeAmmunition(attacker, weapon, ammunition);
     }
 

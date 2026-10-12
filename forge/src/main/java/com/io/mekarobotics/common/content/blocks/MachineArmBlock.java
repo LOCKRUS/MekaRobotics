@@ -45,7 +45,6 @@ public class MachineArmBlock extends BaseEntityBlock {
         return createTickerHelper(type, ModMachines.MACHINE_ARM.get(), MachineArmBlockEntity::serverTick);
     }
 
-    @Override
     public boolean isValidSpawn(BlockState state, BlockGetter level, BlockPos pos, SpawnPlacementType type, EntityType<?> entityType) {
         return false;
     }

@@ -164,8 +164,4 @@ public class StorageBlock extends MachineBlock {
         definition.add(HALF, POWERED);
     }
 
-    @Override
-    public boolean isValidSpawn(BlockState state, BlockGetter level, BlockPos pos, SpawnPlacementType type, EntityType<?> entityType) {
-        return false;
-    }
 }

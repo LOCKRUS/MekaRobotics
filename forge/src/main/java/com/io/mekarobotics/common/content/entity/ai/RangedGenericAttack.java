@@ -32,7 +32,7 @@ public class RangedGenericAttack extends AbstractRangedAttackGoal {
             thrownpotion.setXRot(thrownpotion.getXRot() + 20.0F);
             return thrownpotion;
         }
-        return ProjectileUtil.getMobArrow(attacker, ammunition, force);
+        return ProjectileUtil.getMobArrow(attacker, ammunition, force, attacker.getItemInHand(getWeaponHand()));
     }
 
     @Override
@@ -44,7 +44,7 @@ public class RangedGenericAttack extends AbstractRangedAttackGoal {
     @Override
     public SoundEvent getSound(ItemStack stack) {
         if(stack.getItem() instanceof SnowballItem) return SoundEvents.SNOWBALL_THROW;
-        if(stack.getItem() instanceof TridentItem) return SoundEvents.TRIDENT_THROW;
+        if(stack.getItem() instanceof TridentItem) return SoundEvents.TRIDENT_THROW.value();
         if(stack.getItem() instanceof ThrowablePotionItem) return SoundEvents.WITCH_THROW;
         return SoundEvents.ARROW_SHOOT;
     }

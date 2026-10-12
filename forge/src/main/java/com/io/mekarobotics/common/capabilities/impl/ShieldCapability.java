@@ -10,8 +10,10 @@ import com.io.mekarobotics.definitions.ModAttributes;
 import com.io.mekarobotics.definitions.ModSounds;
 import com.io.mekarobotics.definitions.robotics.ModPerks;
 import com.io.mekarobotics.integration.config.RoboticsConfig;
+import com.io.mekarobotics.Robotics;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,7 +30,6 @@ import java.util.UUID;
 public class ShieldCapability implements IShielded {
 
     public static final EntityDataAccessor<Float> SHIELD_HEALTH = RobotEntity.SHIELD_HEALTH;
-    private static final UUID MODIFIER_UUID = UUID.fromString("44b77863-d868-4ec8-b3e6-41da330b2bd8");
 
     public final int BASE_HEALTH, ACTIVATION_ENERGY_COST, ENERGY_PER_HEALTH_COST;
     public final float RECHARGE_RATE;
@@ -47,7 +48,7 @@ public class ShieldCapability implements IShielded {
         ACTIVATION_ENERGY_COST = RoboticsConfig.general.shieldActivationCost.get();
         ENERGY_PER_HEALTH_COST = RoboticsConfig.general.shieldPerHealthCost.get();
         RECHARGE_RATE = RoboticsConfig.general.shieldRechargeRate.get().floatValue();
-        ENERGY_UPKEEP = new AttributeModifier(MODIFIER_UUID, "shield_upkeep", 10, AttributeModifier.Operation.ADD_VALUE);
+        ENERGY_UPKEEP = new AttributeModifier(ResourceLocation.fromNamespaceAndPath(Robotics.MODID, "shield_upkeep"), 10, AttributeModifier.Operation.ADD_VALUE);
     }
 
         public CompoundTag serializeNBT() {
