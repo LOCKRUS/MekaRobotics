@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 import java.lang.ref.WeakReference;
@@ -97,7 +98,7 @@ public class EntityInteractionManager {
     public void startDestroyingBlock(BlockPos pos, Direction side, int p_215124_) {
         Mob mob = mob();
         PlayerInteractEvent.LeftClickBlock event = CommonHooks.onLeftClickBlock(fakePlayer.get(), pos, side, ServerboundPlayerActionPacket.Action.START_DESTROY_BLOCK);
-        if (event.isCanceled() || event.getResult() == net.neoforged.bus.api.Event.Result.DENY) {
+        if (event.isCanceled()) {
             return;
         }
         if (!RobotBehavior.canReach(mob, pos)) {
@@ -114,7 +115,7 @@ public class EntityInteractionManager {
         float f = 1.0F;
         BlockState blockstate = this.level.getBlockState(pos);
         if (!blockstate.isAir()) {
-            if (event.getUseBlock() != net.neoforged.bus.api.Event.Result.DENY)
+            if (event.getUseBlock() != TriState.FALSE)
                 blockstate.attack(this.level, pos, fakePlayer.get());
             f = blockstate.getDestroyProgress(fakePlayer.get(), level, pos);
         }
@@ -166,20 +167,17 @@ public class EntityInteractionManager {
         Mob mob = mob();
         if(!CommonHooks.canEntityDestroy(level, pos, mob)) return false;
         BlockState blockstate = this.level.getBlockState(pos);
-        int exp = CommonHooks.onBlockBreakEvent(level, gameType, (ServerPlayer) fakePlayer.get(), pos);
-        if (exp == -1) {
+        var breakEvent = CommonHooks.fireBlockBreak(level, gameType, (ServerPlayer) fakePlayer.get(), pos, blockstate);
+        if (breakEvent.isCanceled()) {
             return false;
         }
+        int exp = breakEvent.getExpToDrop();
         BlockEntity blockentity = this.level.getBlockEntity(pos);
         Block block = blockstate.getBlock();
         if (block instanceof GameMasterBlock) {
             this.level.sendBlockUpdated(pos, blockstate, blockstate, 3);
             return false;
         }
-        if (mob.getMainHandItem().onBlockStartBreak(pos, fakePlayer.get())) {
-            return false;
-        }
-
         ItemStack itemstack = mob.getMainHandItem();
         ItemStack itemstack1 = itemstack.copy();
         boolean flag1 = blockstate.canHarvestBlock(this.level, pos, fakePlayer.get()); // previously player.hasCorrectToolForDrops(blockstate)
@@ -216,9 +214,9 @@ public class EntityInteractionManager {
             int j = p_9264_.getDamageValue();
             InteractionResultHolder<ItemStack> interactionresultholder = p_9264_.use(p_9263_, p_9262_, p_9265_);
             ItemStack itemstack = interactionresultholder.getObject();
-            if (itemstack == p_9264_ && itemstack.getCount() == i && itemstack.getUseDuration() <= 0 && itemstack.getDamageValue() == j) {
+            if (itemstack == p_9264_ && itemstack.getCount() == i && itemstack.getUseDuration(p_9262_) <= 0 && itemstack.getDamageValue() == j) {
                 return interactionresultholder.getResult();
-            } else if (interactionresultholder.getResult() == InteractionResult.FAIL && itemstack.getUseDuration() > 0 && !p_9262_.isUsingItem()) {
+            } else if (interactionresultholder.getResult() == InteractionResult.FAIL && itemstack.getUseDuration(p_9262_) > 0 && !p_9262_.isUsingItem()) {
                 return interactionresultholder.getResult();
             } else {
                 if (p_9264_ != itemstack) {
@@ -247,23 +245,23 @@ public class EntityInteractionManager {
         PlayerInteractEvent.RightClickBlock event = CommonHooks.onRightClickBlock(p_9266_, p_9269_, blockpos, p_9270_);
         if (event.isCanceled()) return event.getCancellationResult();
         UseOnContext useoncontext = new UseOnContext(p_9266_, p_9269_, p_9270_);
-        if (event.getUseItem() != net.neoforged.bus.api.Event.Result.DENY) {
+        if (event.getUseItem() != TriState.FALSE) {
             InteractionResult result = p_9268_.onItemUseFirst(useoncontext);
             if (result != InteractionResult.PASS) return result;
         }
         boolean flag = !p_9266_.getMainHandItem().isEmpty() || !p_9266_.getOffhandItem().isEmpty();
         boolean flag1 = (p_9266_.isSecondaryUseActive() && flag) && !(p_9266_.getMainHandItem().doesSneakBypassUse(p_9267_, blockpos, p_9266_) && p_9266_.getOffhandItem().doesSneakBypassUse(p_9267_, blockpos, p_9266_));
         ItemStack itemstack = p_9268_.copy();
-        if (event.getUseBlock() == net.neoforged.bus.api.Event.Result.ALLOW || (event.getUseBlock() != net.neoforged.bus.api.Event.Result.DENY && !flag1)) {
-            InteractionResult interactionresult = blockstate.use(p_9267_, p_9266_, p_9269_, p_9270_);
+        if (event.getUseBlock() == TriState.TRUE || (event.getUseBlock() != TriState.FALSE && !flag1)) {
+            InteractionResult interactionresult = blockstate.useWithoutItem(p_9267_, p_9266_, blockpos, p_9266_, p_9270_);
             if (interactionresult.consumesAction()) {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(p_9266_, blockpos, itemstack);
                 return interactionresult;
             }
         }
 
-        if (event.getUseItem() == net.neoforged.bus.api.Event.Result.ALLOW || (!p_9268_.isEmpty() && !p_9266_.getCooldowns().isOnCooldown(p_9268_.getItem()))) {
-            if (event.getUseItem() == net.neoforged.bus.api.Event.Result.DENY) return InteractionResult.PASS;
+        if (event.getUseItem() == TriState.TRUE || (!p_9268_.isEmpty() && !p_9266_.getCooldowns().isOnCooldown(p_9268_.getItem()))) {
+            if (event.getUseItem() == TriState.FALSE) return InteractionResult.PASS;
             InteractionResult interactionresult1;
             interactionresult1 = p_9268_.useOn(useoncontext);
 
