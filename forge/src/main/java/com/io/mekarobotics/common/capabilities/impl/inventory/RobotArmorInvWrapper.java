@@ -26,7 +26,7 @@ public class RobotArmorInvWrapper extends EntityArmorInvWrapper {
 
     @Override
     public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
-        if(slot < 4 && EnchantmentHelper.hasBindingCurse(getStackInSlot(slot))) {
+        if(slot < 4 && EnchantmentHelper.hasAnyEnchantments(getStackInSlot(slot))) {
             return ItemStack.EMPTY;
         }
         return super.extractItem(slot, amount, simulate);

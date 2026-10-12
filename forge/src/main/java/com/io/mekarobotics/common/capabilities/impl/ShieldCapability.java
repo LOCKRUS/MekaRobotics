@@ -47,7 +47,7 @@ public class ShieldCapability implements IShielded {
         ACTIVATION_ENERGY_COST = RoboticsConfig.general.shieldActivationCost.get();
         ENERGY_PER_HEALTH_COST = RoboticsConfig.general.shieldPerHealthCost.get();
         RECHARGE_RATE = RoboticsConfig.general.shieldRechargeRate.get().floatValue();
-        ENERGY_UPKEEP = new AttributeModifier(MODIFIER_UUID, "shield_upkeep", 10, AttributeModifier.Operation.ADDITION);
+        ENERGY_UPKEEP = new AttributeModifier(MODIFIER_UUID, "shield_upkeep", 10, AttributeModifier.Operation.ADD_VALUE);
     }
 
         public CompoundTag serializeNBT() {

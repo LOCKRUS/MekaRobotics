@@ -28,6 +28,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.core.Holder;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.multiplayer.PlayerInfo;
@@ -56,10 +57,10 @@ public class RobotInfoScreen extends EffectRenderingRobotScreen<RobotInfoMenu> {
 
     public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Robotics.MODID, "textures/gui/robot_info.png");
     private static final Component OWNER_CAPTION = ComponentUtils.formatList(List.of(Component.translatable("owner"), Component.literal(":")), CommonComponents.EMPTY);
-    public static final List<Attribute> ATTRIBUTES_TO_EXCLUDE = new ArrayList<>();
+    public static final List<Holder<Attribute>> ATTRIBUTES_TO_EXCLUDE = new ArrayList<>();
 
     static {
-        ATTRIBUTES_TO_EXCLUDE.add(NeoForgeMod.NAMETAG_DISTANCE.get());
+        ATTRIBUTES_TO_EXCLUDE.add(NeoForgeMod.NAMETAG_DISTANCE);
         ATTRIBUTES_TO_EXCLUDE.add(Attributes.FOLLOW_RANGE);
         ATTRIBUTES_TO_EXCLUDE.addAll(ModAttributes.MODIFIER_SLOTS.values());
     }

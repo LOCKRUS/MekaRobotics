@@ -50,7 +50,8 @@ public class ShieldLayer extends GeoRenderLayer<RobotEntity> {
         float widthZ = (float) (aabb.maxZ - aabb.minZ) * WIDTHMOD;
         Vec3 centerOffset = aabb.getCenter().subtract(animatable.position());
 
-        float[] color = ModCapabilities.get(animatable, ModCapabilities.PARTS).orElse(ModCapabilities.NO_PARTS).getColor().getTextureDiffuseColors();
+        int diffuseColor = ModCapabilities.get(animatable, ModCapabilities.PARTS).orElse(ModCapabilities.NO_PARTS).getColor().getTextureDiffuseColor();
+        float[] color = new float[] {(diffuseColor >> 16 & 255) / 255.0F, (diffuseColor >> 8 & 255) / 255.0F, (diffuseColor & 255) / 255.0F};
         Vector3f cameraPos = Robotics.proxy.getPlayer().getEyePosition().toVector3f();
         float strength = shield.getHealth() / shield.getMaxHealth();
 

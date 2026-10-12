@@ -58,7 +58,7 @@ public class DashAction implements IAction {
             return false;
         }
         caster.addDeltaMovement(direction.apply(caster).scale(force));
-        caster.addEffect(new MobEffectInstance(ModMobEffects.IMPACTFUL.get(), duration, impactStrength, false, false, false));
+        caster.addEffect(new MobEffectInstance(ModMobEffects.IMPACTFUL, duration, impactStrength, false, false, false));
         return true;
     }
 

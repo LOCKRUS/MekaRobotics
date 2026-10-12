@@ -28,6 +28,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.Holder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.NotNull;
@@ -105,8 +106,8 @@ public class FactoryMenu extends BaseMenu {
     private Map<EnumModuleSlot, Integer> moduleSlotsAsAddedBy(ItemStack stack) {
         IPerkMap perks = ModModules.get(stack).getPerks();
         Map<EnumModuleSlot, Integer> moduleSlotsAsAddedBy = new HashMap<>();
-        Map<Attribute, AttributeInstance> map = new HashMap<>();
-        for(Attribute attr : ModAttributes.MODIFIER_SLOTS.values()) {
+        Map<Holder<Attribute>, AttributeInstance> map = new HashMap<>();
+        for(Holder<Attribute> attr : ModAttributes.MODIFIER_SLOTS.values()) {
             AttributeInstance inst = new AttributeInstance(attr, i -> {});
             inst.setBaseValue(0);
             map.put(attr, inst);

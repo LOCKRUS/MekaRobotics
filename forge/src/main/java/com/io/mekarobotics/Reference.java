@@ -42,12 +42,12 @@ public class Reference {
 	public static final HashMap<Holder<Attribute>, TextColor> ATTRIBUTE_COLORS = new HashMap<>();
 	
 	static {
-		ATTRIBUTE_COLORS.put(Attributes.MAX_HEALTH.value(), TextColor.fromLegacyFormat(ChatFormatting.RED));
-		ATTRIBUTE_COLORS.put(Attributes.ATTACK_DAMAGE.value(), TextColor.fromLegacyFormat(ChatFormatting.RED));
-		ATTRIBUTE_COLORS.put(Attributes.ARMOR.value(), TextColor.fromLegacyFormat(ChatFormatting.GRAY));
-		ATTRIBUTE_COLORS.put(Attributes.ARMOR_TOUGHNESS.value(), TextColor.fromLegacyFormat(ChatFormatting.DARK_AQUA));
-		ATTRIBUTE_COLORS.put(Attributes.MOVEMENT_SPEED.value(), TextColor.fromLegacyFormat(ChatFormatting.WHITE));
-		ATTRIBUTE_COLORS.put(Attributes.KNOCKBACK_RESISTANCE.value(), TextColor.fromLegacyFormat(ChatFormatting.DARK_AQUA));
+			ATTRIBUTE_COLORS.put(Attributes.MAX_HEALTH, TextColor.fromLegacyFormat(ChatFormatting.RED));
+			ATTRIBUTE_COLORS.put(Attributes.ATTACK_DAMAGE, TextColor.fromLegacyFormat(ChatFormatting.RED));
+			ATTRIBUTE_COLORS.put(Attributes.ARMOR, TextColor.fromLegacyFormat(ChatFormatting.GRAY));
+			ATTRIBUTE_COLORS.put(Attributes.ARMOR_TOUGHNESS, TextColor.fromLegacyFormat(ChatFormatting.DARK_AQUA));
+			ATTRIBUTE_COLORS.put(Attributes.MOVEMENT_SPEED, TextColor.fromLegacyFormat(ChatFormatting.WHITE));
+			ATTRIBUTE_COLORS.put(Attributes.KNOCKBACK_RESISTANCE, TextColor.fromLegacyFormat(ChatFormatting.DARK_AQUA));
 		ATTRIBUTE_COLORS.put(ModAttributes.ENERGY_CAPACITY, TextColor.fromLegacyFormat(ChatFormatting.GOLD));
 		ATTRIBUTE_COLORS.put(ModAttributes.ENERGY_CONSUMPTION, TextColor.fromLegacyFormat(ChatFormatting.YELLOW));
 		ATTRIBUTE_COLORS.put(ModAttributes.STACK_SIZE, TextColor.fromLegacyFormat(ChatFormatting.LIGHT_PURPLE));
