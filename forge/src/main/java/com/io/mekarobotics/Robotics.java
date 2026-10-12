@@ -58,6 +58,7 @@ public class Robotics {
         ModMachines.RECIPE_SERIALIZERS.register(EVENT_BUS);
         ModMenuTypes.MENU_TYPES.register(EVENT_BUS);
         ModEntityTypes.ENTITY_TYPES.register(EVENT_BUS);
+        ModAttributes.ATTRIBUTES.register(EVENT_BUS);
         ModSounds.SOUNDS.register(EVENT_BUS);
         ModParticles.PARTICLES.register(EVENT_BUS);
         ModMobEffects.EFFECTS.register(EVENT_BUS);

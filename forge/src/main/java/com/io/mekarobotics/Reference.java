@@ -5,6 +5,7 @@ import com.io.mekarobotics.definitions.ModAttributes;
 import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -38,7 +39,7 @@ public class Reference {
 			IRON, GOLD, COPPER, TIN, ALUMINIUM, SILVER, LEAD, BRONZE, CONSTANTAN, ELECTRUM, PLATINUM
 	};
 	
-	public static final HashMap<Attribute, TextColor> ATTRIBUTE_COLORS = new HashMap<>();
+	public static final HashMap<Holder<Attribute>, TextColor> ATTRIBUTE_COLORS = new HashMap<>();
 	
 	static {
 		ATTRIBUTE_COLORS.put(Attributes.MAX_HEALTH.value(), TextColor.fromLegacyFormat(ChatFormatting.RED));
@@ -54,7 +55,7 @@ public class Reference {
 		ATTRIBUTE_COLORS.put(ModAttributes.MODULE_COST, TextColor.fromLegacyFormat(ChatFormatting.WHITE));
 		ATTRIBUTE_COLORS.put(ModAttributes.MODULE_COOLDOWN, TextColor.fromLegacyFormat(ChatFormatting.WHITE));
 		ATTRIBUTE_COLORS.put(ModAttributes.MODULE_DURATION, TextColor.fromLegacyFormat(ChatFormatting.WHITE));
-		for(Attribute attribute : ModAttributes.MODIFIER_SLOTS.values()) {
+			for(Holder<Attribute> attribute : ModAttributes.MODIFIER_SLOTS.values()) {
 			ATTRIBUTE_COLORS.put(attribute, TextColor.fromLegacyFormat(ChatFormatting.WHITE));
 		}
 		ATTRIBUTE_COLORS.put(ModAttributes.INVENTORY_SLOTS, TextColor.fromLegacyFormat(ChatFormatting.RED));
