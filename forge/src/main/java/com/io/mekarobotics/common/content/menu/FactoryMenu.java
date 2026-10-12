@@ -112,12 +112,16 @@ public class FactoryMenu extends BaseMenu {
             inst.setBaseValue(0);
             map.put(attr, inst);
         }
-        TempAttrMap tempAttrMap = new TempAttrMap(new AttributeSupplier(map));
+        AttributeSupplier.Builder supplier = AttributeSupplier.builder();
+        for (Map.Entry<Holder<Attribute>, AttributeInstance> entry : map.entrySet()) {
+            supplier.add(entry.getKey(), entry.getValue().getBaseValue());
+        }
+        TempAttrMap tempAttrMap = new TempAttrMap(supplier.build());
         for(Tuple<Perk, Integer> tup : perks) {
             tempAttrMap.addTransientAttributeModifiers(tup.getFirst().getAttributeModifiers(tup.getSecond()));
         }
         for(EnumModuleSlot slotType : ModAttributes.MODIFIER_SLOTS.keySet()) {
-            moduleSlotsAsAddedBy.put(slotType, (int) tempAttrMap.getValue(ModAttributes.MODIFIER_SLOTS.get(slotType)));
+            moduleSlotsAsAddedBy.put(slotType, (int) tempAttrMap.getValue(ModAttributes.MODIFIER_SLOTS.get(slotType).value()));
         }
         return moduleSlotsAsAddedBy;
     }
