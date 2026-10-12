@@ -28,7 +28,7 @@ public class CopyContentsFunction implements LootItemFunction {
     public ItemStack apply(ItemStack stack, LootContext lootContext) {
         BlockEntity blockEntity = lootContext.getParamOrNull(LootContextParams.BLOCK_ENTITY);
         if(blockEntity == null) return stack;
-        blockEntity.saveToItem(stack);
+        if(blockEntity.getLevel() != null) blockEntity.saveToItem(stack, blockEntity.getLevel().registryAccess());
         return stack;
     }
 

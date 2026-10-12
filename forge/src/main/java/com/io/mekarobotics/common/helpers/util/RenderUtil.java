@@ -16,6 +16,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 import java.awt.*;
 
@@ -127,7 +128,7 @@ public class RenderUtil {
         pEntity.setXRot(-f1 * 20.0F);
         pEntity.yHeadRot = 180.0F + f * 40.0F;  //ROBOTICS: Manually set head rotation to desired angle as head & body rotations are disconnected for robots
         pEntity.yHeadRotO = 180.0F + f * 40.0F; //ROBOTICS: Manually set head rotation to desired angle as head & body rotations are disconnected for robots
-        InventoryScreen.renderEntityInInventory(pGuiGraphics, pX, pY, pScale, quaternionf, quaternionf1, pEntity);
+        InventoryScreen.renderEntityInInventory(pGuiGraphics, pX, pY, pScale, new Vector3f(), quaternionf, quaternionf1, pEntity);
         pEntity.yBodyRot = f2;
         pEntity.setYRot(f3);
         pEntity.setXRot(f4);
@@ -204,7 +205,7 @@ public class RenderUtil {
         entity.setXRot(-f1 * 20.0F + 45);
         entity.yHeadRot = entity.getYRot();
         entity.yHeadRotO = entity.getYRot();
-        InventoryScreen.renderEntityInInventory(graphics, posX, posY, scale, quaternionf, quaternionf1, entity);
+        InventoryScreen.renderEntityInInventory(graphics, posX, posY, scale, new Vector3f(), quaternionf, quaternionf1, entity);
         entity.yBodyRot = f2;
         entity.setYRot(f3);
         entity.setXRot(f4);

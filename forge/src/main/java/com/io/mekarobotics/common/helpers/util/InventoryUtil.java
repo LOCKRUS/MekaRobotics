@@ -134,7 +134,7 @@ public class InventoryUtil {
 			ItemStack itemstack = list.get(i);
 
 			if (!itemstack.isEmpty()) {
-				CompoundTag compound = itemstack.serializeNBT();
+                    CompoundTag compound = (CompoundTag) itemstack.save(net.neoforged.neoforge.server.ServerLifecycleHooks.getCurrentServer().registryAccess());
 				compound.putByte("Slot", (byte)i);
 				nbtList.add(compound);
 			}
@@ -149,7 +149,7 @@ public class InventoryUtil {
 		for (int i = 0; i < nbtList.size(); ++i) {
 			CompoundTag compound = nbtList.getCompound(i);
 			int j = compound.getByte("Slot") & 255;
-			list.set(j, ItemStack.of(compound));
+                list.set(j, ItemStack.parseOptional(net.neoforged.neoforge.server.ServerLifecycleHooks.getCurrentServer().registryAccess(), compound));
 		}
 
 		return list;

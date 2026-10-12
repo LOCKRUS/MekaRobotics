@@ -42,11 +42,11 @@ public class PosUtil {
         if(dim == null) {
             dim = ServerLifecycleHooks.getCurrentServer().overworld().dimension();
         }
-        return GlobalPos.of(dim, NbtUtils.readBlockPos(tag));
+        return GlobalPos.of(dim, new BlockPos(tag.getInt("x"), tag.getInt("y"), tag.getInt("z")));
     }
 
     public static CompoundTag writePos(GlobalPos pos) {
-        CompoundTag tag = NbtUtils.writeBlockPos(pos.pos());
+        CompoundTag tag = (CompoundTag) NbtUtils.writeBlockPos(pos.pos());
         tag.put("dim", NBTUtil.serializeKey(pos.dimension()));
         return tag;
     }
