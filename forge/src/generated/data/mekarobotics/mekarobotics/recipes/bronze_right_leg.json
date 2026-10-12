@@ -1,0 +1,40 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:ingots/bronze"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "m": {
+            "item": "mekarobotics:servo_motor"
+          },
+          "p": {
+            "item": "mekarobotics:plate_bronze"
+          },
+          "w": {
+            "item": "mekarobotics:wiring"
+          }
+        },
+        "pattern": [
+          " mp",
+          "wmp",
+          "pp "
+        ],
+        "result": {
+          "item": "mekarobotics:bronze_right_leg"
+        },
+        "show_notification": false
+      }
+    }
+  ]
+}

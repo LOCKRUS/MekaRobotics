@@ -1,0 +1,17 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/platinum"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:robust"
+    },
+    {
+      "level": 2,
+      "name": "mekarobotics:shield"
+    },
+    {
+      "name": "mekarobotics:module_efficiency"
+    }
+  ]
+}

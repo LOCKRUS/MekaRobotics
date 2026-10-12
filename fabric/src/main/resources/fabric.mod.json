@@ -16,7 +16,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.io.norabotics.RoboticsFabric"
+      "com.io.mekarobotics.RoboticsFabric"
     ]
   },
   "mixins": [

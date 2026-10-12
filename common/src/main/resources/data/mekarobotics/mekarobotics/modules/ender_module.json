@@ -1,0 +1,11 @@
+{
+  "items": {
+    "item": "mekarobotics:ender_module"
+  },
+  "slots": [
+    "core"
+  ],
+  "action": "mekarobotics:teleport",
+  "cooldown": 20,
+  "energyCost": 10000
+}

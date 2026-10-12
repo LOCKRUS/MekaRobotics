@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:signalum_head",
+    "mekarobotics:signalum_right_leg",
+    "mekarobotics:signalum_body",
+    "mekarobotics:signalum_left_arm",
+    "mekarobotics:signalum_right_arm",
+    "mekarobotics:signalum_left_leg"
+  ]
+}

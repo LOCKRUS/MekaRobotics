@@ -1,0 +1,10 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/lead"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:steady"
+    }
+  ]
+}

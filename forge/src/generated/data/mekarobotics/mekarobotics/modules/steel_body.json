@@ -1,0 +1,23 @@
+{
+  "items": {
+    "type": "forge:intersection",
+    "children": [
+      {
+        "tag": "mekarobotics:material/steel"
+      },
+      {
+        "tag": "mekarobotics:part/body"
+      }
+    ]
+  },
+  "perks": [
+    {
+      "level": 6,
+      "name": "mekarobotics:health"
+    },
+    {
+      "level": 2,
+      "name": "mekarobotics:module_buff"
+    }
+  ]
+}

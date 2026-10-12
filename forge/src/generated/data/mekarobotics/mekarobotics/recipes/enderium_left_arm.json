@@ -1,0 +1,40 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:ingots/enderium"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "m": {
+            "item": "mekarobotics:servo_motor"
+          },
+          "p": {
+            "item": "mekarobotics:plate_enderium"
+          },
+          "w": {
+            "item": "mekarobotics:wiring"
+          }
+        },
+        "pattern": [
+          " pm",
+          "pwp",
+          "mp "
+        ],
+        "result": {
+          "item": "mekarobotics:enderium_left_arm"
+        },
+        "show_notification": false
+      }
+    }
+  ]
+}

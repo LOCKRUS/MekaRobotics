@@ -1,0 +1,12 @@
+{
+   "parent": "block/cube",
+   "textures": {
+       "particle": "mekarobotics:block/machine_bottom",
+	   "down": "mekarobotics:block/machine_bottom",
+	   "up": "mekarobotics:block/machine_top",
+	   "north": "mekarobotics:block/assembler_front",
+	   "east": "mekarobotics:block/machine_bottom",
+	   "south": "mekarobotics:block/machine_back",
+	   "west": "mekarobotics:block/machine_bottom"
+   }
+}

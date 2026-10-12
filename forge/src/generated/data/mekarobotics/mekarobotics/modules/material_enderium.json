@@ -1,0 +1,10 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/enderium"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:linked"
+    }
+  ]
+}

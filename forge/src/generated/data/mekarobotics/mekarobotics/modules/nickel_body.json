@@ -1,0 +1,23 @@
+{
+  "items": {
+    "type": "forge:intersection",
+    "children": [
+      {
+        "tag": "mekarobotics:material/nickel"
+      },
+      {
+        "tag": "mekarobotics:part/body"
+      }
+    ]
+  },
+  "perks": [
+    {
+      "level": 7,
+      "name": "mekarobotics:health"
+    },
+    {
+      "level": 4,
+      "name": "mekarobotics:durable"
+    }
+  ]
+}

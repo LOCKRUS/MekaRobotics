@@ -1,0 +1,30 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:ingots/nickel"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "mekarobotics:assembler",
+        "energy": 20000,
+        "key": {
+          "i": {
+            "tag": "forge:ingots/nickel"
+          }
+        },
+        "pattern": "iiii",
+        "processing_time": 200,
+        "result": {
+          "item": "mekarobotics:plate_nickel"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:gems/diamond"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "mekarobotics:diamond_left_arm"
+          }
+        ],
+        "result": {
+          "item": "mekarobotics:diamond_right_arm"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:diamond_head",
+    "mekarobotics:diamond_right_leg",
+    "mekarobotics:diamond_body",
+    "mekarobotics:diamond_left_arm",
+    "mekarobotics:diamond_right_arm",
+    "mekarobotics:diamond_left_leg"
+  ]
+}

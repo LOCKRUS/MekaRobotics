@@ -1,0 +1,6 @@
+{
+  "name": "mekarobotics:attractant",
+  "stackable": true,
+  "displayColor": "gray",
+  "internalLogic": true
+}

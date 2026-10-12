@@ -1,0 +1,46 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:ingots/dark_steel"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "b": {
+            "item": "mekarobotics:battery"
+          },
+          "c": {
+            "item": "mekarobotics:advanced_circuit"
+          },
+          "g": {
+            "tag": "forge:glass_panes"
+          },
+          "p": {
+            "item": "mekarobotics:plate_dark_steel"
+          },
+          "w": {
+            "item": "mekarobotics:advanced_wiring"
+          }
+        },
+        "pattern": [
+          "pgp",
+          "bwb",
+          "pcp"
+        ],
+        "result": {
+          "item": "mekarobotics:dark_steel_body"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

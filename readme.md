@@ -2,10 +2,10 @@
 [![Static Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.modrinth.com%2Fv2%2Fproject%2Frobotics%2Fversion&query=%24%5B0%5D.version_number&style=for-the-badge&color=134a5d&label=Version)](https://modrinth.com/project/robotics/version/latest)
 [![Static Badge](https://img.shields.io/badge/-Modrinth-555555?style=for-the-badge&logo=modrinth&link=https%3A%2F%2Fmodrinth.com%2F)](https://modrinth.com/project/robotics)
 [![Static Badge](https://img.shields.io/badge/-CurseForge-555555?style=for-the-badge&logo=curseforge)](https://legacy.curseforge.com/minecraft/mc-mods/robotized)
-[![Static Badge](https://img.shields.io/badge/-Github-555555?style=for-the-badge&logo=github&link=https%3A%2F%2Fgithub.com%2F)](https://github.com/Fayenora/Robotics)
+[![Static Badge](https://img.shields.io/badge/-Github-555555?style=for-the-badge&logo=github&link=https%3A%2F%2Fgithub.com%2F)](https://github.com/LOCKRUS/MekaRobotics)
 
 
-Robotics is a Forge mod for Minecraft 1.20.1. Look on Curse Forge or Modrinth for a proper showcase!
+MekaRobotics is a Forge mod for Minecraft 1.20.1. Look on Curse Forge or Modrinth for a proper showcase!
 
 ### Dependencies
 
@@ -13,6 +13,7 @@ Robotics is a Forge mod for Minecraft 1.20.1. Look on Curse Forge or Modrinth fo
 - Optional: [Just Enough Items](https://modrinth.com/mod/jei) provides in-game recipe lookup. Some features will not work without it
 - Optional: [CC: Tweaked](https://modrinth.com/mod/cc-tweaked) a significant part of the features depends on this, although the mod is very much playable without
 - Optional: [Patchouli](https://modrinth.com/mod/patchouli) provides in-game documentation
+- Optional on Forge: [Mekanism](https://modrinth.com/mod/mekanism) adds osmium-based robot factory recipes
 
 ### Credits
 - <a href="https://www.textstudio.com/">Title font generated with textstudio</a>
@@ -21,3 +22,7 @@ Robotics is a Forge mod for Minecraft 1.20.1. Look on Curse Forge or Modrinth fo
 - Some textures are recolors of other people's work:
     - Arms & Legs by [Robotics Parts](https://www.curseforge.com/minecraft/mc-mods/roboticparts)
     - Full credit for the robot textures to sixfootblue, originally uploaded [here](https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/skins/1218784-the-prototypes-free-robot-skins)
+
+## MekaRobotics reissue
+
+MekaRobotics is a community reissue of Robotics by Fayenora. The original MIT license and upstream credits are retained; this branch is developed under the LOCKRUS/MekaRobotics repository.

@@ -1,0 +1,30 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:ingots/iron"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "mekarobotics:assembler",
+        "energy": 10000,
+        "key": {
+          "i": {
+            "tag": "forge:ingots/iron"
+          }
+        },
+        "pattern": "iiii",
+        "processing_time": 100,
+        "result": {
+          "item": "mekarobotics:plate_iron"
+        }
+      }
+    }
+  ]
+}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "norabotics:item/robot/steel/robot_left_arm"
-  }
-}

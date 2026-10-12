@@ -1,0 +1,25 @@
+{
+  "items": {
+    "type": "forge:intersection",
+    "children": [
+      {
+        "tag": "mekarobotics:material/end_steel"
+      },
+      {
+        "tag": "mekarobotics:part/head"
+      }
+    ]
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:persistent"
+    },
+    {
+      "level": 5,
+      "name": "mekarobotics:health"
+    },
+    {
+      "name": "mekarobotics:durable"
+    }
+  ]
+}

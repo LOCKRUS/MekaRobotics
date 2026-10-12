@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:iridium_head",
+    "mekarobotics:iridium_right_leg",
+    "mekarobotics:iridium_body",
+    "mekarobotics:iridium_left_arm",
+    "mekarobotics:iridium_right_arm",
+    "mekarobotics:iridium_left_leg"
+  ]
+}

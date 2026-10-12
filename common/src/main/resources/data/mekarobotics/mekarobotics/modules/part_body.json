@@ -1,0 +1,22 @@
+{
+  "items": {
+    "tag": "mekarobotics:part/body"
+  },
+  "slots": [
+    "body"
+  ],
+  "perks": [
+    {
+      "name": "mekarobotics:module_slot",
+      "level": 2
+    },
+    {
+      "name": "mekarobotics:skin_slot",
+      "level": 1
+    },
+    {
+      "name": "mekarobotics:reactor_slot",
+      "level": 1
+    }
+  ]
+}

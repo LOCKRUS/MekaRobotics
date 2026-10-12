@@ -1,0 +1,22 @@
+{
+    "type": "mekarobotics:assembler",
+    "category": "misc",
+	"pattern": "siei",
+    "key": {
+        "i": {
+            "tag": "forge:rods/iron"
+        }, 
+		"s": {
+            "tag": "forge:ingots/steel"
+        },
+		"e": {
+            "item": "mekarobotics:electro_magnet", 
+			"amount": 2
+        }
+    }, 
+	"energy": 20000,
+	"processing_time": 200,
+    "result": {
+        "item": "mekarobotics:servo_motor"
+    }
+}

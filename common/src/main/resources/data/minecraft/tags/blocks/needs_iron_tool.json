@@ -1,11 +1,11 @@
 {
   "replace": false,
   "values": [
-    "norabotics:assembler",
-    "norabotics:wire_cutter",
-    "norabotics:robot_factory",
-    "norabotics:robot_storage",
-    "norabotics:charger",
-    "norabotics:machine_arm"
+    "mekarobotics:assembler",
+    "mekarobotics:wire_cutter",
+    "mekarobotics:robot_factory",
+    "mekarobotics:robot_storage",
+    "mekarobotics:charger",
+    "mekarobotics:machine_arm"
   ]
 }

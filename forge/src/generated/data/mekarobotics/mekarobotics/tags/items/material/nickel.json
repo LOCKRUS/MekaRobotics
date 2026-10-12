@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:nickel_head",
+    "mekarobotics:nickel_right_leg",
+    "mekarobotics:nickel_body",
+    "mekarobotics:nickel_left_arm",
+    "mekarobotics:nickel_right_arm",
+    "mekarobotics:nickel_left_leg"
+  ]
+}

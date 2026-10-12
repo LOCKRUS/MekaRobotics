@@ -1,0 +1,13 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/diamond"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:reflective"
+    },
+    {
+      "name": "mekarobotics:robust"
+    }
+  ]
+}

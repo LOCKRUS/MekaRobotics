@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:constantan_head",
+    "mekarobotics:constantan_right_leg",
+    "mekarobotics:constantan_body",
+    "mekarobotics:constantan_left_arm",
+    "mekarobotics:constantan_right_arm",
+    "mekarobotics:constantan_left_leg"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:end_steel_head",
+    "mekarobotics:end_steel_right_leg",
+    "mekarobotics:end_steel_body",
+    "mekarobotics:end_steel_left_arm",
+    "mekarobotics:end_steel_right_arm",
+    "mekarobotics:end_steel_left_leg"
+  ]
+}

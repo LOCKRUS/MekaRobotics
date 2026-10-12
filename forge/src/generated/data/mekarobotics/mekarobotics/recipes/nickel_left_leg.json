@@ -1,0 +1,40 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:ingots/nickel"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "m": {
+            "item": "mekarobotics:servo_motor"
+          },
+          "p": {
+            "item": "mekarobotics:plate_nickel"
+          },
+          "w": {
+            "item": "mekarobotics:wiring"
+          }
+        },
+        "pattern": [
+          "pm ",
+          "pmw",
+          " pp"
+        ],
+        "result": {
+          "item": "mekarobotics:nickel_left_leg"
+        },
+        "show_notification": false
+      }
+    }
+  ]
+}

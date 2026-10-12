@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "item": "mekarobotics:complex_wiring"
+  },
+  "pattern": [
+    " w ",
+    "wgw",
+    " w "
+  ],
+  "key": {
+    "g": {
+      "item": "minecraft:diamond"
+    },
+	"w": {
+      "item": "mekarobotics:advanced_wiring"
+    }
+  }
+}

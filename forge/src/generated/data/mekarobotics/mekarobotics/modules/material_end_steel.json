@@ -1,0 +1,10 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/end_steel"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:invulnerability"
+    }
+  ]
+}

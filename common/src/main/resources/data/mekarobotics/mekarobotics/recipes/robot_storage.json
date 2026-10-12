@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+        "pcp",
+        "p p",
+        "pbp"
+    ],
+    "key": {
+        "b": {
+            "item": "minecraft:heavy_weighted_pressure_plate"
+        },
+		"p": {
+            "item": "mekarobotics:plate_iron"
+        }, 
+		"c": {
+            "item": "mekarobotics:circuit"
+        }
+    },
+    "result": {
+        "item": "mekarobotics:robot_storage"
+    }
+}

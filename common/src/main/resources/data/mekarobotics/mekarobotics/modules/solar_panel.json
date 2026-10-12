@@ -1,0 +1,15 @@
+{
+  "items": {
+    "item": "mekarobotics:solar_panel"
+  },
+  "texture": "mekarobotics:textures/robot/modules/solar_panel.png",
+  "slots": [
+    "skin"
+  ],
+  "perks": [
+    {
+      "level": 1,
+      "name": "mekarobotics:solar_panel"
+    }
+  ]
+}

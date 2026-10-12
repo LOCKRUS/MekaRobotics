@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "norabotics:constantan_wire"
+    "mekarobotics:constantan_wire"
   ]
 }

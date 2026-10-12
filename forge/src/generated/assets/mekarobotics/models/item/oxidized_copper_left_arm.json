@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mekarobotics:item/robot/oxidized_copper/robot_left_arm"
+  }
+}

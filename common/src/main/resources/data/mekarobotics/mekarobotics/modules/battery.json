@@ -1,0 +1,14 @@
+{
+  "items": {
+    "item": "mekarobotics:battery"
+  },
+  "slots": [
+    "core"
+  ],
+  "perks": [
+    {
+      "level": 2,
+      "name": "mekarobotics:battery"
+    }
+  ]
+}

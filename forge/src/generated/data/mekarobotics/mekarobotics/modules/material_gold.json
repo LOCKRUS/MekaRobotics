@@ -1,0 +1,10 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/gold"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:inspire"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:osmium_head",
+    "mekarobotics:osmium_right_leg",
+    "mekarobotics:osmium_body",
+    "mekarobotics:osmium_left_arm",
+    "mekarobotics:osmium_right_arm",
+    "mekarobotics:osmium_left_leg"
+  ]
+}

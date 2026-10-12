@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mekarobotics:item/robot/signalum/robot_left_arm"
+  }
+}

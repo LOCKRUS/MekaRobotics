@@ -1,0 +1,23 @@
+{
+  "items": {
+    "type": "forge:intersection",
+    "children": [
+      {
+        "tag": "mekarobotics:material/enderium"
+      },
+      {
+        "tag": "mekarobotics:part/body"
+      }
+    ]
+  },
+  "perks": [
+    {
+      "level": 8,
+      "name": "mekarobotics:health"
+    },
+    {
+      "level": 3,
+      "name": "mekarobotics:durable"
+    }
+  ]
+}

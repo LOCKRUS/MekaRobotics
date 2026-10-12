@@ -1,0 +1,23 @@
+{
+  "items": {
+    "type": "forge:intersection",
+    "children": [
+      {
+        "tag": "mekarobotics:material/steel"
+      },
+      [
+        {
+          "tag": "mekarobotics:part/left_leg"
+        },
+        {
+          "tag": "mekarobotics:part/right_leg"
+        }
+      ]
+    ]
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:module_efficiency"
+    }
+  ]
+}

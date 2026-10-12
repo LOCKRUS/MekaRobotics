@@ -1,0 +1,30 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:ingots/psimetal"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "mekarobotics:assembler",
+        "energy": 30000,
+        "key": {
+          "i": {
+            "tag": "forge:ingots/psimetal"
+          }
+        },
+        "pattern": "iiii",
+        "processing_time": 300,
+        "result": {
+          "item": "mekarobotics:plate_psimetal"
+        }
+      }
+    }
+  ]
+}

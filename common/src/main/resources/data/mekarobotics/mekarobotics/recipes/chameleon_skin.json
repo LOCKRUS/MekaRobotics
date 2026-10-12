@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " is",
+    "isp",
+    "sp "
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:glass_pane"
+    },
+    "s": {
+      "item": "mekarobotics:plate_silver"
+    },
+    "p": {
+      "item": "mekarobotics:plate_steel"
+    }
+  },
+  "result": {
+    "item": "mekarobotics:stealth_module"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "mekarobotics:stacked",
+  "displayColor": "light_purple",
+  "attributes": [
+    {
+      "name": "mekarobotics:robot.stack_size",
+      "modifiers": [
+        {
+          "value": 0,
+          "operation": 1,
+          "scalar": 1
+        }
+      ]
+    }
+  ]
+}

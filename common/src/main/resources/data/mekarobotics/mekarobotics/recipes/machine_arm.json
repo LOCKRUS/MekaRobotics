@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " ii",
+    "im ",
+    "scs"
+  ],
+  "key": {
+    "i": {
+      "tag": "forge:rods/iron"
+    },
+    "m": {
+      "item": "mekarobotics:servo_motor"
+    },
+    "s": {
+      "item": "mekarobotics:plate_steel"
+    },
+    "c": {
+      "item": "mekarobotics:advanced_circuit"
+    }
+  },
+  "result": {
+    "item": "mekarobotics:machine_arm"
+  }
+}

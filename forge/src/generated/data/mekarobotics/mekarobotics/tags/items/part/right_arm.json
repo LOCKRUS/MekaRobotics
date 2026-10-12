@@ -1,0 +1,29 @@
+{
+  "values": [
+    "mekarobotics:copper_right_arm",
+    "mekarobotics:lumium_right_arm",
+    "mekarobotics:osmium_right_arm",
+    "mekarobotics:tin_right_arm",
+    "mekarobotics:platinum_right_arm",
+    "mekarobotics:nickel_right_arm",
+    "mekarobotics:end_steel_right_arm",
+    "mekarobotics:dark_steel_right_arm",
+    "mekarobotics:iridium_right_arm",
+    "mekarobotics:netherite_right_arm",
+    "mekarobotics:bronze_right_arm",
+    "mekarobotics:electrum_right_arm",
+    "mekarobotics:diamond_right_arm",
+    "mekarobotics:signalum_right_arm",
+    "mekarobotics:weathered_copper_right_arm",
+    "mekarobotics:constantan_right_arm",
+    "mekarobotics:enderium_right_arm",
+    "mekarobotics:aluminium_right_arm",
+    "mekarobotics:steel_right_arm",
+    "mekarobotics:psimetal_right_arm",
+    "mekarobotics:silver_right_arm",
+    "mekarobotics:gold_right_arm",
+    "mekarobotics:lead_right_arm",
+    "mekarobotics:iron_right_arm",
+    "mekarobotics:oxidized_copper_right_arm"
+  ]
+}

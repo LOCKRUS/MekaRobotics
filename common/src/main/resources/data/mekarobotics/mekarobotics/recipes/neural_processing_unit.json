@@ -1,0 +1,25 @@
+{
+    "type": "mekarobotics:assembler",
+    "category": "misc",
+	"pattern": "wcpc",
+    "key": {
+        "c": {
+            "item": "mekarobotics:complex_circuit"
+        }, 
+		"w": {
+            "item": "mekarobotics:complex_wiring"
+        }, 
+		"p": {
+            "type": "mekarobotics:counted",
+            "items": {
+              "item": "mekarobotics:perceptron_layer"
+            },
+			"amount": 8
+        }
+    }, 
+	"energy": 1000000,
+	"processing_time": 1000,
+    "result": {
+        "item": "mekarobotics:neural_processing_unit"
+    }
+}

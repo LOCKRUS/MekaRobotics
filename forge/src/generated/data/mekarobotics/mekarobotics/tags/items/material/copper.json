@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:copper_head",
+    "mekarobotics:copper_right_leg",
+    "mekarobotics:copper_body",
+    "mekarobotics:copper_left_arm",
+    "mekarobotics:copper_right_arm",
+    "mekarobotics:copper_left_leg"
+  ]
+}

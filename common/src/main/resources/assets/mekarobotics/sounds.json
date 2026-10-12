@@ -1,0 +1,59 @@
+{
+	"entity.robot.hurt":{
+		"category": "entity",
+		"subtitle": "entity.robot.hurt",
+		"sounds": [ "mekarobotics:entity/robot/hurt" ]
+	},
+	"entity.robot.death":{
+		"category": "entity",
+		"subtitle": "entity.robot.death",
+		"sounds": [ "mekarobotics:entity/robot/death" ]
+	}, 
+	"entity.robot.death_active":{
+        "category": "entity",
+        "subtitle": "entity.robot.death",
+        "sounds": [ "mekarobotics:entity/robot/death_active" ]
+    }, 
+	"entity.robot.kill_command":{
+        "category": "entity",
+        "subtitle": "entity.robot.kill_command",
+        "sounds": [ "mekarobotics:entity/robot/kill_command" ]
+    },
+
+    "shield.start": {
+          "category": "entity",
+          "subtitle": "shield.start",
+          "sounds": [ "mekarobotics:shield/up" ]
+    },
+    "shield.impact": {
+      "category": "entity",
+      "subtitle": "shield.start",
+      "sounds": [ "mekarobotics:shield/impact" ]
+    },
+    "shield.fatal_impact": {
+      "category": "entity",
+      "subtitle": "shield.start",
+      "sounds": [ "mekarobotics:shield/impact_2" ]
+    },
+    "book_flip": {
+      "category": "player",
+      "sounds": [ "mekarobotics:book_flip" ],
+      "subtitle": "patchouli.subtitle.book_flip"
+    },
+    "book_open": {
+      "category": "player",
+      "sounds": [{"name": "mekarobotics:book_open", "volume": 0.2}],
+      "subtitle": "patchouli.subtitle.book_open"
+    },
+    
+    "machine.assembler":{
+        "category": "block",
+        "subtitle": "machine.assembler",
+        "sounds": [{"name": "mekarobotics:machine/assembler", "stream": true}]
+    }, 
+    "machine.wire_cutter":{
+        "category": "block",
+        "subtitle": "machine.wire_cutter",
+        "sounds": [{"name": "mekarobotics:machine/wire_cutter", "stream": true}]
+    }
+}

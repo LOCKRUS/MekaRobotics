@@ -1,0 +1,14 @@
+{
+  "items": {
+    "tag": "mekarobotics:part/head"
+  },
+  "slots": [
+    "head"
+  ],
+  "perks": [
+    {
+      "name": "mekarobotics:sensor_slot",
+      "level": 1
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "items": {
+    "type": "forge:intersection",
+    "children": [
+      {
+        "tag": "mekarobotics:material/netherite"
+      },
+      [
+        {
+          "tag": "mekarobotics:part/left_arm"
+        },
+        {
+          "tag": "mekarobotics:part/left_leg"
+        },
+        {
+          "tag": "mekarobotics:part/right_arm"
+        },
+        {
+          "tag": "mekarobotics:part/right_leg"
+        }
+      ]
+    ]
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:persistent"
+    },
+    {
+      "level": 3,
+      "name": "mekarobotics:health"
+    },
+    {
+      "level": 2,
+      "name": "mekarobotics:durable"
+    }
+  ]
+}

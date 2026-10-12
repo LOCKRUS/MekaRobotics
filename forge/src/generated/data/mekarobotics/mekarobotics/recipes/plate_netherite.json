@@ -1,0 +1,30 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:ingots/netherite"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "mekarobotics:assembler",
+        "energy": 40000,
+        "key": {
+          "i": {
+            "tag": "forge:ingots/netherite"
+          }
+        },
+        "pattern": "iiii",
+        "processing_time": 400,
+        "result": {
+          "item": "mekarobotics:plate_netherite"
+        }
+      }
+    }
+  ]
+}

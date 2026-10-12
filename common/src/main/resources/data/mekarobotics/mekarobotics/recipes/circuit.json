@@ -1,0 +1,28 @@
+{
+    "type": "mekarobotics:assembler",
+    "category": "misc",
+	"pattern": "rwiv",
+    "key": {
+        "r": {
+          "type": "mekarobotics:counted",
+          "items": {
+            "tag": "forge:dusts/redstone"
+          },
+          "amount": 3
+        }, 
+		"w": {
+            "item": "mekarobotics:wiring"
+        },
+		"i": {
+            "tag": "forge:ingots/iron"
+        }, 
+		"v": {
+			"item": "minecraft:repeater"
+		}
+    }, 
+	"energy": 10000,
+	"processing_time": 200,
+    "result": {
+        "item": "mekarobotics:circuit"
+    }
+}

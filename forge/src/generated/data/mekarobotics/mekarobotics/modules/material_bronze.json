@@ -1,0 +1,13 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/bronze"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:module_buff"
+    },
+    {
+      "name": "mekarobotics:module_efficiency"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " p ",
+    "ece",
+    " p "
+  ],
+  "key": {
+    "e": {
+      "item": "minecraft:ender_pearl"
+    },
+    "p": {
+      "item": "mekarobotics:plate_gold"
+    },
+    "c": {
+      "item": "mekarobotics:advanced_wiring"
+    }
+  },
+  "result": {
+    "item": "mekarobotics:ender_module"
+  }
+}

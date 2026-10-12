@@ -1,0 +1,10 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/steel"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:mass_produced"
+    }
+  ]
+}

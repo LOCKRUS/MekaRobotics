@@ -1,236 +1,136 @@
 plugins {
-    id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.6-SNAPSHOT" apply false
-    id "com.matthewprenger.cursegradle" version "1.4.0"
-    id "com.modrinth.minotaur" version "2.+"
-    id "com.github.johnrengelman.shadow" version "7.1.2" apply false
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.107'
+    id 'idea'
 }
 
-architectury {
-    minecraft = rootProject.minecraft_version
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
 }
 
-subprojects {
-    apply plugin: "dev.architectury.loom"
-    apply plugin: "com.github.johnrengelman.shadow"
-    apply plugin: "com.matthewprenger.cursegradle"
-    apply plugin: "com.modrinth.minotaur"
+version = mod_version
+group = mod_group_id
 
-    loom {
-        silentMojangMappingsLicense()
-    }
-
-    dependencies {
-        minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
-        mappings loom.layered() {
-            it.officialMojangMappings {
-                setNameSyntheticMembers(false)
-            }
-            it.parchment("org.parchmentmc.data:parchment-${rootProject.parchment_version}")
-        }
-
-    }
-
-    var env = System.getenv()
-    var modLoader = name
-
-    var changelogFile = rootProject.file("changelog.md")
-    var changelogText = changelogFile.exists() ? changelogFile.text : ""
-
-    if (env.MODRINTH_TOKEN) {
-        modrinth {
-            projectId = rootProject.mod_id
-            uploadFile = tasks.remapJar
-            gameVersions = [rootProject.minecraft_version]
-            if(modLoader == "forge"){
-                loaders = [modLoader, "neoforge"]
-            }else{
-                loaders = [modLoader]
-            }
-
-            changelog = changelogText
-
-            //if (modLoader == "fabric") {
-            //    dependencies {
-            //        required.project "fabric-api"
-            //        required.project "moonlight"
-            //    }
-            //} else {
-            //    dependencies {
-            //        required.project "moonlight"
-            //    }
-            //}
-            dependencies {
-                required.project "geckolib"
-                optional.project "jei"
-                optional.project "cc-tweaked"
-                optional.project "patchouli"
-            }
-        }
-    }
-
-    if (env.CURSEFORGE_TOKEN) {
-        curseforge {
-            apiKey = env.CURSEFORGE_TOKEN
-            project {
-                id = rootProject.project_id
-                changelog = changelogText
-                releaseType = 'beta' //or 'release'
-                addGameVersion rootProject.minecraft_version
-                addGameVersion modLoader.capitalize()
-                //if(modLoader == "forge"){
-                //    addGameVersion "NeoForge" // I don't know whether NeoForge can also load Forge mods
-                //}
-
-
-                mainArtifact(tasks.remapJar)
-
-                if (modLoader == "fabric") {
-                    relations {
-                        requiredDependency "fabric-api"
-                        //requiredDependency "selene"
-
-                        //optionalDependency "the-bumblezone-fabric"
-                        //optionalDependency "decorative-blocks"
-                        //optionalDependency("flan")
-                        //optionalDependency("multi-item-lib")
-                        //optionalDependency("snowy-spirit")
-                        //optionalDependency("haunted-harvest")
-                        //optionalDependency("model-gap-fix")
-                        //optionalDependency("map-atlases")
-                        //optionalDependency("farmers-delight-fabric")
-                    }
-                } else {
-                    /*
-                    relations {
-                        requiredDependency("selene")
-
-                        optionalDependency("create")
-                        optionalDependency("quark")
-                        optionalDependency("cc-tweaked")
-                        optionalDependency("waystones")
-                        optionalDependency("roughly-enough-items")
-                        optionalDependency("jei")
-                        optionalDependency("model-gap-fix")
-                        optionalDependency("flywheel")
-                        optionalDependency("configured")
-                        optionalDependency("flan-forge")
-                        optionalDependency("haunted-harvest")
-                        optionalDependency("snowy-spirit")
-                        optionalDependency("map-atlases-forge")
-                        optionalDependency("decorative-blocks")
-                        optionalDependency("farmers-delight")
-                        optionalDependency("the-bumblezone-forge")
-                        optionalDependency("map-atlases-forge")
-                    }
-                     */
-                }
-            }
-        }
-    }
-
+repositories {
+    maven { name = 'ModMaven'; url = 'https://modmaven.dev' }
+    maven { name = 'CurseMaven'; url = 'https://cursemaven.com' }
+    maven { name = 'GeckoLib'; url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+    mavenCentral()
 }
 
-allprojects {
-    apply plugin: "java"
-    apply plugin: "architectury-plugin"
-    apply plugin: "maven-publish"
+base {
+    archivesName = mod_id + '-' + minecraft_version
+}
 
-    archivesBaseName = rootProject.mod_id
-    version = rootProject.mod_version
-    group = rootProject.mod_group_id
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-    repositories {
-        flatDir {
-            dirs 'mods'
-        }
-        mavenCentral()
-        mavenLocal()
-        maven { url "https://maven.parchmentmc.org" }
-        maven {  // JEI & Patchouli
-            name = "Jared's maven"
-            url = "https://maven.blamejared.com/"
-        }
-        maven {  // location of a maven mirror for JEI files, as a fallback
-            name = "ModMaven"
-            url = "https://modmaven.dev"
-        }
-        maven {
-            name = 'GeckoLib'
-            url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-            content {
-                includeGroupByRegex("software\\.bernie.*")
-                includeGroup("com.eliotlash.mclib")
-            }
-        }
-        maven {  // CurseForge
-            url "https://cursemaven.com"
-            content {
-                includeGroup "curse.maven"
-            }
-        }
-        maven {  // CC Tweaked
-            url = "https://squiddev.cc/maven/"
-            content {
-                includeGroup("cc.tweaked")
-                includeGroup("cc.tweaked.cobalt")
-            }
-        }
-    }
-
-    tasks.withType(JavaCompile) {
-        options.encoding = "UTF-8"
-        options.release = rootProject.java_version.toInteger()
-    }
-
-    java {
-        withSourcesJar()
+sourceSets {
+    main {
+        java.srcDirs = ['forge/src/main/java']
+        java.exclude 'com/io/mekarobotics/integration/cc/RedstoneIntegrator.java'
+        java.exclude 'com/io/mekarobotics/integration/cc/RedstoneInterface.java'
+        java.exclude 'com/io/mekarobotics/datagen/**'
+        java.exclude 'com/io/mekarobotics/common/content/recipes/AssemblerRecipeBuilder.java'
+        java.exclude 'com/io/mekarobotics/common/content/recipes/WireCutterRecipeBuilder.java'
+        java.exclude 'com/io/mekarobotics/test/**'
+        java.exclude 'com/io/mekarobotics/integration/config/RoboticsModConfig.java'
+        java.exclude 'com/io/mekarobotics/integration/cc/ComputerCapability.java'
+        java.exclude 'com/io/mekarobotics/integration/cc/ComputerizedBehavior.java'
+        java.exclude 'com/io/mekarobotics/integration/cc/EntityComputer.java'
+        java.exclude 'com/io/mekarobotics/integration/cc/IComputerized.java'
+        java.exclude 'com/io/mekarobotics/integration/cc/ProgrammingMenu.java'
+        java.exclude 'com/io/mekarobotics/integration/cc/ProgrammingScreen.java'
+        java.exclude 'com/io/mekarobotics/integration/cc/vanilla/**'
+        java.exclude 'com/io/mekarobotics/integration/cc/apis/**'
+        java.exclude 'com/io/mekarobotics/mixins/EntityInventory.java'
+        resources.srcDirs = [
+                'common/src/main/resources',
+                'forge/src/main/resources',
+                'forge/src/generated'
+        ]
     }
 }
 
-ext {
-    replaceProperties = [
-            minecraft_version      : minecraft_version,
-            pack_format_number     : pack_format_number,
-            forge_version          : forge_version,
-            loader_version_range   : loader_version_range,
-            neo_version            : neo_version,
-            neo_version_range      : neo_version_range,
+neoForge {
+    version = neo_version
+    parchment {
+        mappingsVersion = parchment_mappings_version
+        minecraftVersion = parchment_minecraft_version
+    }
+    runs {
+        client {
+            client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+        }
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+        }
+        data {
+            data()
+            programArguments.addAll '--mod', mod_id, '--all', '--output', file('forge/src/generated').absolutePath, '--existing', file('forge/src/main/resources').absolutePath
+        }
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
 
-            mod_id                 : mod_id,
-            mod_name               : mod_name,
-            mod_version            : mod_version,
-            mod_license            : mod_license,
-            mod_authors            : mod_authors,
-            mod_description        : mod_description,
-            mod_credits            : mod_credits,
-            mod_homepage           : mod_homepage,
-            mod_github             : mod_github,
-            update_url             : update_url,
+configurations {
+    localRuntime
+    runtimeClasspath.extendsFrom localRuntime
+}
 
-            cct_version            : cct_version_range,
-            geckolib_version       : geckolib_version_range
+def generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
+    def replaceProperties = [
+            minecraft_version: minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version: neo_version,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id,
+            mod_name: mod_name,
+            mod_license: mod_license,
+            mod_version: mod_version,
+            mod_authors: mod_authors,
+            mod_description: mod_description,
+            mod_github: mod_github,
+            mod_homepage: mod_homepage,
+            mod_credits: mod_credits
     ]
+    inputs.properties replaceProperties
+    expand replaceProperties
+    from 'src/main/templates'
+    into 'build/generated/sources/modMetadata'
+}
+sourceSets.main.resources.srcDir generateModMetadata
+sourceSets.main.resources.exclude 'META-INF/mods.toml'
+
+// Mekanism is the primary platform integration for this branch.
+dependencies {
+    implementation 'mekanism:Mekanism:1.21.1-10.7.14.79'
+    implementation 'mekanism:Mekanism:1.21.1-10.7.14.79:generators'
+    implementation 'software.bernie.geckolib:geckolib-neoforge-1.21.1:4.7.3'
+    implementation files('libs/caliko-1.3.8.jar')
+    compileOnly 'mezz.jei:jei-1.21.1-neoforge-api:19.21.0.247'
+    localRuntime 'mekanism:Mekanism:1.21.1-10.7.14.79'
+    localRuntime 'mekanism:Mekanism:1.21.1-10.7.14.79:generators'
 }
 
-
-task buildAndPublishAll {
-    dependsOn ':clean'
-    dependsOn ':build'
-    dependsOn ':forge:curseforge'
-    dependsOn ':forge:modrinth'
-    dependsOn ':fabric:curseforge'
-    dependsOn ':fabric:modrinth'
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
 
-buildAndPublishAll.group = 'build'
-buildAndPublishAll.description = 'Runs clean, build, and publish forge and fabric'
-
-task buildAndPublishAllM {
-    dependsOn buildAndPublishAll
-    dependsOn ':publishToMavenLocal'
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
 }
-
-buildAndPublishAllM.group = 'build'
-buildAndPublishAllM.description = 'Runs clean, build, publish forge and fabric and uploads to maven local'
-

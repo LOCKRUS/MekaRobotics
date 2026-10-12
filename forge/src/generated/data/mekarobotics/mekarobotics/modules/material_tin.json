@@ -1,0 +1,10 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/tin"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:vulnerability"
+    }
+  ]
+}

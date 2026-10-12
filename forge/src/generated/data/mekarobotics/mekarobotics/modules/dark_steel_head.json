@@ -1,0 +1,22 @@
+{
+  "items": {
+    "type": "forge:intersection",
+    "children": [
+      {
+        "tag": "mekarobotics:material/dark_steel"
+      },
+      {
+        "tag": "mekarobotics:part/head"
+      }
+    ]
+  },
+  "perks": [
+    {
+      "level": 5,
+      "name": "mekarobotics:health"
+    },
+    {
+      "name": "mekarobotics:durable"
+    }
+  ]
+}

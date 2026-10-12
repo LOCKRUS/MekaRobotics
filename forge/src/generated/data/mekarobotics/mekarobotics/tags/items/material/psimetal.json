@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:psimetal_head",
+    "mekarobotics:psimetal_right_leg",
+    "mekarobotics:psimetal_body",
+    "mekarobotics:psimetal_left_arm",
+    "mekarobotics:psimetal_right_arm",
+    "mekarobotics:psimetal_left_leg"
+  ]
+}

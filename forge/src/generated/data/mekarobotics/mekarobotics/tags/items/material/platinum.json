@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:platinum_head",
+    "mekarobotics:platinum_right_leg",
+    "mekarobotics:platinum_body",
+    "mekarobotics:platinum_left_arm",
+    "mekarobotics:platinum_right_arm",
+    "mekarobotics:platinum_left_leg"
+  ]
+}

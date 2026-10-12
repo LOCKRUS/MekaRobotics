@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "item": "mekarobotics:commander"
+  },
+  "pattern": [
+    "   ",
+    "cii",
+    "iwi"
+  ],
+  "key": {
+    "i": {
+      "tag": "forge:ingots/iron"
+    },
+    "c": {
+      "item": "mekarobotics:copper_wire"
+    },
+    "w": {
+      "item": "mekarobotics:wiring"
+    }
+  }
+}

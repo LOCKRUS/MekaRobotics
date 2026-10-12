@@ -1,0 +1,18 @@
+{
+  "items": {
+    "item": "mekarobotics:fist"
+  },
+  "slots": [
+    "fist"
+  ],
+  "perks": [
+    {
+      "level": 1,
+      "name": "mekarobotics:fist"
+    },
+    {
+      "level": 3,
+      "name": "mekarobotics:unarmed_attack"
+    }
+  ]
+}

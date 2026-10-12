@@ -20,26 +20,32 @@ issueTrackerURL = "${mod_github}/issues"
     description = '''${mod_description}'''
     modUrl = "${mod_homepage}"
     updateJSONURL = "${update_url}"
-    #itemIcon = "norabotics" #catalogue icon
+    #itemIcon = "mekarobotics" #catalogue icon
 
-[[dependencies.norabotics]]
+[[dependencies.mekarobotics]]
     modId="minecraft"
     mandatory=true
     versionRange = "${minecraft_version}"
     side="BOTH"
-[[dependencies.norabotics]]
+[[dependencies.mekarobotics]]
     modId="forge"
     mandatory=true
     versionRange="${forge_version}"
     side="BOTH"
-[[dependencies.norabotics]]
+[[dependencies.mekarobotics]]
     modId="geckolib"
     mandatory=true
     versionRange="${geckolib_version}"
     side="BOTH"
-[[dependencies.norabotics]]
+[[dependencies.mekarobotics]]
     modId="computercraft"
     mandatory=false
     versionRange="${cct_version}"
     ordering="NONE"
+    side="BOTH"
+[[dependencies.mekarobotics]]
+    modId="mekanism"
+    mandatory=false
+    versionRange="[10.4,)"
+    ordering="AFTER"
     side="BOTH"

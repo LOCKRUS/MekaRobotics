@@ -1,0 +1,16 @@
+{
+  "items": {
+    "item": "mekarobotics:shield_module"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:shield",
+      "level": 2
+    }
+  ],
+  "slots": [
+    "core"
+  ],
+  "action": "mekarobotics:shield",
+  "cooldown": 2
+}

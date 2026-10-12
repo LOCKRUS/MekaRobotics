@@ -1,0 +1,10 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/iron"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:magnetic"
+    }
+  ]
+}

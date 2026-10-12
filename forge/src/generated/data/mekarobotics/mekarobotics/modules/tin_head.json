@@ -1,0 +1,22 @@
+{
+  "items": {
+    "type": "forge:intersection",
+    "children": [
+      {
+        "tag": "mekarobotics:material/tin"
+      },
+      {
+        "tag": "mekarobotics:part/head"
+      }
+    ]
+  },
+  "perks": [
+    {
+      "level": 2,
+      "name": "mekarobotics:health"
+    },
+    {
+      "name": "mekarobotics:durable"
+    }
+  ]
+}

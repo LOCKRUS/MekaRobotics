@@ -1,0 +1,10 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/copper"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:corrodable"
+    }
+  ]
+}

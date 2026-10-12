@@ -1,0 +1,13 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/weathered_copper"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:corrodable"
+    },
+    {
+      "name": "mekarobotics:unreliable"
+    }
+  ]
+}

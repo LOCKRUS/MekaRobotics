@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "tag": "mekarobotics:part/right_arm"
+    },
+    {
+      "tag": "mekarobotics:part/left_arm"
+    }
+  ],
+  "perks": [
+    {
+      "name": "mekarobotics:destructive",
+      "level": 1
+    },
+    {
+      "name": "mekarobotics:fist_slot",
+      "level": 1
+    }
+  ]
+}

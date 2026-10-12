@@ -1,0 +1,23 @@
+{
+  "items": {
+    "type": "forge:intersection",
+    "children": [
+      {
+        "tag": "mekarobotics:material/iridium"
+      },
+      {
+        "tag": "mekarobotics:part/body"
+      }
+    ]
+  },
+  "perks": [
+    {
+      "level": 2,
+      "name": "mekarobotics:persistent"
+    },
+    {
+      "level": 8,
+      "name": "mekarobotics:health"
+    }
+  ]
+}

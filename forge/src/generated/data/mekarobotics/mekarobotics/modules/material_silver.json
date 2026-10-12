@@ -1,0 +1,16 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/silver"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:thermal_conductivity"
+    },
+    {
+      "name": "mekarobotics:electrical_conductivity"
+    },
+    {
+      "name": "mekarobotics:attractant"
+    }
+  ]
+}

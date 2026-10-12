@@ -19,7 +19,7 @@ loom {
     runs {
         data {
             data()
-            programArgs "--all", "--mod", "norabotics"
+            programArgs "--all", "--mod", "mekarobotics"
             programArgs "--existing", file("src/main/resources").absolutePath
             programArgs "--output", generatedResources.absolutePath
         }

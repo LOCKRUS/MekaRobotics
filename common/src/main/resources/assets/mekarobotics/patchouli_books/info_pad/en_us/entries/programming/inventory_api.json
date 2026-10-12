@@ -1,0 +1,12 @@
+{
+  "name": "inventory",
+  "icon": "minecraft:chest",
+  "category": "mekarobotics:programming",
+  "flag": "mod:computercraft",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "An API giving access to the inventory of the robot. $(bold)getItem(i, detail)$() -> an item description of the item in slot i. Set detail to true for more detail.$(br)$(bold)switchSlots(i, j)$() - Switch items in slot i and j"
+    }
+  ]
+}

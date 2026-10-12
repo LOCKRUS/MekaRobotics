@@ -1,0 +1,28 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:ingots/dark_steel"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "mekarobotics:dark_steel_left_leg"
+          }
+        ],
+        "result": {
+          "item": "mekarobotics:dark_steel_right_leg"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:ingots/end_steel"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "c": {
+            "item": "mekarobotics:camera_unit"
+          },
+          "n": {
+            "item": "mekarobotics:neural_processing_unit"
+          },
+          "p": {
+            "item": "mekarobotics:plate_end_steel"
+          }
+        },
+        "pattern": [
+          "ppp",
+          "pnp",
+          " c "
+        ],
+        "result": {
+          "item": "mekarobotics:end_steel_head"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

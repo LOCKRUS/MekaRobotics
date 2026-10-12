@@ -1,0 +1,29 @@
+{
+  "values": [
+    "mekarobotics:copper_head",
+    "mekarobotics:lumium_head",
+    "mekarobotics:osmium_head",
+    "mekarobotics:tin_head",
+    "mekarobotics:platinum_head",
+    "mekarobotics:nickel_head",
+    "mekarobotics:end_steel_head",
+    "mekarobotics:dark_steel_head",
+    "mekarobotics:iridium_head",
+    "mekarobotics:netherite_head",
+    "mekarobotics:bronze_head",
+    "mekarobotics:electrum_head",
+    "mekarobotics:diamond_head",
+    "mekarobotics:signalum_head",
+    "mekarobotics:weathered_copper_head",
+    "mekarobotics:constantan_head",
+    "mekarobotics:enderium_head",
+    "mekarobotics:aluminium_head",
+    "mekarobotics:steel_head",
+    "mekarobotics:psimetal_head",
+    "mekarobotics:silver_head",
+    "mekarobotics:gold_head",
+    "mekarobotics:lead_head",
+    "mekarobotics:iron_head",
+    "mekarobotics:oxidized_copper_head"
+  ]
+}

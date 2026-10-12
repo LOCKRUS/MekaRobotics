@@ -1,0 +1,23 @@
+{
+  "items": {
+    "type": "forge:intersection",
+    "children": [
+      {
+        "tag": "mekarobotics:material/gold"
+      },
+      [
+        {
+          "tag": "mekarobotics:part/body"
+        },
+        {
+          "tag": "mekarobotics:part/head"
+        }
+      ]
+    ]
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:precious"
+    }
+  ]
+}

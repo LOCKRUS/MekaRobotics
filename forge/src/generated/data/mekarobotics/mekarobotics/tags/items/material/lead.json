@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:lead_head",
+    "mekarobotics:lead_right_leg",
+    "mekarobotics:lead_body",
+    "mekarobotics:lead_left_arm",
+    "mekarobotics:lead_right_arm",
+    "mekarobotics:lead_left_leg"
+  ]
+}

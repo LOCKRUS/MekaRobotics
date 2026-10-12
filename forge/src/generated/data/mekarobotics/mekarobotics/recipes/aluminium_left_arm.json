@@ -1,0 +1,40 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:ingots/aluminium"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "m": {
+            "item": "mekarobotics:servo_motor"
+          },
+          "p": {
+            "item": "mekarobotics:plate_aluminium"
+          },
+          "w": {
+            "item": "mekarobotics:wiring"
+          }
+        },
+        "pattern": [
+          " pm",
+          "pwp",
+          "mp "
+        ],
+        "result": {
+          "item": "mekarobotics:aluminium_left_arm"
+        },
+        "show_notification": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:ingots/steel"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "m": {
+            "item": "mekarobotics:servo_motor"
+          },
+          "p": {
+            "item": "mekarobotics:plate_steel"
+          },
+          "w": {
+            "item": "mekarobotics:wiring"
+          }
+        },
+        "pattern": [
+          "mp ",
+          "pwp",
+          " pm"
+        ],
+        "result": {
+          "item": "mekarobotics:steel_right_arm"
+        },
+        "show_notification": false
+      }
+    }
+  ]
+}

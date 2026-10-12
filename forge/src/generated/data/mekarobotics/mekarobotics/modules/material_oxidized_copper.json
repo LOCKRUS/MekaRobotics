@@ -1,0 +1,14 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/oxidized_copper"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:corrodable"
+    },
+    {
+      "level": 2,
+      "name": "mekarobotics:unreliable"
+    }
+  ]
+}

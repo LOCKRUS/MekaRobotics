@@ -1,0 +1,11 @@
+{
+	"variants": {
+		"active=true": {
+            "model": "mekarobotics:block/charger_active"
+        },
+        "active=false": {
+            "model": "mekarobotics:block/charger",
+            "y": 180
+        }
+	}
+}

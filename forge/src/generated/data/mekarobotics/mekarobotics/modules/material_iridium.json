@@ -1,0 +1,10 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/iridium"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:armor_shred"
+    }
+  ]
+}

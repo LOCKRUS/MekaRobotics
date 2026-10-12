@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:electrum_head",
+    "mekarobotics:electrum_right_leg",
+    "mekarobotics:electrum_body",
+    "mekarobotics:electrum_left_arm",
+    "mekarobotics:electrum_right_arm",
+    "mekarobotics:electrum_left_leg"
+  ]
+}

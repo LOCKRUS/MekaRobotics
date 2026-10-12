@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:gold_head",
+    "mekarobotics:gold_right_leg",
+    "mekarobotics:gold_body",
+    "mekarobotics:gold_left_arm",
+    "mekarobotics:gold_right_arm",
+    "mekarobotics:gold_left_leg"
+  ]
+}

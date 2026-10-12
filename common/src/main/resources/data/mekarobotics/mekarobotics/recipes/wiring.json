@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "item": "mekarobotics:wiring",
+    "count": 3
+  },
+  "pattern": [
+    " c ",
+    "crc",
+    " c "
+  ],
+  "key": {
+    "r": {
+      "item": "minecraft:repeater"
+    },
+    "c": {
+      "item": "mekarobotics:copper_wire"
+    }
+  }
+}

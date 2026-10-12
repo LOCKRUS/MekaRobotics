@@ -1,0 +1,16 @@
+{
+  "type": "mekarobotics:wire_cutter",
+  "energy": 20000,
+  "ingredient": {
+    "type": "mekarobotics:counted",
+    "amount": 2,
+    "items": {
+      "tag": "forge:ingots/electrum"
+    }
+  },
+  "processing_time": 100,
+  "result": {
+    "count": 3,
+    "item": "mekarobotics:electrum_wire"
+  }
+}

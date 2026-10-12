@@ -1,0 +1,16 @@
+{
+  "type": "mekarobotics:wire_cutter",
+  "energy": 30000,
+  "ingredient": {
+    "type": "mekarobotics:counted",
+    "amount": 2,
+    "items": {
+      "tag": "forge:ingots/bronze"
+    }
+  },
+  "processing_time": 100,
+  "result": {
+    "count": 3,
+    "item": "mekarobotics:bronze_wire"
+  }
+}

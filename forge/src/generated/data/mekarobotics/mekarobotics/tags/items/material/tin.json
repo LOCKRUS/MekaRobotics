@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mekarobotics:tin_head",
+    "mekarobotics:tin_right_leg",
+    "mekarobotics:tin_body",
+    "mekarobotics:tin_left_arm",
+    "mekarobotics:tin_right_arm",
+    "mekarobotics:tin_left_leg"
+  ]
+}

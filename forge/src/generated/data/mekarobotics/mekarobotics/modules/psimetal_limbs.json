@@ -1,0 +1,33 @@
+{
+  "items": {
+    "type": "forge:intersection",
+    "children": [
+      {
+        "tag": "mekarobotics:material/psimetal"
+      },
+      [
+        {
+          "tag": "mekarobotics:part/left_arm"
+        },
+        {
+          "tag": "mekarobotics:part/left_leg"
+        },
+        {
+          "tag": "mekarobotics:part/right_arm"
+        },
+        {
+          "tag": "mekarobotics:part/right_leg"
+        }
+      ]
+    ]
+  },
+  "perks": [
+    {
+      "level": 2,
+      "name": "mekarobotics:health"
+    },
+    {
+      "name": "mekarobotics:durable"
+    }
+  ]
+}

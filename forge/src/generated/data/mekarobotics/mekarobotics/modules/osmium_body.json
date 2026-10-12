@@ -1,0 +1,19 @@
+{
+  "items": {
+    "type": "forge:intersection",
+    "children": [
+      {
+        "tag": "mekarobotics:material/osmium"
+      },
+      {
+        "tag": "mekarobotics:part/body"
+      }
+    ]
+  },
+  "perks": [
+    {
+      "level": 6,
+      "name": "mekarobotics:health"
+    }
+  ]
+}

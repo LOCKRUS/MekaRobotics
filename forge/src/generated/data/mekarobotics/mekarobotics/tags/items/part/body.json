@@ -1,0 +1,29 @@
+{
+  "values": [
+    "mekarobotics:copper_body",
+    "mekarobotics:lumium_body",
+    "mekarobotics:osmium_body",
+    "mekarobotics:tin_body",
+    "mekarobotics:platinum_body",
+    "mekarobotics:nickel_body",
+    "mekarobotics:end_steel_body",
+    "mekarobotics:dark_steel_body",
+    "mekarobotics:iridium_body",
+    "mekarobotics:netherite_body",
+    "mekarobotics:bronze_body",
+    "mekarobotics:electrum_body",
+    "mekarobotics:diamond_body",
+    "mekarobotics:signalum_body",
+    "mekarobotics:weathered_copper_body",
+    "mekarobotics:constantan_body",
+    "mekarobotics:enderium_body",
+    "mekarobotics:aluminium_body",
+    "mekarobotics:steel_body",
+    "mekarobotics:psimetal_body",
+    "mekarobotics:silver_body",
+    "mekarobotics:gold_body",
+    "mekarobotics:lead_body",
+    "mekarobotics:iron_body",
+    "mekarobotics:oxidized_copper_body"
+  ]
+}

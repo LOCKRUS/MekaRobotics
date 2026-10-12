@@ -1,0 +1,15 @@
+{
+  "name": "Info Pad",
+  "landing_text": "Construction and handling manual for the humanoid robot model T-800, as distributed by Noraboritcs Inc.™",
+  "creative_tab": "mekarobotics:items",
+  "use_resource_pack": true,
+  "show_progress": false,
+  "open_sound": "mekarobotics:book_open",
+  "flip_sound": "mekarobotics:book_flip",
+  "model": "mekarobotics:info_pad",
+  "book_texture": "mekarobotics:textures/gui/book.png",
+  "nameplate_color": "ffa70e",
+  "link_color": "da8b00",
+  "link_hover_color": "c66c00",
+  "i18n": true
+}

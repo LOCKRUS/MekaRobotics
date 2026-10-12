@@ -1,0 +1,26 @@
+{
+  "items": {
+    "item": "mekarobotics:reinforce_module"
+  },
+  "slots": [
+    "skin"
+  ],
+  "action": {
+    "type": "mekarobotics:effect",
+    "name": "reinforce",
+    "displayColor": "gray",
+    "effects": [
+      {
+        "type": "minecraft:resistance",
+        "amplifier": 2
+      },
+      {
+        "type": "minecraft:slowness",
+        "amplifier": 3
+      }
+    ]
+  },
+  "cooldown": 800,
+  "duration": 300,
+  "energyCost": 100000
+}

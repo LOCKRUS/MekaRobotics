@@ -1,0 +1,10 @@
+{
+  "items": {
+    "tag": "mekarobotics:material/lumium"
+  },
+  "perks": [
+    {
+      "name": "mekarobotics:luminous"
+    }
+  ]
+}

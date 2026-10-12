@@ -1,0 +1,8 @@
+{
+  "items": {
+    "tag": "mekarobotics:part/right_arm"
+  },
+  "slots": [
+    "left_arm"
+  ]
+}
