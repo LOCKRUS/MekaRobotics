@@ -6,7 +6,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.enchantment.ProtectionEnchantment;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -97,7 +96,7 @@ public class ModifiableExplosion extends Explosion {
             // Knockback
             double knockbackForce;
             if (entity instanceof LivingEntity livingentity) {
-                knockbackForce = ProtectionEnchantment.getExplosionKnockbackAfterDampener(livingentity, d10);
+                knockbackForce = d10;
             } else {
                 knockbackForce = d10;
             }

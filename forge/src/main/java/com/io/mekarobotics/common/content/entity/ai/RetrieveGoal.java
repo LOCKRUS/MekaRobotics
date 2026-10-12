@@ -1,5 +1,6 @@
 package com.io.mekarobotics.common.content.entity.ai;
 
+import com.io.mekarobotics.common.capabilities.ModCapabilities;
 import com.io.mekarobotics.common.handlers.RobotBehavior;
 import com.io.mekarobotics.common.helpers.DimensionNavigator;
 import com.io.mekarobotics.definitions.ModAttributes;

@@ -27,9 +27,9 @@ public class ChunkLoadingCapability implements IChunkLoader {
     @Override
     public void loadChunks(ChunkPos chunk) {
         if(entity.level().isClientSide()) return;
-        Optional<ChunkLoadingHandler.ChunkTracker> opt = ModCapabilities.get(entity.level(), ModCapabilities.CHUNK_TRACKER).get();
+        Optional<ChunkLoadingHandler.ChunkTracker> opt = ModCapabilities.get(entity.level(), ModCapabilities.CHUNK_TRACKER);
         if(opt.isEmpty()) return;
-        Optional<IRobot> robot = ModCapabilities.get(entity, ModCapabilities.ROBOT).get();
+        Optional<IRobot> robot = ModCapabilities.get(entity, ModCapabilities.ROBOT);
         if(robot.isEmpty()) return;
         if(RoboticsConfig.general.chunkLoadShutdown.get() && !robot.get().isActive()) return;
 

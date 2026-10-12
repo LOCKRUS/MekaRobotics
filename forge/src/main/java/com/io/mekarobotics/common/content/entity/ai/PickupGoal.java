@@ -1,5 +1,6 @@
 package com.io.mekarobotics.common.content.entity.ai;
 
+import com.io.mekarobotics.common.capabilities.ModCapabilities;
 import com.io.mekarobotics.common.helpers.types.EntitySearch;
 import com.io.mekarobotics.common.helpers.util.InventoryUtil;
 import net.minecraft.world.entity.Mob;

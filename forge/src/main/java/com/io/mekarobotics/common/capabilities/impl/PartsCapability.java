@@ -55,8 +55,7 @@ public class PartsCapability implements IPartBuilt {
 		}
 	}
 
-	@Override
-	public CompoundTag serializeNBT() {
+		public CompoundTag serializeNBT() {
 		CompoundTag nbt = new CompoundTag();
 		nbt.putInt("color", this.dataManager.get(COLOR));
 		for(EnumModuleSlot slot : EnumModuleSlot.values()) {
@@ -65,8 +64,7 @@ public class PartsCapability implements IPartBuilt {
 		return nbt;
 	}
 
-	@Override
-	public void deserializeNBT(CompoundTag nbt) {
+		public void deserializeNBT(CompoundTag nbt) {
 		dataManager.set(COLOR, nbt.getInt("color"));
 		for(EnumModuleSlot slot : EnumModuleSlot.values()) {
 			NonNullList<ItemStack> stacks = InventoryUtil.loadAllItems(nbt, slot.name());

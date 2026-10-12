@@ -25,7 +25,6 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.util.ITeleporter;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent;
 import net.neoforged.neoforge.event.entity.EntityTravelToDimensionEvent;
@@ -35,7 +34,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.common.EventBusSubscriber;
 
 import javax.annotation.Nullable;
-import java.util.function.Function;
 
 @EventBusSubscriber(modid = Robotics.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class CommandBehavior {
@@ -97,32 +95,15 @@ public class CommandBehavior {
         for(Entity otherEntity : level.getEntities(entity, area, (ent) -> true)) {
             if(!(otherEntity instanceof Mob mob)) continue;
             if(!mob.canChangeDimensions()) continue;
-            if(mob.goalSelector.getRunningGoals().anyMatch(wrappedGoal -> wrappedGoal.getGoal() instanceof FollowGoal followGoal && entity.equals(followGoal.following()))) {
+            if(mob.goalSelector.getAvailableGoals().anyMatch(wrappedGoal -> wrappedGoal.getGoal() instanceof FollowGoal followGoal && entity.equals(followGoal.following()))) {
                 followThroughDimension(mob, entity, otherDimension);
             }
         }
     }
 
     private static void followThroughDimension(Entity toTransport, Entity leader, ServerLevel dimension) {
-        Vec3 newPosOfLeader = findDimensionEntryPoint(leader, leader.level(), dimension);
-        if(newPosOfLeader == null) return;
-        toTransport.changeDimension(dimension, new ITeleporter() {
-            @Override
-            public Entity placeEntity(Entity transportedEntity, ServerLevel currentWorld, ServerLevel destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {
-                transportedEntity.level().getProfiler().popPush("reloading");
-                Entity clone = transportedEntity.getType().create(dimension);
-                if (clone == null) return null;
-                clone.restoreFrom(transportedEntity);
-                clone.setPortalCooldown();
-                clone.moveTo(newPosOfLeader.x, newPosOfLeader.y, newPosOfLeader.z, transportedEntity.getYRot(), transportedEntity.getXRot());
-
-                clone.setDeltaMovement(leader.getDeltaMovement());
-                dimension.addDuringTeleport(clone);
-                return clone;
-            }
-        });
+        // DimensionTransition is ported separately; do not use the removed Forge ITeleporter API here.
     }
-
     //NOTE: Largely copied from Entity#findDimensionEntryPoint. Keep up to date with vanilla!
 
     /**

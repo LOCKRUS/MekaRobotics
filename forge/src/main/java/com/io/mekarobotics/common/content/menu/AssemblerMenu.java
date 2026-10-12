@@ -1,5 +1,6 @@
 package com.io.mekarobotics.common.content.menu;
 
+import com.io.mekarobotics.common.capabilities.ModCapabilities;
 import com.io.mekarobotics.Reference;
 import com.io.mekarobotics.common.content.blockentity.AssemblerBlockEntity;
 import com.io.mekarobotics.common.content.menu.slots.CustomSlot;

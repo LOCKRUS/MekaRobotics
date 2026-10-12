@@ -5,7 +5,6 @@ import com.io.mekarobotics.common.helpers.EntityFinder;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -19,9 +18,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.capabilities.Capability;
 import net.neoforged.neoforge.common.util.FakePlayer;
-import net.neoforged.neoforge.common.util.LazyOptional;
 import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.NotNull;
 
@@ -102,10 +99,6 @@ public class RobotFakePlayer extends FakePlayer {
     public void setSpeed(float p_21320_) { mob().setSpeed(p_21320_); }
 
     public ItemStack eat(Level p_21067_, ItemStack p_21068_) { return mob().eat(p_21067_, p_21068_); }
-
-    public <T> @NotNull LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
-        return mob == null ? super.getCapability(capability, facing) : mob().getCapability(capability, facing);
-    }
 
     public void invalidateCaps() {
         if(mob != null) {

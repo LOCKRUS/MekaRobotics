@@ -5,6 +5,7 @@ import com.io.mekarobotics.common.access.WorldAccessData;
 import com.io.mekarobotics.common.capabilities.ModCapabilities;
 import com.io.mekarobotics.common.robot.RobotView;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
@@ -30,7 +31,7 @@ public class WorldData extends SavedData {
     private final Map<Integer, HashMap<UUID, RobotView>> commandGroups = new HashMap<>();
 
     @Override
-    public @NotNull CompoundTag save(CompoundTag tag) {
+    public @NotNull CompoundTag save(CompoundTag tag, HolderLookup.Provider provider) {
         CompoundTag tagCommandGroups = new CompoundTag();
         for(Integer group : commandGroups.keySet()) {
             ListTag list = new ListTag();
@@ -124,6 +125,6 @@ public class WorldData extends SavedData {
 
     public static WorldData get() {
         if(ServerLifecycleHooks.getCurrentServer() == null) return new WorldData();
-        return ServerLifecycleHooks.getCurrentServer().overworld().getDataStorage().computeIfAbsent(WorldData::load, WorldData::new, DATA_NAME);
+        return ServerLifecycleHooks.getCurrentServer().overworld().getDataStorage().computeIfAbsent(new SavedData.Factory<>(WorldData::new, (tag, ignored) -> WorldData.load(tag), null), DATA_NAME);
     }
 }

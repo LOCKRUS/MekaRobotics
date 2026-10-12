@@ -1,5 +1,6 @@
 package com.io.mekarobotics.definitions;
 
+import com.io.mekarobotics.common.capabilities.ModCapabilities;
 import com.io.mekarobotics.Reference;
 import com.io.mekarobotics.Robotics;
 import com.io.mekarobotics.common.capabilities.ModifiableEnergyStorage;

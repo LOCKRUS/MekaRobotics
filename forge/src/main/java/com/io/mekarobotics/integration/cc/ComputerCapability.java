@@ -65,8 +65,7 @@ public class ComputerCapability implements IComputerized, INBTSerializable<Compo
         return (EntityComputer) computer;
     }
 
-    @Override
-    public CompoundTag serializeNBT() {
+        public CompoundTag serializeNBT() {
         CompoundTag compound = new CompoundTag();
         compound.putUUID("instanceID", instanceID);
         compound.putInt("computerID", computerID);

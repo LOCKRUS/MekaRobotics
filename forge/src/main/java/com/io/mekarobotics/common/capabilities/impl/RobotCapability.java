@@ -62,8 +62,7 @@ public class RobotCapability implements IRobot {
         dataManager.define(SWELLING, 0);
     }
 
-    @Override
-    public CompoundTag serializeNBT() {
+        public CompoundTag serializeNBT() {
         CompoundTag nbt = new CompoundTag();
         nbt.putBoolean("active", isActive());
         nbt.putBoolean("muted", isMuffled());
@@ -74,8 +73,7 @@ public class RobotCapability implements IRobot {
         return nbt;
     }
 
-    @Override
-    public void deserializeNBT(CompoundTag nbt) {
+        public void deserializeNBT(CompoundTag nbt) {
         setActivation(nbt.getBoolean("active"));
         setMuffled(nbt.getBoolean("muted"));
         setChunkLoading(nbt.getInt("load_chunks"));
@@ -117,7 +115,7 @@ public class RobotCapability implements IRobot {
         // Stop/Resume commands
         if(commands.isPresent() && entity instanceof Mob mob) {
             if(activation) {
-                mob.goalSelector.getRunningGoals().forEach(WrappedGoal::stop);
+                mob.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
                 mob.goalSelector.removeAllGoals(goal -> goal instanceof LookDownGoal);
                 commands.get().reapplyAllTasks();
             } else {

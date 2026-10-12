@@ -50,15 +50,13 @@ public class ShieldCapability implements IShielded {
         ENERGY_UPKEEP = new AttributeModifier(MODIFIER_UUID, "shield_upkeep", 10, AttributeModifier.Operation.ADDITION);
     }
 
-    @Override
-    public CompoundTag serializeNBT() {
+        public CompoundTag serializeNBT() {
         CompoundTag compound = new CompoundTag();
         compound.putFloat("currentHealth", getHealth());
         return compound;
     }
 
-    @Override
-    public void deserializeNBT(CompoundTag nbt) {
+        public void deserializeNBT(CompoundTag nbt) {
         setHealth(nbt.getFloat("currentHealth"));
     }
 

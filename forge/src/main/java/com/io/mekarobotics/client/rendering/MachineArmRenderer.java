@@ -73,7 +73,7 @@ public class MachineArmRenderer implements BlockEntityRenderer<MachineArmBlockEn
         // Model
         VertexConsumer vertexconsumer = pBuffer.getBuffer(RenderType.entityCutout(MACHINE_ARM_TEXTURE));
         int light = LevelRenderer.getLightColor(arm.getLevel(), arm.getBlockPos().above());
-        model.renderToBuffer(pPoseStack, vertexconsumer, light, pPackedOverlay, 1, 1, 1, 1);
+        model.renderToBuffer(pPoseStack, vertexconsumer, light, pPackedOverlay, 0xFFFFFFFF);
         pPoseStack.popPose();
 
         // Item
@@ -138,8 +138,8 @@ public class MachineArmRenderer implements BlockEntityRenderer<MachineArmBlockEn
 
 
     private void vertex(VertexConsumer vertexConsumer, Matrix4f pose, Vec3 base, Vec3f pos) {
-        vertexConsumer.vertex(pose, (float) base.x + pos.x, (float) base.y + pos.y, (float) base.z + pos.z).color(1f, 0, 0, 0).endVertex();
-        vertexConsumer.vertex(pose, (float) base.x + pos.x, (float) base.y + pos.y, (float) base.z + pos.z).color(color).endVertex();
+        vertexConsumer.addVertex(pose, (float) base.x + pos.x, (float) base.y + pos.y, (float) base.z + pos.z).setColor(0);
+        vertexConsumer.addVertex(pose, (float) base.x + pos.x, (float) base.y + pos.y, (float) base.z + pos.z).setColor(color);
     }
 
     private float[] chainToRotations(FabrikChain3D chain, Vec3f referenceVec, boolean invertEffector) {

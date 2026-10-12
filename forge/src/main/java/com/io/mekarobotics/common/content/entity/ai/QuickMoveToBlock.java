@@ -14,8 +14,8 @@ public class QuickMoveToBlock extends MoveToBlockGoal {
     }
 
     private void clearExistingInstances() {
-        mob.goalSelector.getRunningGoals().filter(goal -> goal.getGoal() instanceof QuickMoveToBlock).forEach(WrappedGoal::stop);
-        mob.targetSelector.getRunningGoals().filter(goal -> goal.getGoal() instanceof QuickMoveToBlock).forEach(WrappedGoal::stop);
+        mob.goalSelector.getAvailableGoals().filter(goal -> goal.getGoal() instanceof QuickMoveToBlock).forEach(WrappedGoal::stop);
+        mob.targetSelector.getAvailableGoals().filter(goal -> goal.getGoal() instanceof QuickMoveToBlock).forEach(WrappedGoal::stop);
         mob.goalSelector.removeAllGoals(goal -> goal instanceof QuickMoveToBlock);
         mob.targetSelector.removeAllGoals(goal -> goal instanceof QuickMoveToBlock);
     }

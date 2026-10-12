@@ -134,7 +134,7 @@ public class FactoryScreen extends BaseContainerScreen<FactoryMenu> {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        renderBackground(graphics);
+        renderBackground(graphics, 0, 0, 0);
         super.render(graphics, mouseX, mouseY, delta);
         renderTooltip(graphics, mouseX, mouseY);
     }

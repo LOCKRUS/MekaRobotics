@@ -9,6 +9,7 @@ import com.io.mekarobotics.common.helpers.types.Selection;
 import com.io.mekarobotics.common.robot.RobotCommand;
 import com.io.mekarobotics.definitions.robotics.ModSelectionTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
@@ -28,16 +29,24 @@ public class CommandCapability implements ICommandable {
         this.entity = entity;
     }
 
-    @Override
-    public CompoundTag serializeNBT() {
+        public CompoundTag serializeNBT() {
         CompoundTag nbt = new CompoundTag();
         RobotCommand.writeToNBT(nbt, commands.keySet());
         return nbt;
     }
 
-    @Override
-    public void deserializeNBT(CompoundTag nbt) {
+        public void deserializeNBT(CompoundTag nbt) {
         setCommands(RobotCommand.readFromNBT(nbt));
+    }
+
+    @Override
+    public CompoundTag serializeNBT(HolderLookup.Provider provider) {
+        return serializeNBT();
+    }
+
+    @Override
+    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
+        deserializeNBT(nbt);
     }
 
     /**
@@ -46,7 +55,7 @@ public class CommandCapability implements ICommandable {
     protected void clearCommands() {
         if(!entity.level().isClientSide()) {
             //If commands are changed in any way, the entity should always reconsider what to do next
-            entity.goalSelector.getRunningGoals().forEach(WrappedGoal::stop);
+            entity.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
             for(Map.Entry<RobotCommand, Goal> entry : commands.entrySet()) {
                 if(entry.getValue() == null) continue;
                 entity.goalSelector.removeGoal(entry.getValue());
@@ -62,7 +71,7 @@ public class CommandCapability implements ICommandable {
      */
     protected void applyCommands() {
         if(entity.level().isClientSide()) return;
-        Optional<IRobot> robot = ModCapabilities.get(entity, ModCapabilities.ROBOT).get();
+        Optional<IRobot> robot = ModCapabilities.get(entity, ModCapabilities.ROBOT);
         if(robot.isPresent() && !robot.get().isActive()) return;
         int i = 0;
         for(Goal goal : commands.values()) {
@@ -82,7 +91,7 @@ public class CommandCapability implements ICommandable {
         //Stop
         Goal goal = commands.get(command);
         if(goal != null) {
-            entity.goalSelector.getRunningGoals().filter(wrappedGoal -> goal.equals(wrappedGoal.getGoal())).forEach(WrappedGoal::stop);
+            entity.goalSelector.getAvailableGoals().filter(wrappedGoal -> goal.equals(wrappedGoal.getGoal())).forEach(WrappedGoal::stop);
             entity.goalSelector.removeAllGoals(goal::equals);
         }
 
@@ -112,7 +121,7 @@ public class CommandCapability implements ICommandable {
         Goal goal = commands.get(command);
         if(goal == null) return;
         //If this goal is currently running, stop it
-        entity.goalSelector.getRunningGoals().filter(wrappedGoal -> goal.equals(wrappedGoal.getGoal())).forEach(WrappedGoal::stop);
+        entity.goalSelector.getAvailableGoals().filter(wrappedGoal -> goal.equals(wrappedGoal.getGoal())).forEach(WrappedGoal::stop);
         entity.goalSelector.removeAllGoals(goal::equals);
         commands.remove(command);
         onRemoved(command);
@@ -125,8 +134,8 @@ public class CommandCapability implements ICommandable {
 
     @Override
     public void removeAllTasks() {
-        entity.goalSelector.getRunningGoals().forEach(WrappedGoal::stop);
-        entity.targetSelector.getRunningGoals().forEach(WrappedGoal::stop);
+        entity.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
+        entity.targetSelector.getAvailableGoals().forEach(WrappedGoal::stop);
         entity.goalSelector.removeAllGoals(commands::containsValue);
         entity.targetSelector.removeAllGoals(commands::containsValue);
     }

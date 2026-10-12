@@ -1,5 +1,6 @@
 package com.io.mekarobotics.common.content.menu;
 
+import com.io.mekarobotics.common.capabilities.ModCapabilities;
 import com.io.mekarobotics.common.access.AccessConfig;
 import com.io.mekarobotics.common.capabilities.ModifiableEnergyStorage;
 import com.io.mekarobotics.definitions.ModMenuTypes;

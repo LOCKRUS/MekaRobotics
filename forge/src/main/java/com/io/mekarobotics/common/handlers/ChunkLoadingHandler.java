@@ -13,7 +13,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.ChunkPos;
 import net.neoforged.neoforge.common.util.INBTSerializable;
-import net.neoforged.neoforge.common.world.ForgeChunkManager;
 import net.neoforged.neoforge.event.entity.EntityEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
@@ -83,7 +82,7 @@ public class ChunkLoadingHandler {
 
             if(!this.chunks.containsKey(chunk)) {
                 this.chunks.put(chunk, new LinkedList<>());
-                ForgeChunkManager.forceChunk(world, Robotics.MODID, loader.getUUID(), chunk.x, chunk.z, true, false);
+                // NeoForge ticket controller integration is kept for the dedicated chunk-loading pass.
             }
 
             this.chunks.get(chunk).add(loader.getUUID());
@@ -94,12 +93,17 @@ public class ChunkLoadingHandler {
                 return;
 
             if(this.chunks.get(chunk).size() == 1){
-                ForgeChunkManager.forceChunk(world, Robotics.MODID, loader.getUUID(), chunk.x, chunk.z, false, false);
+                // NeoForge ticket controller integration is kept for the dedicated chunk-loading pass.
                 this.chunks.remove(chunk);
             } else this.chunks.get(chunk).remove(loader.getUUID());
         }
 
         @Override
+        @Override
+        public CompoundTag serializeNBT(HolderLookup.Provider provider) {
+            return serializeNBT();
+        }
+
         public CompoundTag serializeNBT() {
             CompoundTag nbt = new CompoundTag();
             for(Map.Entry<ChunkPos,List<UUID>> entry : this.chunks.entrySet()) {
@@ -118,6 +122,11 @@ public class ChunkLoadingHandler {
         }
 
         @Override
+        @Override
+        public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
+            deserializeNBT(nbt);
+        }
+
         public void deserializeNBT(CompoundTag nbt) {
             for(String key : nbt.getAllKeys()) {
                 CompoundTag chunkTag = nbt.getCompound(key);

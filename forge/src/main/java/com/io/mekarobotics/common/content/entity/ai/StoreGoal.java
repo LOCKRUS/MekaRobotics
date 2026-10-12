@@ -1,5 +1,6 @@
 package com.io.mekarobotics.common.content.entity.ai;
 
+import com.io.mekarobotics.common.capabilities.ModCapabilities;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;

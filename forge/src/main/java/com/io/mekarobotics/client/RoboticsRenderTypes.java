@@ -1,10 +1,8 @@
 package com.io.mekarobotics.client;
 
-import com.google.common.collect.ImmutableMap;
 import com.io.mekarobotics.Robotics;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.blaze3d.vertex.VertexFormatElement;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
@@ -14,7 +12,7 @@ import java.util.function.Function;
 
 public class RoboticsRenderTypes extends RenderType {
 
-    public static final VertexFormat SURFACE = new VertexFormat(ImmutableMap.<String, VertexFormatElement>builder().put("Position", DefaultVertexFormat.ELEMENT_POSITION).put("Normal", DefaultVertexFormat.ELEMENT_NORMAL).build());
+    public static final VertexFormat SURFACE = DefaultVertexFormat.POSITION_COLOR_NORMAL;
 
     public RoboticsRenderTypes(String p_173178_, VertexFormat p_173179_, VertexFormat.Mode p_173180_, int p_173181_, boolean p_173182_, boolean p_173183_, Runnable p_173184_, Runnable p_173185_) {
         super(p_173178_, p_173179_, p_173180_, p_173181_, p_173182_, p_173183_, p_173184_, p_173185_);

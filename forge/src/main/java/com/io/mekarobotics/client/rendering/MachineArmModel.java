@@ -88,10 +88,10 @@ public class MachineArmModel<T extends Entity> extends EntityModel<T> {
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		poseStack.pushPose();
-		platform.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		bb_main.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int packedColor) {
+			poseStack.pushPose();
+			platform.render(poseStack, vertexConsumer, packedLight, packedOverlay);
+			bb_main.render(poseStack, vertexConsumer, packedLight, packedOverlay);
 		poseStack.popPose();
 	}
 }

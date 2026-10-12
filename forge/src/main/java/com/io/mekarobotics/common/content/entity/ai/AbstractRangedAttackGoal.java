@@ -1,5 +1,6 @@
 package com.io.mekarobotics.common.content.entity.ai;
 
+import com.io.mekarobotics.common.capabilities.ModCapabilities;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;

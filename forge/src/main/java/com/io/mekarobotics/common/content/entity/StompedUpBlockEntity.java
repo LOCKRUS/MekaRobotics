@@ -93,8 +93,8 @@ public class StompedUpBlockEntity extends ThrowableProjectile {
     }
 
     @Override
-    protected void defineSynchedData() {
-        this.entityData.define(DATA_START_POS, BlockPos.ZERO);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        builder.define(DATA_START_POS, BlockPos.ZERO);
     }
 
     protected void addAdditionalSaveData(CompoundTag compound) {
@@ -102,7 +102,7 @@ public class StompedUpBlockEntity extends ThrowableProjectile {
     }
 
     protected void readAdditionalSaveData(CompoundTag compound) {
-        setStartPos(NbtUtils.readBlockPos(compound.getCompound("startPos")));
+        setStartPos(NbtUtils.readBlockPos(compound, "startPos").orElse(BlockPos.ZERO));
     }
 
     @Override

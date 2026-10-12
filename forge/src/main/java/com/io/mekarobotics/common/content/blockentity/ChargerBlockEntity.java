@@ -1,5 +1,6 @@
 package com.io.mekarobotics.common.content.blockentity;
 
+import com.io.mekarobotics.common.capabilities.ModCapabilities;
 import com.io.mekarobotics.common.capabilities.impl.EnergyStorage;
 import com.io.mekarobotics.common.content.blocks.ChargerBlock;
 import com.io.mekarobotics.common.helpers.EntityFinder;

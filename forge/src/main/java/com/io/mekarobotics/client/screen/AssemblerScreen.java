@@ -1,5 +1,6 @@
 package com.io.mekarobotics.client.screen;
 
+import com.io.mekarobotics.common.capabilities.ModCapabilities;
 import com.io.mekarobotics.Reference;
 import com.io.mekarobotics.Robotics;
 import com.io.mekarobotics.client.screen.base.BaseContainerScreen;
@@ -69,7 +70,7 @@ public class AssemblerScreen extends BaseContainerScreen<AssemblerMenu> {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        renderBackground(graphics);
+        renderBackground(graphics, 0, 0, 0);
         super.render(graphics, mouseX, mouseY, delta);
         renderTooltip(graphics, mouseX, mouseY);
     }

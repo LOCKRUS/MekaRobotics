@@ -1,5 +1,6 @@
 package com.io.mekarobotics.common.content.perks.modules;
 
+import com.io.mekarobotics.common.capabilities.ModCapabilities;
 import com.io.mekarobotics.common.capabilities.impl.perk.Perk;
 import com.io.mekarobotics.common.helpers.types.SimpleDataManager;
 import com.io.mekarobotics.common.helpers.util.Lang;

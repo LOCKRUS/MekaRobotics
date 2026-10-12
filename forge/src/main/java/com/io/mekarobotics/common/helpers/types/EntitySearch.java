@@ -6,6 +6,7 @@ import com.io.mekarobotics.common.helpers.util.NBTUtil;
 import com.io.mekarobotics.network.messages.IBufferSerializable;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.players.GameProfileCache;
@@ -14,6 +15,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.util.INBTSerializable;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -136,7 +138,7 @@ public class EntitySearch implements Predicate<Entity>, IBufferSerializable, INB
         if(flags.contains(SearchFlags.NAME) && name != null) profile = cache.get(name);
         // No way to look the player up if he left in case of entity ids
         // Just return a fake player if we found something
-        if(profile.isPresent() && profile.get().isComplete()) {
+        if(profile.isPresent()) {
             return Robotics.proxy.createFakePlayer(level, profile.get()).get();
         }
         return null;
@@ -173,7 +175,7 @@ public class EntitySearch implements Predicate<Entity>, IBufferSerializable, INB
         if(flags.contains(SearchFlags.UUID)) uuid = buf.readUUID();
         if(flags.contains(SearchFlags.NAME)) name = buf.readUtf();
         if(flags.contains(SearchFlags.ID)) entityId = buf.readInt();
-        if(flags.contains(SearchFlags.TYPE)) type = buf.readRegistryId();
+        if(flags.contains(SearchFlags.TYPE)) type = buf.readById(BuiltInRegistries.ENTITY_TYPE::byId);
         range = buf.readInt();
     }
 
@@ -183,27 +185,35 @@ public class EntitySearch implements Predicate<Entity>, IBufferSerializable, INB
         if(uuid != null) buf.writeUUID(uuid);
         if(name != null) buf.writeUtf(name);
         if(entityId != 0) buf.writeInt(entityId);
-        if(type != null) buf.writeRegistryId(Registries.ENTITY_TYPE, type);
+        if(type != null) buf.writeVarInt(BuiltInRegistries.ENTITY_TYPE.getId(type));
         buf.writeInt(range);
     }
 
-    @Override
-    public CompoundTag serializeNBT() {
+        public CompoundTag serializeNBT() {
+        return serializeNBT(null);
+    }
+
+        @Override
+        public CompoundTag serializeNBT(HolderLookup.Provider provider) {
         CompoundTag nbt = new CompoundTag();
         if(uuid != null) nbt.putUUID("uuid", uuid);
         if(name != null) nbt.putString("name", name);
         if(entityId != 0) nbt.putInt("entityId", entityId);
-        if(type != null) nbt.put("kind", NBTUtil.serializeEntry(Registries.ENTITY_TYPE, type));
+        if(type != null) nbt.put("kind", NBTUtil.serializeEntry(BuiltInRegistries.ENTITY_TYPE, type));
         if(range != 0) nbt.putInt("range", range);
         return nbt;
     }
 
-    @Override
-    public void deserializeNBT(CompoundTag nbt) {
+        public void deserializeNBT(CompoundTag nbt) {
+        deserializeNBT(null, nbt);
+    }
+
+        @Override
+        public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
         if(nbt.contains("uuid")) setUUID(nbt.getUUID("uuid"));
         if(nbt.contains("name")) setName(nbt.getString("name"));
         if(nbt.contains("entityId")) setEntityId(nbt.getInt("entityId"));
-        if(nbt.contains("kind")) setType(NBTUtil.deserializeEntry(Registries.ENTITY_TYPE, nbt.get("kind")));
+        if(nbt.contains("kind")) setType(NBTUtil.deserializeEntry(BuiltInRegistries.ENTITY_TYPE, nbt.get("kind")));
         if(nbt.contains("range")) setRange(nbt.getInt("range"));
     }
 
