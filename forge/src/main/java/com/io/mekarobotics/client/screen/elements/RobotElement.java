@@ -112,13 +112,13 @@ public class RobotElement extends ButtonElement {
     }
 
     @Override
-    public void render(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick) {
-        super.render(graphics, pMouseX, pMouseY, pPartialTick);
+    public void renderWidget(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick) {
+        super.renderWidget(graphics, pMouseX, pMouseY, pPartialTick);
         moveHere.setEnabled(view.getState() == RobotView.RobotState.IN_WORLD && robotics != null && robotics.isActive());
         powerButton.setEnabled(view.getState() == RobotView.RobotState.IN_WORLD && energy != null && energy.getEnergyStored() > 0);
 
         graphics.setColor(1, 1, 1, 1);
-        InventoryScreen.renderEntityInInventoryFollowsAngle(graphics, getX() + 10, getY() + 23, 10, 0, 0, robot);
+        InventoryScreen.renderEntityInInventoryFollowsAngle(graphics, getX() + 10, getY() + 23, 10, 0, 0, 0, 0, 0, robot);
         RenderUtil.drawString(graphics, Lang.localise(view.getState().toString()), getX() + 46, getY() + 3, Reference.FONT_COLOR, 0.6f);
         RenderUtil.drawString(graphics, PosUtil.prettyPrint(view.getLastKnownPosition().dimension()), getX() + 46, getY() + 9, Reference.FONT_COLOR, 0.6f);
         RenderUtil.drawString(graphics, PosUtil.prettyPrint(view.getLastKnownPosition().pos()), getX() + 46, getY() + 15, Reference.FONT_COLOR, 0.6f);
