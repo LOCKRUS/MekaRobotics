@@ -52,15 +52,15 @@ public class RobotRenderer extends GeoEntityRenderer<RobotEntity> {
     }
 
     @Override
-    public void actuallyRender(PoseStack poseStack, RobotEntity animatable, BakedGeoModel model, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+    public void actuallyRender(PoseStack poseStack, RobotEntity animatable, BakedGeoModel model, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int red) {
         if(ModCapabilities.get(animatable, ModCapabilities.ROBOT).isPresent()) {
             ModCapabilities.get(animatable, ModCapabilities.ROBOT).ifPresent(robot -> {
                 float swell = robot.getSwell();
                 float f = swell / RobotCapability.MAX_SWELL;
                 float whiteOverlay =  (int)(f * 10.0F) % 2 == 0 ? 0.0F : Mth.clamp(f, 0.5F, 1.0F);
-                super.actuallyRender(poseStack, animatable, model, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, getPackedOverlay(animatable, whiteOverlay), red, green, blue, alpha);
+                super.actuallyRender(poseStack, animatable, model, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, getPackedOverlay(animatable, whiteOverlay, partialTick), red);
             });
-        } else super.actuallyRender(poseStack, animatable, model, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        } else super.actuallyRender(poseStack, animatable, model, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red);
 
     }
 }

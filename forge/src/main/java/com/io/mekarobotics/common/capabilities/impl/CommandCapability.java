@@ -91,7 +91,7 @@ public class CommandCapability implements ICommandable {
         //Stop
         Goal goal = commands.get(command);
         if(goal != null) {
-            entity.goalSelector.getAvailableGoals().filter(wrappedGoal -> goal.equals(wrappedGoal.getGoal())).forEach(WrappedGoal::stop);
+            entity.goalSelector.getAvailableGoals().stream().filter(wrappedGoal -> goal.equals(wrappedGoal.getGoal())).forEach(WrappedGoal::stop);
             entity.goalSelector.removeAllGoals(goal::equals);
         }
 
@@ -121,7 +121,7 @@ public class CommandCapability implements ICommandable {
         Goal goal = commands.get(command);
         if(goal == null) return;
         //If this goal is currently running, stop it
-        entity.goalSelector.getAvailableGoals().filter(wrappedGoal -> goal.equals(wrappedGoal.getGoal())).forEach(WrappedGoal::stop);
+        entity.goalSelector.getAvailableGoals().stream().filter(wrappedGoal -> goal.equals(wrappedGoal.getGoal())).forEach(WrappedGoal::stop);
         entity.goalSelector.removeAllGoals(goal::equals);
         commands.remove(command);
         onRemoved(command);

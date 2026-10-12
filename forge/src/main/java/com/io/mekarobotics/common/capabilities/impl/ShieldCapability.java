@@ -11,6 +11,7 @@ import com.io.mekarobotics.definitions.ModSounds;
 import com.io.mekarobotics.definitions.robotics.ModPerks;
 import com.io.mekarobotics.integration.config.RoboticsConfig;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.LivingEntity;
@@ -41,7 +42,6 @@ public class ShieldCapability implements IShielded {
     public ShieldCapability(LivingEntity entity) {
         this.entity = entity;
         dataManager = entity.getEntityData();
-        dataManager.define(SHIELD_HEALTH, 0f);
 
         BASE_HEALTH = RoboticsConfig.general.shieldBaseHealth.get();
         ACTIVATION_ENERGY_COST = RoboticsConfig.general.shieldActivationCost.get();
@@ -149,5 +149,15 @@ public class ShieldCapability implements IShielded {
             ModCapabilities.get(entity, ModCapabilities.PERKS).ifPresent(perks -> this.perks = perks);
         }
         return perks;
+    }
+
+    @Override
+    public CompoundTag serializeNBT(HolderLookup.Provider provider) {
+        return serializeNBT();
+    }
+
+    @Override
+    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
+        deserializeNBT(nbt);
     }
 }

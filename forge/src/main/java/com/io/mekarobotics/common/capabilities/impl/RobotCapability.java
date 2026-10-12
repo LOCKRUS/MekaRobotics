@@ -12,6 +12,7 @@ import com.io.mekarobotics.common.content.entity.ai.PickupGoal;
 import com.io.mekarobotics.common.misc.ModifiableExplosion;
 import com.io.mekarobotics.integration.config.RoboticsConfig;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvents;
@@ -54,12 +55,6 @@ public class RobotCapability implements IRobot {
         this.entity = entity;
         this.dataManager = entity.getEntityData();
 
-        dataManager.define(ACTIVATED, true);
-        dataManager.define(MUTED, false);
-        dataManager.define(LOAD_CHUNK, 0);
-        dataManager.define(PICKUP_STATE, 0);
-        dataManager.define(COMMAND_GROUP, 0);
-        dataManager.define(SWELLING, 0);
     }
 
         public CompoundTag serializeNBT() {
@@ -89,13 +84,13 @@ public class RobotCapability implements IRobot {
 
     @Override
     public void setActivation(boolean activation) {
-        Optional<IEnergyStorage> storage = ModCapabilities.energy(entity).get();
+        Optional<IEnergyStorage> storage = ModCapabilities.energy(entity);
         if(storage.isPresent() && storage.get().getEnergyStored() <= 0) {
             activation = false;
         }
         if(activation == isActive()) return;
-        Optional<IPartBuilt> parts = ModCapabilities.get(entity, ModCapabilities.PARTS).get();
-        Optional<ICommandable> commands = ModCapabilities.get(entity, ModCapabilities.COMMANDS).get();
+        Optional<IPartBuilt> parts = ModCapabilities.get(entity, ModCapabilities.PARTS);
+        Optional<ICommandable> commands = ModCapabilities.get(entity, ModCapabilities.COMMANDS);
 
         // NOTE Maybe make this fire as an event?
         dataManager.set(ACTIVATED, activation);
@@ -250,5 +245,15 @@ public class RobotCapability implements IRobot {
         if(EventHooks.onExplosionStart(entity.level(), explosion)) return;
         explosion.explode();
         explosion.finalizeExplosion(true);
+    }
+
+    @Override
+    public CompoundTag serializeNBT(HolderLookup.Provider provider) {
+        return serializeNBT();
+    }
+
+    @Override
+    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
+        deserializeNBT(nbt);
     }
 }

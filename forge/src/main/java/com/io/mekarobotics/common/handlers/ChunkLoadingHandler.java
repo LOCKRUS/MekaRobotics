@@ -99,7 +99,6 @@ public class ChunkLoadingHandler {
         }
 
         @Override
-        @Override
         public CompoundTag serializeNBT(HolderLookup.Provider provider) {
             return serializeNBT();
         }
@@ -121,7 +120,6 @@ public class ChunkLoadingHandler {
             return nbt;
         }
 
-        @Override
         @Override
         public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
             deserializeNBT(nbt);

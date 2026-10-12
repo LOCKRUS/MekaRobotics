@@ -41,7 +41,6 @@ public class ColorLayer extends GeoRenderLayer<RobotEntity> {
         RenderType armorRenderType = RenderType.entityCutoutNoCull(texture);
 
         getRenderer().reRender(getDefaultBakedModel(robot), poseStack, bufferSource, robot, armorRenderType,
-                bufferSource.getBuffer(armorRenderType), partialTick, packedLight, packedOverlay,
-                1, 1, 1, 1);
+                bufferSource.getBuffer(armorRenderType), partialTick, packedLight, packedOverlay, 1);
     }
 }

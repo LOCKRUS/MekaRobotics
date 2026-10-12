@@ -10,6 +10,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.HashMap;
 
@@ -25,7 +26,7 @@ public class CommonSetup {
     public static void onLevelLoad(LevelEvent.Load event) {
         if(!allLivingEntities.isEmpty() && event.getLevel().equals(allLivingEntities.get(EntityType.CREEPER).level())) return;
         if(!(event.getLevel() instanceof Level level)) return;
-        for(EntityType<?> type : Registries.ENTITY_TYPE.getValues()) {
+        for(EntityType<?> type : BuiltInRegistries.ENTITY_TYPE) {
             try {
                 Entity entity = type.create(level);
                 if(entity instanceof LivingEntity living) {

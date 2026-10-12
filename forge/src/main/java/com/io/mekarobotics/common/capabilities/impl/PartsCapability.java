@@ -13,6 +13,7 @@ import com.io.mekarobotics.definitions.robotics.ModModules;
 import com.io.mekarobotics.integration.config.RoboticsConfig;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvents;
@@ -48,10 +49,7 @@ public class PartsCapability implements IPartBuilt {
 			moduleSlots.put(slotType, slotType.isPrimary() ? 1 : 0);
 		}
 
-		dataManager.define(RENDER_OVERLAYS, 0);
-		dataManager.define(COLOR, 0);
 		for (EntityDataAccessor<Integer> bodyPart : BODY_PARTS) {
-			dataManager.define(bodyPart, EnumRobotMaterial.NONE.getID());
 		}
 	}
 
@@ -212,4 +210,14 @@ public class PartsCapability implements IPartBuilt {
 		if(id >= Reference.MAX_RENDER_LAYERS || id < 0) return false;
 		return ((dataManager.get(RENDER_OVERLAYS) >> id) & 1) == 1;
 	}
+
+    @Override
+    public CompoundTag serializeNBT(HolderLookup.Provider provider) {
+        return serializeNBT();
+    }
+
+    @Override
+    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
+        deserializeNBT(nbt);
+    }
 }

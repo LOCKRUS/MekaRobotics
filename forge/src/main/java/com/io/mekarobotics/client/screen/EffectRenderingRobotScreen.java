@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.MobEffectTextureManager;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
@@ -80,7 +81,7 @@ public abstract class EffectRenderingRobotScreen<T extends AbstractContainerMenu
                 }
 
                 if (mobeffectinstance != null) {
-                    List<Component> list = List.of(this.getEffectName(mobeffectinstance), MobEffectUtil.formatDuration(mobeffectinstance, 1.0F));
+                    List<Component> list = List.of(this.getEffectName(mobeffectinstance), MobEffectUtil.formatDuration(mobeffectinstance, 1.0F, 0.0F));
                     graphics.renderTooltip(Minecraft.getInstance().font, list, Optional.empty(), pMouseX, pMouseY);
                 }
             }
@@ -113,7 +114,7 @@ public abstract class EffectRenderingRobotScreen<T extends AbstractContainerMenu
         int i = this.topPos;
 
         for(MobEffectInstance mobeffectinstance : pEffects) {
-            MobEffect mobeffect = mobeffectinstance.getEffect();
+            Holder<MobEffect> mobeffect = mobeffectinstance.getEffect();
             TextureAtlasSprite textureatlassprite = mobeffecttexturemanager.get(mobeffect);
             graphics.blit(pRenderX + (p_194013_ ? 6 : 7), i + 7, this.getGuiLeft(), 18, 18, textureatlassprite);
             i += pYOffset;
@@ -127,7 +128,7 @@ public abstract class EffectRenderingRobotScreen<T extends AbstractContainerMenu
         for(MobEffectInstance mobeffectinstance : pEffects) {
             Component component = this.getEffectName(mobeffectinstance);
             graphics.drawString(this.font, component, pRenderX + 10 + 18, i + 6, 16777215);
-            Component s = MobEffectUtil.formatDuration(mobeffectinstance, 1.0F);
+            Component s = MobEffectUtil.formatDuration(mobeffectinstance, 1.0F, 0.0F);
             graphics.drawString(this.font, s, pRenderX + 10 + 18, i + 6 + 10, 8355711);
             i += pYOffset;
         }
@@ -135,7 +136,7 @@ public abstract class EffectRenderingRobotScreen<T extends AbstractContainerMenu
     }
 
     private Component getEffectName(MobEffectInstance pEffect) {
-        MutableComponent mutablecomponent = pEffect.getEffect().getDisplayName().copy();
+        MutableComponent mutablecomponent = pEffect.getEffect().value().getDisplayName().copy();
         if (pEffect.getAmplifier() >= 1 && pEffect.getAmplifier() <= 9) {
             mutablecomponent.append(" ").append(Component.translatable("enchantment.level." + (pEffect.getAmplifier() + 1)));
         }

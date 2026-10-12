@@ -78,7 +78,7 @@ public class ScrollableElement extends GuiElement {
     }
 
     @Override
-    public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
+    public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double delta) {
         if(delta == 0) return false;
 
         if(Screen.hasShiftDown()) {

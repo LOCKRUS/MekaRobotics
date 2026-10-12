@@ -130,9 +130,9 @@ public class PermissionsScreen extends GuiElement {
 
     //Mouse input is handled, regardless of whether a component is hovered or not. This way, all scroll bars are synced
     @Override
-    public boolean mouseScrolled(double p_94686_, double p_94687_, double p_94688_) {
+    public boolean mouseScrolled(double p_94686_, double p_94687_, double p_94688_, double p_94689_) {
         for(GuiEventListener comp : children()) {
-            comp.mouseScrolled(p_94686_, p_94687_, p_94688_);
+            comp.mouseScrolled(p_94686_, p_94687_, p_94688_, p_94689_);
         }
         return false;
     }

@@ -122,11 +122,11 @@ public abstract class BaseContainerScreen<T extends AbstractContainerMenu> exten
     }
 
     @Override
-    public boolean mouseScrolled(double pMouseX, double pMouseY, double pDelta) {
+    public boolean mouseScrolled(double pMouseX, double pMouseY, double pScrollX, double pScrollY) {
         if(hasSubGui()) {
-            return getSubGui().mouseScrolled(pMouseX, pMouseY, pDelta);
+            return getSubGui().mouseScrolled(pMouseX, pMouseY, pScrollX, pScrollY);
         }
-        return super.mouseScrolled(pMouseX, pMouseY, pDelta);
+        return super.mouseScrolled(pMouseX, pMouseY, pScrollX, pScrollY);
     }
 
     @Override

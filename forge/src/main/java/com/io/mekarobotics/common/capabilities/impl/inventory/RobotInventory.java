@@ -26,7 +26,7 @@ public class RobotInventory extends CombinedInvWrapper implements INBTSerializab
         //Apply Vanishing Curse
         for(int i = 0; i < getSlots(); ++i) {
             ItemStack itemstack = getStackInSlot(i);
-            if (!itemstack.isEmpty() && EnchantmentHelper.hasVanishingCurse(itemstack)) {
+            if (!itemstack.isEmpty() && EnchantmentHelper.hasAnyEnchantments(itemstack)) {
                 setStackInSlot(i, ItemStack.EMPTY);
             }
         }

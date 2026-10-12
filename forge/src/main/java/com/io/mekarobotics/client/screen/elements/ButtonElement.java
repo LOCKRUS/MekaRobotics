@@ -100,15 +100,6 @@ public class ButtonElement extends Button implements IElement, IGuiTexturable {
     }
 
     @Override
-    public void render(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick) {
-        super.render(graphics, pMouseX, pMouseY, pPartialTick);
-        for(var comp : children()) {
-            if(!(comp instanceof Renderable renderable)) continue;
-            renderable.render(graphics, pMouseX, pMouseY, pPartialTick);
-        }
-    }
-
-    @Override
     public void renderWidget(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick) {
         if(icons == null) return;
         Point[] currentIcons = icons[state];
@@ -135,6 +126,10 @@ public class ButtonElement extends Button implements IElement, IGuiTexturable {
         graphics.blit(resource, getX(), getY(), i, j, width, height);
 
         graphics.drawCenteredString(Minecraft.getInstance().font, getMessage(), getX() + this.width / 2, getY() + (height - 8) / 2, color | Mth.ceil(this.alpha * 255.0F) << 24);
+        for(var comp : children()) {
+            if(!(comp instanceof Renderable renderable)) continue;
+            renderable.render(graphics, pMouseX, pMouseY, pPartialTick);
+        }
     }
 
     public int getState() {
