@@ -16,6 +16,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.sounds.SoundEvent;
@@ -39,7 +41,7 @@ import java.util.List;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public abstract class MachineBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, StackedContentsCompatible, IMuffleable {
+public abstract class MachineBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, net.minecraft.world.item.crafting.RecipeInput, StackedContentsCompatible, IMuffleable {
 
     protected EnergyStorage storage;
     protected MachineInventory inventory;
@@ -171,7 +173,7 @@ public abstract class MachineBlockEntity extends BaseContainerBlockEntity implem
         }
 
         for(MachineRecipe<?> recipe : RECIPES) {
-            if(recipe.matches(this, level) && (InventoryUtil.areEmpty(outputStacks) || InventoryUtil.areItemsEqual(outputStacks, recipe.getOutputs()))) {
+            if(((MachineRecipe) recipe).matches(this, level) && (InventoryUtil.areEmpty(outputStacks) || InventoryUtil.areItemsEqual(outputStacks, recipe.getOutputs()))) {
                 return recipe;
             }
         }
@@ -272,8 +274,8 @@ public abstract class MachineBlockEntity extends BaseContainerBlockEntity implem
     // Saving & Syncing
     //////////////////////////
 
-    private CompoundTag toSaveAndSync(CompoundTag compound) {
-        compound.put("energy", storage.serializeNBT());
+    private CompoundTag toSaveAndSync(CompoundTag compound, HolderLookup.Provider provider) {
+        compound.put("energy", storage.serializeNBT(provider));
         compound.putInt("runTime", this.runTime);
         compound.putInt("currentRunTime", this.currentRunTime);
         compound.putBoolean("muffled", this.muffled);
@@ -281,15 +283,15 @@ public abstract class MachineBlockEntity extends BaseContainerBlockEntity implem
         if(!InventoryUtil.areEmpty(currentlyProcessedItems)) {
             ListTag processedItems = new ListTag();
             for(ItemStack stack : currentlyProcessedItems) {
-                processedItems.add(stack.serializeNBT());
+                processedItems.add(stack.save(provider));
             }
             compound.put("ProcessedItems", processedItems);
         }
         return compound;
     }
 
-    private void fromSaveAndSync(CompoundTag compound) {
-        storage.deserializeNBT(compound.getCompound("energy"));
+    private void fromSaveAndSync(CompoundTag compound, HolderLookup.Provider provider) {
+        storage.deserializeNBT(provider, compound.getCompound("energy"));
         this.runTime = compound.getInt("runTime");
         this.currentRunTime = compound.getInt("currentRunTime");
         this.muffled = compound.getBoolean("muffled");
@@ -299,29 +301,29 @@ public abstract class MachineBlockEntity extends BaseContainerBlockEntity implem
             currentlyProcessedItems = InventoryUtil.full(inputs.length, ItemStack.EMPTY);
         } else {
             for(int i = 0; i < Math.min(tagList.size(), currentlyProcessedItems.length); i++) {
-                currentlyProcessedItems[i] = ItemStack.of(tagList.getCompound(i));
+                currentlyProcessedItems[i] = ItemStack.parseOptional(provider, tagList.getCompound(i));
             }
         }
         currentRecipe = getRecipe(currentlyProcessedItems);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag compound) {
-        super.saveAdditional(compound);
-        compound.put("inventory", inventory.serializeNBT());
-        toSaveAndSync(compound);
+    protected void saveAdditional(CompoundTag compound, HolderLookup.Provider provider) {
+        super.saveAdditional(compound, provider);
+        compound.put("inventory", inventory.serializeNBT(provider));
+        toSaveAndSync(compound, provider);
     }
 
     @Override
-    public void load(CompoundTag compound) {
-        super.load(compound);
-        inventory.deserializeNBT(compound.getCompound("inventory"));
-        fromSaveAndSync(compound);
+    protected void loadAdditional(CompoundTag compound, HolderLookup.Provider provider) {
+        super.loadAdditional(compound, provider);
+        inventory.deserializeNBT(provider, compound.getCompound("inventory"));
+        fromSaveAndSync(compound, provider);
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
-        return toSaveAndSync(super.getUpdateTag());
+    public CompoundTag getUpdateTag(HolderLookup.Provider provider) {
+        return toSaveAndSync(super.getUpdateTag(provider), provider);
     }
 
     //////////////////////////
@@ -424,6 +426,23 @@ public abstract class MachineBlockEntity extends BaseContainerBlockEntity implem
     @Override
     public int getContainerSize() {
         return inventory.getSlots();
+    }
+
+    @Override
+    public int size() {
+        return getContainerSize();
+    }
+
+    @Override
+    public NonNullList<ItemStack> getItems() {
+        NonNullList<ItemStack> items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
+        for (int i = 0; i < items.size(); i++) items.set(i, getItem(i));
+        return items;
+    }
+
+    @Override
+    public void setItems(NonNullList<ItemStack> items) {
+        for (int i = 0; i < Math.min(items.size(), getContainerSize()); i++) setItem(i, items.get(i));
     }
 
     @Override

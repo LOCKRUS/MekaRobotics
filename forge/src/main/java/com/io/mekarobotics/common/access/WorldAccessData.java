@@ -1,5 +1,6 @@
 package com.io.mekarobotics.common.access;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.neoforged.neoforge.common.util.INBTSerializable;
 
@@ -62,7 +63,11 @@ public class WorldAccessData implements INBTSerializable<CompoundTag> {
 		}
 	}
 	
-	@Override
+		@Override
+	public CompoundTag serializeNBT(HolderLookup.Provider provider) {
+		return serializeNBT();
+	}
+
 	public CompoundTag serializeNBT() {
 		CompoundTag allConfigData = new CompoundTag();
 		CompoundTag playerConfigData = new CompoundTag();
@@ -80,7 +85,11 @@ public class WorldAccessData implements INBTSerializable<CompoundTag> {
 		return allConfigData;
 	}
 
-	@Override
+		@Override
+	public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
+		deserializeNBT(nbt);
+	}
+
 	public void deserializeNBT(CompoundTag nbt) {
 		CompoundTag playerConfigData = nbt.getCompound("playerConfigs");
 		CompoundTag groupConfigData = nbt.getCompound("groupConfigs");

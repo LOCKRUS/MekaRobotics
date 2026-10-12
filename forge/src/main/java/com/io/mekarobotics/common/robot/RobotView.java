@@ -8,6 +8,7 @@ import com.io.mekarobotics.common.content.entity.RobotEntity;
 import com.io.mekarobotics.common.helpers.util.InventoryUtil;
 import com.io.mekarobotics.common.helpers.util.PosUtil;
 import com.io.mekarobotics.network.messages.EntityByteBufUtil;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.core.NonNullList;
@@ -104,6 +105,10 @@ public class RobotView implements INBTSerializable<CompoundTag> {
     }
 
     @Override
+    public CompoundTag serializeNBT(HolderLookup.Provider provider) {
+        return serializeNBT();
+    }
+
     public CompoundTag serializeNBT() {
         CompoundTag tag = new CompoundTag();
         tag.putUUID("uuid", uuid);
@@ -121,6 +126,10 @@ public class RobotView implements INBTSerializable<CompoundTag> {
     }
 
     @Override
+    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
+        deserializeNBT(nbt);
+    }
+
     public void deserializeNBT(CompoundTag nbt) {
         uuid = nbt.getUUID("uuid");
         name = nbt.getString("name");

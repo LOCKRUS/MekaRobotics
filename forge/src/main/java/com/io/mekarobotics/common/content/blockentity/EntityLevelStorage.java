@@ -10,6 +10,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -142,13 +143,13 @@ public class EntityLevelStorage implements INBTSerializable<CompoundTag> {
     }
 
     @Override
-    public CompoundTag serializeNBT() {
+    public CompoundTag serializeNBT(HolderLookup.Provider provider) {
         if(stored == null) return new CompoundTag();
-        return stored.serializeNBT();
+        return stored.serializeNBT(provider);
     }
 
     @Override
-    public void deserializeNBT(CompoundTag nbt) {
+    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
         if(level != null) {
             deserializeEntity(nbt);
         } else {
@@ -174,7 +175,7 @@ public class EntityLevelStorage implements INBTSerializable<CompoundTag> {
     }
 
     public static Optional<Entity> copyEntity(Entity toCopy) {
-        CompoundTag tag = toCopy.serializeNBT();
+        CompoundTag tag = toCopy.serializeNBT(toCopy.level().registryAccess());
         return EntityType.create(tag, toCopy.level());
     }
 }

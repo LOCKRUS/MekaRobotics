@@ -72,10 +72,10 @@ public interface IPerkMap extends Iterable<Tuple<Perk, Integer>> {
 			double multiplier = 0;
 			double exp = 0;
 			for(AttributeModifier mod : modifiers.get(attribute)) {
-				switch (mod.getOperation()) {
-					case ADDITION -> amount += mod.getAmount();
-					case MULTIPLY_BASE -> multiplier += mod.getAmount() * 100;
-					case MULTIPLY_TOTAL -> exp += mod.getAmount();
+					switch (mod.operation()) {
+						case ADD_VALUE -> amount += mod.amount();
+						case ADD_MULTIPLIED_BASE -> multiplier += mod.amount() * 100;
+						case ADD_MULTIPLIED_TOTAL -> exp += mod.amount();
 				}
 			}
 			TextColor color = Reference.ATTRIBUTE_COLORS.getOrDefault(attribute, TextColor.fromLegacyFormat(ChatFormatting.GRAY));

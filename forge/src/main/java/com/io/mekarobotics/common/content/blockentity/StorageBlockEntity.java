@@ -11,6 +11,7 @@ import com.io.mekarobotics.definitions.ModMachines;
 import com.io.mekarobotics.network.container.SyncableInt;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -127,8 +128,8 @@ public class StorageBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     @Override
-    public void saveToItem(ItemStack p_187477_) {
-        CompoundTag tag = saveWithoutMetadata();
+    public void saveToItem(ItemStack p_187477_, HolderLookup.Provider provider) {
+        CompoundTag tag = saveWithoutMetadata(provider);
         tag.getCompound("entity").remove("UUID");
         BlockItem.setBlockEntityData(p_187477_, this.getType(), tag);
     }
@@ -144,24 +145,24 @@ public class StorageBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag nbt) {
-        nbt.put("energy", energy.serializeNBT());
-        nbt.put("entity", storedRobot.serializeNBT());
-        super.saveAdditional(nbt);
+    protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider provider) {
+        nbt.put("energy", energy.serializeNBT(provider));
+        nbt.put("entity", storedRobot.serializeNBT(provider));
+        super.saveAdditional(nbt, provider);
     }
 
     @Override
-    public void load(CompoundTag nbt) {
-        energy.deserializeNBT(nbt.getCompound("energy"));
-        storedRobot.deserializeNBT(nbt.getCompound("entity"));
-        super.load(nbt);
+    protected void loadAdditional(CompoundTag nbt, HolderLookup.Provider provider) {
+        energy.deserializeNBT(provider, nbt.getCompound("energy"));
+        storedRobot.deserializeNBT(provider, nbt.getCompound("entity"));
+        super.loadAdditional(nbt, provider);
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
-        CompoundTag nbt = super.getUpdateTag();
-        nbt.put("energy", energy.serializeNBT());
-        nbt.put("entity", storedRobot.serializeNBT());
+    public CompoundTag getUpdateTag(HolderLookup.Provider provider) {
+        CompoundTag nbt = super.getUpdateTag(provider);
+        nbt.put("energy", energy.serializeNBT(provider));
+        nbt.put("entity", storedRobot.serializeNBT(provider));
         return nbt;
     }
 

@@ -25,6 +25,11 @@ public class EnergyStorage extends net.neoforged.neoforge.energy.EnergyStorage i
 		return nbt;
 	}
 
+	/** Compatibility bridge for internal callers that do not need registry lookups. */
+	public Tag serializeNBT() {
+		return serializeNBT(null);
+	}
+
 	@Override
 	public void deserializeNBT(HolderLookup.Provider provider, Tag tag) {
 		if(!(tag instanceof CompoundTag nbt)) return;
@@ -32,6 +37,11 @@ public class EnergyStorage extends net.neoforged.neoforge.energy.EnergyStorage i
 		this.maxReceive = nbt.getInt("MaxReceive");
 		this.maxExtract = nbt.getInt("MaxExtract");
 		setEnergy(nbt.getInt("Energy"));
+	}
+
+	/** Compatibility bridge for internal callers that do not need registry lookups. */
+	public void deserializeNBT(Tag tag) {
+		deserializeNBT(null, tag);
 	}
 
 	@Override

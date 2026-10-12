@@ -34,10 +34,10 @@ public class ModMachines {
     public static final Machine ROBOT_FACTORY = registerMachine("robot_factory", Reference.GUI_ROBOT_FACTORY_DIMENSIONS, FactoryBlockEntity::new, ModBlocks.ROBOT_FACTORY, null);
     public static final Machine ROBOT_STORAGE = registerMachine("robot_storage", Reference.GUI_DEFAULT_DIMENSIONS, StorageBlockEntity::new, ModBlocks.ROBOT_STORAGE, null);
 
-    public static final DeferredHolder<?, BlockEntityType<ChargerBlockEntity>> CHARGER = registerBlockEntity("charger", ChargerBlockEntity::new, ModBlocks.CHARGER);
-    public static final DeferredHolder<?, BlockEntityType<MachineArmBlockEntity>> MACHINE_ARM = registerBlockEntity("machine_arm", MachineArmBlockEntity::new, ModBlocks.MACHINE_ARM);
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ChargerBlockEntity>> CHARGER = registerBlockEntity("charger", ChargerBlockEntity::new, ModBlocks.CHARGER);
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MachineArmBlockEntity>> MACHINE_ARM = registerBlockEntity("machine_arm", MachineArmBlockEntity::new, ModBlocks.MACHINE_ARM);
 
-    public static final DeferredHolder<?, RecipeSerializer> COMMANDERCOPY_RECIPE = RECIPE_SERIALIZERS.register("crafting_special_commandercloning", () -> new SimpleCraftingRecipeSerializer<>(CommanderCopyRecipe::new));
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> COMMANDERCOPY_RECIPE = RECIPE_SERIALIZERS.register("crafting_special_commandercloning", () -> new SimpleCraftingRecipeSerializer<>(CommanderCopyRecipe::new));
 
     private static <R extends Recipe<?>> Machine<?> registerMachine(String name, Dimension guiDimension, BlockEntityType.BlockEntitySupplier<?> supplier, DeferredHolder<Block, Block> block, Supplier<? extends IRecipeSerializer<R>> recipeSerializer) {
         DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> blockEntityType = BLOCK_ENTITIES.register(name, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));
@@ -48,7 +48,7 @@ public class ModMachines {
         return builder.setRecipeType(recipeType).setRecipeSerializer(serializer).build();
     }
 
-    private static <T extends BlockEntity> DeferredHolder<?, BlockEntityType<T>> registerBlockEntity(String name, BlockEntityType.BlockEntitySupplier<T> supplier, DeferredHolder<Block, Block> block) {
+    private static <T extends BlockEntity> DeferredHolder<BlockEntityType<?>, BlockEntityType<T>> registerBlockEntity(String name, BlockEntityType.BlockEntitySupplier<T> supplier, DeferredHolder<Block, Block> block) {
         return BLOCK_ENTITIES.register(name, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));
     }
 

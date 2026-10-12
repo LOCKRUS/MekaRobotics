@@ -16,6 +16,7 @@ import com.io.mekarobotics.definitions.ModMachines;
 import com.io.mekarobotics.definitions.ModParticles;
 import com.io.mekarobotics.definitions.robotics.ModModules;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -231,25 +232,25 @@ public class MachineArmBlockEntity extends BlockEntity {
         return null;
     }
 
-    private CompoundTag saveChain(CompoundTag tag) {
+    private CompoundTag saveChain(CompoundTag tag, HolderLookup.Provider provider) {
         ListTag list = new ListTag();
         for(FabrikBone3D bone : chain.getChain()) {
             list.add(NBTUtil.serializeVec(bone.getDirectionUV()));
         }
         tag.put("rotations", list);
         tag.put("target", NBTUtil.serializeVec(target));
-        tag.put("grabbed", grabbedItem.serializeNBT());
+        tag.put("grabbed", grabbedItem.save(provider));
         tag.putByte("state", state.getId());
         return tag;
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(saveChain(tag));
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        super.saveAdditional(saveChain(tag, provider), provider);
     }
 
     @Override
-    public void load(CompoundTag tag) {
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         Vec3f[] rotations = new Vec3f[JOINT_COUNT];
         ListTag list = tag.getList("rotations", Tag.TAG_LIST);
         for(int i = 0; i < Math.min(rotations.length, list.size()); i++) {
@@ -257,9 +258,9 @@ public class MachineArmBlockEntity extends BlockEntity {
         }
         chain = constructChain(rotations);
         target = NBTUtil.deserializeVec(tag.getList("target", Tag.TAG_FLOAT));
-        grabbedItem = ItemStack.of(tag.getCompound("grabbed"));
+        grabbedItem = ItemStack.parseOptional(provider, tag.getCompound("grabbed"));
         state = MachineArmState.byId(tag.getByte("state"));
-        super.load(tag);
+        super.loadAdditional(tag, provider);
     }
 
     @Nullable
@@ -269,13 +270,13 @@ public class MachineArmBlockEntity extends BlockEntity {
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
-        return saveChain(super.getUpdateTag());
+    public CompoundTag getUpdateTag(HolderLookup.Provider provider) {
+        return saveChain(super.getUpdateTag(provider), provider);
     }
 
     @Override
-    public void handleUpdateTag(CompoundTag tag) {
-        super.handleUpdateTag(tag);
+    public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider provider) {
+        loadAdditional(tag, provider);
     }
 
     public FabrikChain3D getPose() {

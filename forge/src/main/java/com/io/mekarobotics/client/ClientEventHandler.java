@@ -20,6 +20,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
@@ -80,8 +81,9 @@ public class ClientEventHandler {
                 event.getToolTip().add(ComponentUtils.formatList(tooltip, Component.literal(": ")));
             }
         }
-        if(stack.hasTag() && stack.getTag().contains(BLOCK_DATA_TAG, Tag.TAG_COMPOUND) && stack.getTag().getCompound(BLOCK_DATA_TAG).contains("energy", Tag.TAG_COMPOUND)) {
-            CompoundTag energyTag = stack.getTag().getCompound(BLOCK_DATA_TAG).getCompound("energy");
+        CompoundTag customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.EMPTY).copyTag();
+        if(customData.contains(BLOCK_DATA_TAG, Tag.TAG_COMPOUND) && customData.getCompound(BLOCK_DATA_TAG).contains("energy", Tag.TAG_COMPOUND)) {
+            CompoundTag energyTag = customData.getCompound(BLOCK_DATA_TAG).getCompound("energy");
             EnergyStorage storage = new EnergyStorage(0);
             storage.deserializeNBT(energyTag);
             List<Component> tooltip = List.of(Lang.localise("stored_energy"), Component.literal(

@@ -22,8 +22,8 @@ public class ModBlocks {
     public static final DeferredHolder<Block, Block> CHARGER = registerBlock("charger", ChargerBlock::new);
     public static final DeferredHolder<Block, Block> MACHINE_ARM = registerBlock("machine_arm", MachineArmBlock::new);
 
-    private static <T extends Block> DeferredHolder<?, T> registerBlock(String name, Supplier<T> block) {
-        DeferredHolder<?, T> toReturn = BLOCKS.register(name, block);
+    private static <T extends Block> DeferredHolder<Block, T> registerBlock(String name, Supplier<T> block) {
+        DeferredHolder<Block, T> toReturn = BLOCKS.register(name, block);
         ModItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties()));
         return toReturn;
     }

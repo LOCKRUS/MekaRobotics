@@ -4,6 +4,7 @@ import com.io.mekarobotics.Reference;
 import com.io.mekarobotics.Robotics;
 import com.io.mekarobotics.common.helpers.util.Stable;
 import com.io.mekarobotics.network.messages.IBufferSerializable;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
@@ -88,7 +89,11 @@ public class AccessConfig implements INBTSerializable<CompoundTag>, IBufferSeria
 		permissions.remove(player);
 	}
 
-	@Override
+		@Override
+	public CompoundTag serializeNBT(HolderLookup.Provider provider) {
+		return serializeNBT();
+	}
+
 	public CompoundTag serializeNBT() {
 		CompoundTag nbt = new CompoundTag();
 		nbt.putUUID("owner", getOwner());
@@ -100,7 +105,11 @@ public class AccessConfig implements INBTSerializable<CompoundTag>, IBufferSeria
 		return nbt;
 	}
 
-	@Override
+		@Override
+	public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
+		deserializeNBT(nbt);
+	}
+
 	public void deserializeNBT(CompoundTag nbt) {
 		owner = nbt.getUUID("owner");
 		permissions = new HashMap<>();

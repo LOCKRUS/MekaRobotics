@@ -4,6 +4,7 @@ import com.io.mekarobotics.Robotics;
 import com.io.mekarobotics.common.capabilities.IChunkLoader;
 import com.io.mekarobotics.common.capabilities.ModCapabilities;
 import com.io.mekarobotics.common.helpers.types.Tuple;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;

@@ -13,6 +13,7 @@ import com.io.mekarobotics.definitions.ModMachines;
 import com.io.mekarobotics.integration.config.RoboticsConfig;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -175,11 +176,11 @@ public class FactoryBlockEntity extends MachineBlockEntity {
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
+    public CompoundTag getUpdateTag(HolderLookup.Provider provider) {
         CompoundTag tag = new CompoundTag();
         tag.putBoolean("canStart", canStart());
         tag.putBoolean("builtRobot", builtRobot);
-        tag.put("inventory", inventory.serializeNBT());
+        tag.put("inventory", inventory.serializeNBT(provider));
         return tag;
     }
 
@@ -189,15 +190,15 @@ public class FactoryBlockEntity extends MachineBlockEntity {
     }
 
     @Override
-    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
-        handleUpdateTag(pkt.getTag());
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt, HolderLookup.Provider provider) {
+        handleUpdateTag(pkt.getTag(), provider);
     }
 
     @Override
-    public void handleUpdateTag(CompoundTag tag) {
+    public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider provider) {
         canStart = tag.getBoolean("canStart");
         builtRobot = tag.getBoolean("builtRobot");
-        inventory.deserializeNBT(tag.getCompound("inventory"));
+        inventory.deserializeNBT(provider, tag.getCompound("inventory"));
         requestModelDataUpdate();
     }
 

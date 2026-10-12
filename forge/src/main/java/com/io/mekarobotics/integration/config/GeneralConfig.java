@@ -103,7 +103,7 @@ public class GeneralConfig extends BaseConfig {
         energyConsumption = new HashMap<>();
         processingSpeed = new HashMap<>();
 
-        for(DeferredHolder<?, RecipeType<?>> recipe : ModMachines.RECIPE_TYPES.getEntries()) {
+        for(DeferredHolder<RecipeType<?>, RecipeType<?>> recipe : ModMachines.RECIPE_TYPES.getEntries()) {
             String name = recipe.getId().getPath();
             energyCapacities.put(name, builder.defineInRange(StringUtil.titleCase(name) + " Energy Capacity", 100000, 0, Integer.MAX_VALUE));
             energyConsumption.put(name, builder.defineInRange(StringUtil.titleCase(name) + " Energy Consumption", 1d, 0, 1000));

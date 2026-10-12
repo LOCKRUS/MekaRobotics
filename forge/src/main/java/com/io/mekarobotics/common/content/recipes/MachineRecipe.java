@@ -6,13 +6,13 @@ import com.io.mekarobotics.common.helpers.util.StringUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -24,7 +24,7 @@ import java.util.List;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class MachineRecipe<T extends Container> implements Recipe<T> {
+public class MachineRecipe<T extends RecipeInput> implements Recipe<T> {
 
 	protected final Machine<?> machine;
 	protected final ResourceLocation id;
@@ -39,7 +39,7 @@ public class MachineRecipe<T extends Container> implements Recipe<T> {
 	}
 
 	@Override
-	public boolean matches(Container inv, Level worldIn) {
+	public boolean matches(T inv, Level worldIn) {
 		for (int i = 0; i < inputs.length; i++) {
 			if (!this.inputs[i].test(inv.getItem(i))) {
 				return false;
@@ -49,7 +49,7 @@ public class MachineRecipe<T extends Container> implements Recipe<T> {
 	}
 
 	@Override
-	public ItemStack assemble(T p_44001_, RegistryAccess p_267165_) {
+	public ItemStack assemble(T p_44001_, HolderLookup.Provider p_267165_) {
 		return outputs[0].copy();
 	}
 
@@ -59,12 +59,11 @@ public class MachineRecipe<T extends Container> implements Recipe<T> {
 	}
 
 	@Override
-	public ItemStack getResultItem(RegistryAccess p_267052_) {
+	public ItemStack getResultItem(HolderLookup.Provider p_267052_) {
 		return outputs[0];
 	}
 
-	@Override
-	public ResourceLocation getId() {
+	public ResourceLocation id() {
 		return id;
 	}
 

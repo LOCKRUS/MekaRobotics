@@ -1,5 +1,6 @@
 package com.io.mekarobotics.common.helpers.types;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.neoforged.neoforge.common.util.INBTSerializable;
 
@@ -51,12 +52,20 @@ public class Selection<A> implements INBTSerializable<CompoundTag> {
 		return new Selection<>(target);
 	}
 
-	@Override
+		@Override
+	public CompoundTag serializeNBT(HolderLookup.Provider provider) {
+		return serializeNBT();
+	}
+
 	public CompoundTag serializeNBT() {
 		return writeNBT(this);
 	}
 
-	@Override
+		@Override
+	public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
+		deserializeNBT(nbt);
+	}
+
 	public void deserializeNBT(CompoundTag nbt) {
 		this.type = readNBT(nbt).getType();
 		this.target = (A) readNBT(nbt).target;

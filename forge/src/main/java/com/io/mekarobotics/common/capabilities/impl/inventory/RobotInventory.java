@@ -2,6 +2,7 @@ package com.io.mekarobotics.common.capabilities.impl.inventory;
 
 import com.io.mekarobotics.common.helpers.util.InventoryUtil;
 import com.io.mekarobotics.definitions.ModAttributes;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -41,11 +42,19 @@ public class RobotInventory extends CombinedInvWrapper implements INBTSerializab
     }
 
     @Override
+    public CompoundTag serializeNBT(HolderLookup.Provider provider) {
+        return serializeNBT();
+    }
+
     public CompoundTag serializeNBT() {
         return storageInventory.serializeNBT();
     }
 
     @Override
+    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
+        deserializeNBT(nbt);
+    }
+
     public void deserializeNBT(CompoundTag nbt) {
         storageInventory.deserializeNBT(nbt);
     }

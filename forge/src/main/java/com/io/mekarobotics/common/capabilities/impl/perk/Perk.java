@@ -27,6 +27,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.*;
 import java.util.function.Function;
@@ -49,7 +50,12 @@ public class Perk implements PerkHooks {
 			if (scalar.isPresent()) {
 				attributeValue += level * scalar.get();
 			}
-			return new AttributeModifier("modifier_" + id, attributeValue, AttributeModifier.Operation.fromValue(operation));
+			AttributeModifier.Operation op = switch (operation) {
+				case 1 -> AttributeModifier.Operation.ADD_MULTIPLIED_BASE;
+				case 2 -> AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL;
+				default -> AttributeModifier.Operation.ADD_VALUE;
+			};
+			return new AttributeModifier(ResourceLocation.fromNamespaceAndPath(Robotics.MODID, "modifier_" + id), attributeValue, op);
 		}
 	}
 
@@ -62,7 +68,7 @@ public class Perk implements PerkHooks {
 	).apply(instance, AttributeScalar::new));
 
 	protected static final Codec<AttributeEntry> CODEC_ATTRIBUTE = RecordCodecBuilder.create(instance -> instance.group(
-			Registries.ATTRIBUTE.getCodec().fieldOf("name").forGetter(c -> c.attribute),
+			ResourceLocation.CODEC.xmap(BuiltInRegistries.ATTRIBUTE::get, BuiltInRegistries.ATTRIBUTE::getKey).fieldOf("name").forGetter(c -> c.attribute),
 			Codec.list(CODEC_SCALAR).fieldOf("modifiers").forGetter(c -> c.modifiers)
 	).apply(instance, AttributeEntry::new));
 
@@ -303,13 +309,13 @@ public class Perk implements PerkHooks {
 	public static Collection<Entity> entitiesInArea(Entity entity, int areaSize, Predicate<Entity> additionalRequisites) {
 		BlockPos lower = entity.blockPosition().relative(Direction.DOWN, areaSize).relative(Direction.SOUTH, areaSize).relative(Direction.EAST, areaSize);
 		BlockPos upper = entity.blockPosition().relative(Direction.UP, areaSize).relative(Direction.NORTH, areaSize).relative(Direction.WEST, areaSize);
-		AABB area = new AABB(lower, upper);
+			AABB area = new AABB(lower.getX(), lower.getY(), lower.getZ(), upper.getX(), upper.getY(), upper.getZ());
 		return entity.level().getEntities(entity, area, additionalRequisites);
 	}
 
 	public static Collection<Entity> alliesInArea(Entity entity, int areaSize, UUID owner, Predicate<Entity> additionalRequisites) {
 		return entitiesInArea(entity, areaSize, ent -> {
-			Optional<IRobot> otherRobot = ModCapabilities.get(ent, ModCapabilities.ROBOT).get();
+				Optional<IRobot> otherRobot = ModCapabilities.get(ent, ModCapabilities.ROBOT);
 			if(otherRobot.isEmpty() || !otherRobot.get().isActive()) return false;
 			if(!RobotBehavior.hasAccess(owner, ent, EnumPermission.ALLY)) return false;
 			return additionalRequisites.test(ent);

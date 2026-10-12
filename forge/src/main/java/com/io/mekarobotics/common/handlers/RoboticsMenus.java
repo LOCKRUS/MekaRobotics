@@ -44,7 +44,7 @@ public class RoboticsMenus {
             ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.RIGHT_ARM),
             ModAttributes.MODIFIER_SLOTS.get(EnumModuleSlot.RIGHT_LEG)
     );
-    public static final Map<DeferredHolder<?, ? extends MenuType<?>>, EnumSet<EnumPermission>> REQUIRED_PERMISSIONS = new HashMap<>();
+    public static final Map<DeferredHolder<MenuType<?>, ? extends MenuType<?>>, EnumSet<EnumPermission>> REQUIRED_PERMISSIONS = new HashMap<>();
     static {
         REQUIRED_PERMISSIONS.put(ModMenuTypes.ROBOT, EnumSet.of(EnumPermission.VIEW));
         REQUIRED_PERMISSIONS.put(ModMenuTypes.ROBOT_INFO, EnumSet.of(EnumPermission.VIEW));
