@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.UUID;
 
 public class EntityByteBufUtil implements IBufferSerializable {
 	
@@ -28,14 +29,16 @@ public class EntityByteBufUtil implements IBufferSerializable {
 	public EntityByteBufUtil(Entity entity) {
 		entityId = entity.getId();
 		if(entity instanceof Player player) {
-			CompoundTag nbtProfile = new CompoundTag();
-			NbtUtils.writeGameProfile(nbtProfile, player.getGameProfile());
+            CompoundTag nbtProfile = new CompoundTag();
+            GameProfile profile = player.getGameProfile();
+            if(profile.getId() != null) nbtProfile.putUUID("id", profile.getId());
+            nbtProfile.putString("name", profile.getName());
 
-			nbt = player.serializeNBT();
+            nbt = player.serializeNBT(player.level().registryAccess());
 			nbt.putString("id", PLAYER);
 			nbt.put("profile", nbtProfile);
 		} else {
-			nbt = entity.serializeNBT();
+            nbt = entity.serializeNBT(entity.level().registryAccess());
 		}
 	}
 	
@@ -67,7 +70,7 @@ public class EntityByteBufUtil implements IBufferSerializable {
 			try {
 				Entity ent = entityType.get().create(level);
 				if(!(ent instanceof LivingEntity)) return null;
-				ent.deserializeNBT(nbt);
+                    ent.deserializeNBT(level.registryAccess(), nbt);
 				ent.setId(entityId);
 				return (LivingEntity) ent;
 			} catch (IllegalArgumentException e) {
@@ -76,10 +79,11 @@ public class EntityByteBufUtil implements IBufferSerializable {
 		} else
 		//Handle Players
 		if(entity_type.equals(PLAYER)) {
-			AtomicReference<GameProfile> profile = new AtomicReference<>(NbtUtils.readGameProfile(nbt.getCompound("profile")));
-			SkullBlockEntity.updateGameprofile(profile.get(), profile::set);
-			Player other = Robotics.proxy.createFakePlayer(level, profile.get()).get();
-			other.deserializeNBT(nbt);
+                CompoundTag profileTag = nbt.getCompound("profile");
+                UUID profileId = profileTag.hasUUID("id") ? profileTag.getUUID("id") : UUID.nameUUIDFromBytes(("robot:" + entityId).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                GameProfile profile = new GameProfile(profileId, profileTag.getString("name"));
+                Player other = Robotics.proxy.createFakePlayer(level, profile).get();
+                other.deserializeNBT(level.registryAccess(), nbt);
 			other.setId(entityId);
 			return other;
 		}

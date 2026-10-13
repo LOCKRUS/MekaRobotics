@@ -7,6 +7,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.inventory.MenuType;
 import com.io.mekarobotics.network.NetworkEvent;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 public class PacketOpenRobotMenu implements IMessage {
 
@@ -22,13 +23,13 @@ public class PacketOpenRobotMenu implements IMessage {
 
     @Override
     public void encode(FriendlyByteBuf buf) {
-        buf.writeRegistryId(Registries.MENU, type);
+        buf.writeResourceLocation(BuiltInRegistries.MENU.getKey(type));
         BufferSerializers.writeObject(buf, extraData);
     }
 
     @Override
     public void decode(FriendlyByteBuf buf) {
-        type = buf.readRegistryId();
+        type = BuiltInRegistries.MENU.get(buf.readResourceLocation());
         extraData = BufferSerializers.readObject(buf);
     }
 

@@ -8,6 +8,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.core.registries.BuiltInRegistries;
 import com.io.mekarobotics.network.NetworkEvent;
 
 import java.util.Collection;
@@ -30,7 +31,7 @@ public class PacketSetEntityEffects implements IMessage {
         flags = new byte[effects.size()];
         int i = 0;
         for(MobEffectInstance effect : effects) {
-            effectIds[i] = (byte) (MobEffect.getId(effect.getEffect()) & 255);
+            effectIds[i] = (byte) (BuiltInRegistries.MOB_EFFECT.getId(effect.getEffect().value()) & 255);
             amplifiers[i] = (byte)(effect.getAmplifier() & 255);
             durations[i] = Math.min(effect.getDuration(), 32767);
             flags[i] = 0;
@@ -87,10 +88,10 @@ public class PacketSetEntityEffects implements IMessage {
             living.removeEffectNoUpdate(instance.getEffect());
         }
         for(int i = 0; i < effectIds.length; i++) {
-            MobEffect potion = MobEffect.byId(effectIds[i] & 0xFF);
+            var potion = BuiltInRegistries.MOB_EFFECT.byId(effectIds[i] & 0xFF);
             if (potion == null) continue;
 
-            MobEffectInstance effect = new MobEffectInstance(potion, durations[i], amplifiers[i], isAmbient(i), isVisible(i));
+            MobEffectInstance effect = new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(potion), durations[i], amplifiers[i], isAmbient(i), isVisible(i));
             living.forceAddEffect(effect, null);
         }
     }

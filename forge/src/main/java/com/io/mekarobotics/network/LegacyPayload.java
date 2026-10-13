@@ -10,13 +10,13 @@ public record LegacyPayload(int messageId, byte[] data) implements CustomPacketP
     public static final Type<LegacyPayload> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath("mekarobotics", "legacy_message"));
     public static final StreamCodec<ByteBuf, LegacyPayload> STREAM_CODEC = StreamCodec.of(
             (buf, payload) -> {
-                buf.writeVarInt(payload.messageId());
-                buf.writeVarInt(payload.data().length);
+                buf.writeInt(payload.messageId());
+                buf.writeInt(payload.data().length);
                 buf.writeBytes(payload.data());
             },
             buf -> {
-                int id = buf.readVarInt();
-                byte[] data = new byte[buf.readVarInt()];
+                int id = buf.readInt();
+                byte[] data = new byte[buf.readInt()];
                 buf.readBytes(data);
                 return new LegacyPayload(id, data);
             });

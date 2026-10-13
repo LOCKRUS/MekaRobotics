@@ -33,7 +33,7 @@ public class BufferSerializers {
         config.read(buf);
         return config;
     });
-    public static final BufferSerializer<BlockPos> BLOCKPOS = new BufferSerializer<>(4, BlockPos.class, (pos, buf) -> buf.writeBlockPos(pos), FriendlyByteBuf::readBlockPos);
+    public static final BufferSerializer<BlockPos> BLOCKPOS = new BufferSerializer<>(4, BlockPos.class, (pos, buf) -> buf.writeBlockPos(pos), buf -> buf.readBlockPos());
     public static final BufferSerializer<Integer> INTEGER = new BufferSerializer<>(5, Integer.class, (i, buf) -> buf.writeInt(i), FriendlyByteBuf::readInt);
 
     public static <T> void writeObject(FriendlyByteBuf buf, T data) {
