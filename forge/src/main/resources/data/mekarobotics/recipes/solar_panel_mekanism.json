@@ -1,0 +1,42 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": [
+          "ggg",
+          "waw",
+          "oso"
+        ],
+        "key": {
+          "g": {
+            "item": "minecraft:glass_pane"
+          },
+          "w": {
+            "item": "minecraft:gold_ingot"
+          },
+          "a": {
+            "item": "mekarobotics:advanced_wiring"
+          },
+          "o": {
+            "item": "mekanism:ingot_osmium"
+          },
+          "s": {
+            "item": "minecraft:redstone"
+          }
+        },
+        "result": {
+          "item": "mekarobotics:solar_panel"
+        }
+      }
+    }
+  ]
+}

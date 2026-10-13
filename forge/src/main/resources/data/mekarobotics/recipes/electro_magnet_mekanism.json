@@ -1,0 +1,39 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": [
+          "ici",
+          "rro",
+          "ici"
+        ],
+        "key": {
+          "i": {
+            "item": "minecraft:iron_ingot"
+          },
+          "c": {
+            "item": "minecraft:copper_ingot"
+          },
+          "r": {
+            "item": "minecraft:redstone"
+          },
+          "o": {
+            "item": "mekanism:alloy_infused"
+          }
+        },
+        "result": {
+          "item": "mekarobotics:electro_magnet"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": [
+          "gqg",
+          "cac",
+          "gqg"
+        ],
+        "key": {
+          "g": {
+            "item": "minecraft:gold_ingot"
+          },
+          "q": {
+            "item": "minecraft:quartz"
+          },
+          "c": {
+            "item": "mekarobotics:advanced_circuit"
+          },
+          "a": {
+            "item": "minecraft:redstone"
+          }
+        },
+        "result": {
+          "item": "mekarobotics:perceptron_layer"
+        }
+      }
+    }
+  ]
+}

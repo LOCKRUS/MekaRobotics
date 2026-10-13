@@ -1,0 +1,39 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": [
+          "igi",
+          "wfw",
+          "igi"
+        ],
+        "key": {
+          "i": {
+            "item": "minecraft:iron_ingot"
+          },
+          "g": {
+            "item": "minecraft:gold_ingot"
+          },
+          "w": {
+            "item": "mekarobotics:wiring"
+          },
+          "f": {
+            "item": "mekanism:alloy_infused"
+          }
+        },
+        "result": {
+          "item": "mekarobotics:advanced_wiring"
+        }
+      }
+    }
+  ]
+}

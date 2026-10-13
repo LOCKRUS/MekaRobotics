@@ -1,0 +1,39 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": [
+          "iri",
+          "bcb",
+          "iri"
+        ],
+        "key": {
+          "i": {
+            "item": "minecraft:iron_ingot"
+          },
+          "r": {
+            "item": "minecraft:redstone"
+          },
+          "b": {
+            "item": "mekarobotics:battery"
+          },
+          "c": {
+            "item": "mekarobotics:advanced_circuit"
+          }
+        },
+        "result": {
+          "item": "mekarobotics:charger"
+        }
+      }
+    }
+  ]
+}

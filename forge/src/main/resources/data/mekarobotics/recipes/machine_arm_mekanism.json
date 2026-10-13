@@ -1,0 +1,42 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": [
+          "iri",
+          "sac",
+          "iri"
+        ],
+        "key": {
+          "i": {
+            "item": "minecraft:iron_ingot"
+          },
+          "r": {
+            "item": "mekarobotics:iron_rod"
+          },
+          "s": {
+            "item": "mekarobotics:servo_motor"
+          },
+          "a": {
+            "item": "mekarobotics:advanced_circuit"
+          },
+          "c": {
+            "item": "mekarobotics:complex_circuit"
+          }
+        },
+        "result": {
+          "item": "mekarobotics:machine_arm"
+        }
+      }
+    }
+  ]
+}

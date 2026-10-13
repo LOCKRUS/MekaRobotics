@@ -1,0 +1,39 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": [
+          "oto",
+          "cac",
+          "oto"
+        ],
+        "key": {
+          "o": {
+            "item": "minecraft:obsidian"
+          },
+          "t": {
+            "item": "mekarobotics:tungsten_ingot"
+          },
+          "c": {
+            "item": "mekarobotics:complex_circuit"
+          },
+          "a": {
+            "item": "mekanism:alloy_atomic"
+          }
+        },
+        "result": {
+          "item": "mekarobotics:shield_module"
+        }
+      }
+    }
+  ]
+}
