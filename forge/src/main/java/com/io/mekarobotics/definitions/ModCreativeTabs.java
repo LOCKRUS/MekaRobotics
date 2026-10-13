@@ -30,8 +30,8 @@ public class ModCreativeTabs {
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEMS = CREATIVE_TABS.register("items", () -> builder("items", ModItems.CIRCUIT)
             .displayItems((params, output) -> {
-                Collection<DeferredHolder<Item, Item>> itemsWithoutMaterials = new ArrayList<>(ModItems.ITEMS.getEntries());
-                Collection<DeferredHolder<Block, Block>> blocks = new ArrayList<>(ModBlocks.BLOCKS.getEntries());
+                Collection<DeferredHolder<Item, ? extends Item>> itemsWithoutMaterials = new ArrayList<>(ModItems.ITEMS.getEntries());
+                Collection<DeferredHolder<Block, ? extends Block>> blocks = new ArrayList<>(ModBlocks.BLOCKS.getEntries());
                 for(Map<EnumRobotPart, DeferredHolder<Item, Item>> regs : ModItems.MATERIALS.values()) {
                     itemsWithoutMaterials.removeAll(regs.values());
                 }
@@ -40,10 +40,10 @@ public class ModCreativeTabs {
                         itemsWithoutMaterials.remove(entry.getValue());
                     }
                 }
-                for(DeferredHolder<Item, Item> item : itemsWithoutMaterials) {
+                for(DeferredHolder<Item, ? extends Item> item : itemsWithoutMaterials) {
                     output.accept(item.get());
                 }
-                for(DeferredHolder<Block, Block> block : blocks) {
+                for(DeferredHolder<Block, ? extends Block> block : blocks) {
                     output.accept(block.get());
                 }
             }).build());
@@ -58,7 +58,7 @@ public class ModCreativeTabs {
             }).build());
 
     private static boolean isTagEmpty(HolderLookup.Provider provider, TagKey<Item> tag) {
-        Optional<HolderLookup.RegistryLookup<Item>> reg = provider.lookup(Registries.ITEM.getRegistryKey());
+        Optional<HolderLookup.RegistryLookup<Item>> reg = provider.lookup(Registries.ITEM);
         if(reg.isEmpty()) return true;
         Optional<HolderSet.Named<Item>> itemsOfTag = reg.get().get(tag);
         return itemsOfTag.map(holders -> holders.size() == 0).orElse(true);

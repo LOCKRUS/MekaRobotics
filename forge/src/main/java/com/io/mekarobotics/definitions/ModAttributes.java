@@ -59,14 +59,14 @@ public final class ModAttributes {
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeModificationEvent event) {
-        event.add(ModEntityTypes.ROBOT, ENERGY_CAPACITY);
-        event.add(ModEntityTypes.ROBOT, ENERGY_CONSUMPTION);
-        event.add(ModEntityTypes.ROBOT, STACK_SIZE);
-        event.add(ModEntityTypes.ROBOT, LOGISTICS_TIME);
-        event.add(ModEntityTypes.ROBOT, MODULE_COST);
-        event.add(ModEntityTypes.ROBOT, MODULE_COOLDOWN);
-        event.add(ModEntityTypes.ROBOT, MODULE_DURATION);
-        for (Holder<Attribute> attribute : MODIFIER_SLOTS.values()) event.add(ModEntityTypes.ROBOT, attribute);
+        event.add(ModEntityTypes.ROBOT.get(), ENERGY_CAPACITY);
+        event.add(ModEntityTypes.ROBOT.get(), ENERGY_CONSUMPTION);
+        event.add(ModEntityTypes.ROBOT.get(), STACK_SIZE);
+        event.add(ModEntityTypes.ROBOT.get(), LOGISTICS_TIME);
+        event.add(ModEntityTypes.ROBOT.get(), MODULE_COST);
+        event.add(ModEntityTypes.ROBOT.get(), MODULE_COOLDOWN);
+        event.add(ModEntityTypes.ROBOT.get(), MODULE_DURATION);
+        for (Holder<Attribute> attribute : MODIFIER_SLOTS.values()) event.add(ModEntityTypes.ROBOT.get(), attribute);
     }
 
     public static AttributeSupplier createRobotAttributes() {
@@ -78,9 +78,9 @@ public final class ModAttributes {
     static class ModAttributeChanges {
         @SubscribeEvent
         public static void onEquipmentChanged(LivingEquipmentChangeEvent event) {
-            for (Holder<Attribute> attribute : event.getTo().getAttributeModifiers(event.getSlot()).keySet()) {
+            event.getTo().getAttributeModifiers().forEach(event.getSlot(), (attribute, modifier) -> {
                 onAttributeChanged(event.getEntity(), event.getEntity().getAttribute(attribute));
-            }
+            });
         }
     }
 

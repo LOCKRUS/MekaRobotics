@@ -45,7 +45,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> MODULE_STEALTH = registerBasicItem("stealth_module");
     public static final DeferredHolder<Item, Item> MODULE_SHIELD = registerBasicItem("shield_module");
 
-    public static final DeferredHolder<Item, Item> ROBOT_SPAWN_EGG = ITEMS.register("robot_spawn_egg", () -> new SpawnEggItem(ModEntityTypes.ROBOT, 0x000000, 0xffa500, new Item.Properties()));
+    public static final DeferredHolder<Item, Item> ROBOT_SPAWN_EGG = ITEMS.register("robot_spawn_egg", () -> new SpawnEggItem(ModEntityTypes.ROBOT.get(), 0x000000, 0xffa500, new Item.Properties()));
 
     public static final DeferredHolder<Item, Item> COMMANDER = ITEMS.register("commander", CommanderItem::new);
 
