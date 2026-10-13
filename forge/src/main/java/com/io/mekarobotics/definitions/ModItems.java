@@ -32,6 +32,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> SERVO_MOTOR = registerBasicItem("servo_motor");
     public static final DeferredHolder<Item, Item> TUNGSTEN_INGOT = registerBasicItem("tungsten_ingot");
     public static final DeferredHolder<Item, Item> RAW_TUNGSTEN = registerBasicItem("raw_tungsten");
+    public static final DeferredHolder<Item, Item> TUNGSTEN_POWDER = registerBasicItem("tungsten_powder");
 
     public static final DeferredHolder<Item, Item> CAMERA_UNIT = registerBasicItem("camera_unit");
     public static final DeferredHolder<Item, Item> PERCEPTRON_LAYER = registerBasicItem("perceptron_layer");
