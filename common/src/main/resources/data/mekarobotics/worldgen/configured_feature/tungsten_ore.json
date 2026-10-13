@@ -5,13 +5,12 @@
     "size": 4,
     "targets": [
       {
+        "state": {
+          "Name": "mekarobotics:tungsten_ore"
+        },
         "target": {
-          "predicate": {
-            "blocks": "minecraft:netherrack"
-          },
-          "state": {
-            "Name": "mekarobotics:tungsten_ore"
-          }
+          "block": "minecraft:netherrack",
+          "predicate_type": "minecraft:block_match"
         }
       }
     ]
