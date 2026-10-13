@@ -8,6 +8,10 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import net.neoforged.neoforge.common.crafting.CraftingHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -22,6 +26,26 @@ public class WireCutterRecipes implements IRecipeSerializer<MachineRecipe<?>> {
     public static final int INPUT_SIZE = 2;
     public static final int OUTPUT_SIZE = 1;
     public static List<MachineRecipe<?>> recipes = new ArrayList<>();
+
+    @Override
+    public MapCodec<MachineRecipe<?>> codec() {
+        return IRecipeSerializer.jsonCodec(json -> fromJson(ResourceLocation.parse(IRecipeSerializer.recipeId(json)), json), this::toJson);
+    }
+
+    private JsonObject toJson(MachineRecipe<?> recipe) {
+        JsonObject json = new JsonObject();
+        json.addProperty("id", recipe.id().toString());
+        json.addProperty("processing_time", recipe.processingTime);
+        json.addProperty("energy", recipe.energy);
+        Ingredient ingredient = recipe.inputs.length > 1 ? recipe.inputs[1] : Ingredient.EMPTY;
+        JsonElement encoded = Ingredient.CODEC.encodeStart(JsonOps.INSTANCE, ingredient).result().orElseThrow();
+        JsonObject counted = new JsonObject();
+        counted.add("items", encoded);
+        counted.addProperty("amount", CountedIngredient.getCount(ingredient));
+        json.add("ingredient", counted);
+        json.add("result", ItemStack.SIMPLE_ITEM_CODEC.encodeStart(JsonOps.INSTANCE, recipe.outputs[0]).result().orElseThrow());
+        return json;
+    }
 
     @Override
     public List<MachineRecipe<?>> getRecipes() {
