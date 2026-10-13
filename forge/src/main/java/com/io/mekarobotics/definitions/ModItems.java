@@ -30,6 +30,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> IRON_ROD = registerBasicItem("iron_rod");
     public static final DeferredHolder<Item, Item> ELECTRO_MAGNET = registerBasicItem("electro_magnet");
     public static final DeferredHolder<Item, Item> SERVO_MOTOR = registerBasicItem("servo_motor");
+    public static final DeferredHolder<Item, Item> TUNGSTEN_INGOT = registerBasicItem("tungsten_ingot");
 
     public static final DeferredHolder<Item, Item> CAMERA_UNIT = registerBasicItem("camera_unit");
     public static final DeferredHolder<Item, Item> PERCEPTRON_LAYER = registerBasicItem("perceptron_layer");
