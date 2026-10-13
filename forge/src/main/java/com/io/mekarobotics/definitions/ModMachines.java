@@ -44,7 +44,9 @@ public class ModMachines {
         Machine.Builder<R> builder = new Machine.Builder<R>(name).setBlock(block).setBlockEntityType(blockEntityType).setGuiDimensions(guiDimension);
         if(recipeSerializer == null) return builder.build();
         DeferredHolder<RecipeType<?>, RecipeType<R>> recipeType = RECIPE_TYPES.register(name, () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(Robotics.MODID, name)));
-        DeferredHolder<IRecipeSerializer<?>, IRecipeSerializer<R>> serializer = RECIPE_SERIALIZERS.register(name, recipeSerializer);
+        @SuppressWarnings("unchecked")
+        DeferredHolder<IRecipeSerializer<?>, IRecipeSerializer<R>> serializer =
+                (DeferredHolder<IRecipeSerializer<?>, IRecipeSerializer<R>>) (DeferredHolder<?, ?>) RECIPE_SERIALIZERS.register(name, recipeSerializer);
         return builder.setRecipeType(recipeType).setRecipeSerializer(serializer).build();
     }
 
