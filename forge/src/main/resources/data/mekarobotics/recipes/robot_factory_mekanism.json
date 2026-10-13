@@ -24,7 +24,7 @@
             "item": "mekarobotics:battery"
           },
           "b": {
-            "item": "mekarobotics:plate_iron"
+            "item": "mekanism:alloy_reinforced"
           },
           "c": {
             "item": "mekarobotics:complex_circuit"

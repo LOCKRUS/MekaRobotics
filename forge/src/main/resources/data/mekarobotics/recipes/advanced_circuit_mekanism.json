@@ -1,0 +1,39 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": [
+          "oso",
+          "aca",
+          "oso"
+        ],
+        "key": {
+          "o": {
+            "item": "mekanism:ingot_osmium"
+          },
+          "s": {
+            "item": "mekanism:alloy_infused"
+          },
+          "c": {
+            "item": "mekarobotics:circuit"
+          },
+          "a": {
+            "item": "minecraft:redstone"
+          }
+        },
+        "result": {
+          "item": "mekarobotics:advanced_circuit"
+        }
+      }
+    }
+  ]
+}
