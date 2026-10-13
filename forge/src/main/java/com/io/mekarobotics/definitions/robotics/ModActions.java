@@ -9,6 +9,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.chat.TextColor;
@@ -28,16 +29,21 @@ public class ModActions {
 
     public static final ResourceKey<Registry<Codec<? extends IAction>>> KEY = ResourceKey.createRegistryKey(Robotics.rl("actions"));
     public static final DeferredRegister<Codec<? extends IAction>> ACTION_SERIALIZERS = DeferredRegister.create(KEY, Robotics.MODID);
-    public static final Supplier<Registry<Codec<? extends IAction>>> REGISTRY = ACTION_SERIALIZERS.makeRegistry(() -> new RegistryBuilder<Codec<? extends IAction>>().disableSaving().setDefaultKey(Robotics.rl("none")));
+    static {
+        ACTION_SERIALIZERS.makeRegistry(builder -> builder.defaultKey(Robotics.rl("none")).sync(false));
+    }
+    public static final Supplier<Registry<Codec<? extends IAction>>> REGISTRY = ACTION_SERIALIZERS.getRegistry();
 
     public static final Codec<MobEffectInstance> EFFECT_CODEC = RecordCodecBuilder.create(builder -> builder.group(
-            Registries.MOB_EFFECT.getCodec().fieldOf("type").forGetter(MobEffectInstance::getEffect),
+            net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.holderByNameCodec().fieldOf("type").forGetter(MobEffectInstance::getEffect),
             ExtraCodecs.POSITIVE_INT.optionalFieldOf("duration", 30 * 20).forGetter(MobEffectInstance::getDuration),
             ExtraCodecs.POSITIVE_INT.optionalFieldOf("amplifier", 0).forGetter(MobEffectInstance::getAmplifier),
             MapCodec.unit(false).forGetter(MobEffectInstance::isAmbient),
             Codec.BOOL.optionalFieldOf("visible", true).forGetter(MobEffectInstance::isVisible)
     ).apply(builder, MobEffectInstance::new));
-    private static final Codec<IAction> DETAILED_CODEC = ExtraCodecs.lazyInitializedCodec(() -> REGISTRY.get().getCodec().dispatch(IAction::codec, Function.identity()));
+    private static final Codec<IAction> DETAILED_CODEC = Codec.lazyInitialized(() ->
+            REGISTRY.get().byNameCodec().dispatch(IAction::codec,
+                    actionCodec -> MapCodec.assumeMapUnsafe(actionCodec)));
     /*
      * Allow for type specification in a compound (specified by the detailed codec) as well as just referencing the type itself:
      * {
@@ -54,9 +60,9 @@ public class ModActions {
      *     } ...
      * }
      */
-    public static final Codec<IAction> CODEC = ExtraCodecs.lazyInitializedCodec(() -> Codec.either(REGISTRY.get().getCodec(), DETAILED_CODEC).
-            xmap(either -> either.map(c -> c.decode(NbtOps.INSTANCE, new CompoundTag()).getOrThrow(false, s -> {}).getFirst(), Functions.identity()),
-            Either::right));
+    public static final Codec<IAction> CODEC = Codec.lazyInitialized(() ->
+            Codec.either(REGISTRY.get().byNameCodec(), DETAILED_CODEC)
+                    .xmap(either -> either.map(c -> c.decode(NbtOps.INSTANCE, new CompoundTag()).getOrThrow().getFirst(), Function.identity()), Either::right));
 
     public static final DeferredHolder<Codec<? extends IAction>, Codec<IAction>> NONE = register("none", Codec.unit(IAction.NO_ACTION));
     public static final DeferredHolder<Codec<? extends IAction>, Codec<IAction>> TELEPORT = registerDefault("teleport", TeleportAction::new, ChatFormatting.DARK_PURPLE);

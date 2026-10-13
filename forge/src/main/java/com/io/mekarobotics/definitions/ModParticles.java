@@ -12,6 +12,6 @@ public class ModParticles {
 
     public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(Registries.PARTICLE_TYPE, Robotics.MODID);
 
-    public static final DeferredHolder<SimpleParticleType, SimpleParticleType> SPARK = PARTICLES.register("spark",  () -> new SimpleParticleType(false));
-    public static final DeferredHolder<SimpleParticleType, SimpleParticleType> FLARE = PARTICLES.register("flare",  () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SPARK = PARTICLES.register("spark",  () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FLARE = PARTICLES.register("flare",  () -> new SimpleParticleType(false));
 }

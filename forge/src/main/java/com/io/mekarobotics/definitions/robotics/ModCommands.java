@@ -27,7 +27,10 @@ public class ModCommands {
 
     public static final ResourceKey<Registry<CommandType>> KEY = ResourceKey.createRegistryKey(Robotics.rl("commands"));
     public static final DeferredRegister<CommandType> COMMANDS = DeferredRegister.create(KEY, Robotics.MODID);
-    public static final Supplier<Registry<CommandType>> REGISTRY = COMMANDS.makeRegistry(RegistryBuilder::new);
+    static {
+        COMMANDS.makeRegistry(builder -> {});
+    }
+    public static final Supplier<Registry<CommandType>> REGISTRY = COMMANDS.getRegistry();
 
     public static final DeferredHolder<CommandType, CommandType> STAY = register("stay", GlobalPos.class, MoveToBlockGoal::new);
     public static final DeferredHolder<CommandType, CommandType> ATTACK = register("attack", EntitySearch.class, SpecificTargetGoal::new);

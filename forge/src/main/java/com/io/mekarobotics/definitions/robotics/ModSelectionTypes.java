@@ -14,6 +14,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
 
 import java.util.ArrayList;
@@ -27,15 +28,21 @@ public class ModSelectionTypes {
 
     public static final List<SelectionType<?>> TYPES = new ArrayList<>();
 
-    public static final SelectionType<ItemStack> ITEM = register(ItemStack.class, Items.IRON_SWORD::getDefaultInstance, ItemStack::serializeNBT, ItemStack::of, string -> new ItemStack(Registries.ITEM.get(ResourceLocation.tryParse(string))), stack -> Registries.ITEM.getKey(stack.getItem()).toString());
-    public static final SelectionType<Block> BLOCK = register(Block.class, () -> Blocks.COBBLESTONE, null, null, string -> Registries.BLOCK.get(ResourceLocation.tryParse(string)), block -> Registries.BLOCK.getKey(block).toString());
+    public static final SelectionType<ItemStack> ITEM = register(ItemStack.class, Items.IRON_SWORD::getDefaultInstance,
+            stack -> (CompoundTag) stack.save(ServerLifecycleHooks.getCurrentServer().registryAccess()),
+            tag -> ItemStack.parseOptional(ServerLifecycleHooks.getCurrentServer().registryAccess(), tag),
+            string -> new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.tryParse(string))),
+            stack -> BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
+    public static final SelectionType<Block> BLOCK = register(Block.class, () -> Blocks.COBBLESTONE, null, null,
+            string -> BuiltInRegistries.BLOCK.get(ResourceLocation.tryParse(string)),
+            block -> BuiltInRegistries.BLOCK.getKey(block).toString());
     public static final SelectionType<GlobalPos> POS = register(GlobalPos.class, () -> GlobalPos.of(ServerLifecycleHooks.getCurrentServer().overworld().dimension(), BlockPos.ZERO), PosUtil::writePos, PosUtil::readPos, PosUtil::parseBlockPos, GlobalPos::toString);
     public static final SelectionType<EntityType> ENTITY_TYPE = register(EntityType.class, () -> EntityType.CREEPER, type -> {
                 CompoundTag tag = new CompoundTag();
-                tag.putString("value", Registries.ENTITY_TYPE.getKey(type).toString());
+                tag.putString("value", BuiltInRegistries.ENTITY_TYPE.getKey(type).toString());
                 return tag;
-            }, tag -> Registries.ENTITY_TYPE.get(ResourceLocation.tryParse(tag.getString("value"))),
-            string -> Registries.ENTITY_TYPE.get(ResourceLocation.tryParse(string)), type -> Registries.ENTITY_TYPE.getKey(type).toString());
+            }, tag -> BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.tryParse(tag.getString("value"))),
+            string -> BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.tryParse(string)), type -> BuiltInRegistries.ENTITY_TYPE.getKey(type).toString());
     public static final SelectionType<Integer> INTEGER = register(Integer.class, () -> 0, number -> {
         CompoundTag tag = new CompoundTag();
         tag.putInt("value", number);

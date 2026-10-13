@@ -32,6 +32,8 @@ public class ModMenuTypes {
 
     @Nullable
     public static DeferredHolder<MenuType<?>, MenuType<?>> of(MenuType<?> menuType) {
-        return MENU_TYPES.getEntries().stream().filter(m -> m.get().equals(menuType)).findFirst().get();
+        return MENU_TYPES.getEntries().stream().filter(m -> m.get().equals(menuType))
+                .map(m -> (DeferredHolder<MenuType<?>, MenuType<?>>) (DeferredHolder<?, ?>) m)
+                .findFirst().orElse(null);
     }
 }

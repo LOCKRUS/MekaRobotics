@@ -33,7 +33,10 @@ public class ModPerks {
 
     public static final ResourceKey<Registry<Perk>> KEY = ResourceKey.createRegistryKey(ResourceLocation.fromNamespaceAndPath(Robotics.MODID, "perks"));
     public static final DeferredRegister<Perk> PERKS = DeferredRegister.create(KEY, Robotics.MODID);
-    public static final Supplier<Registry<Perk>> REGISTRY = PERKS.makeRegistry(() -> new RegistryBuilder<Perk>().allowModification().disableSaving().disableSync().setDefaultKey(ResourceLocation.fromNamespaceAndPath(Robotics.MODID, "undefined")));
+    static {
+        PERKS.makeRegistry(builder -> builder.defaultKey(ResourceLocation.fromNamespaceAndPath(Robotics.MODID, "undefined")).sync(false));
+    }
+    public static final Supplier<Registry<Perk>> REGISTRY = PERKS.getRegistry();
 
     public static final DeferredHolder<Perk, Perk> PERK_UNDEFINED = register("undefined", s -> new Perk(s, 1).setDisplayColor(ChatFormatting.RED));
     public static final DeferredHolder<Perk, Perk> PERK_HEALTH = register("health", Perk::new);
@@ -55,7 +58,7 @@ public class ModPerks {
     public static final DeferredHolder<Perk, Perk> PERK_BIO_GENERATOR = registerGenerator("bio_generator", RoboticsConfig.general.bioGeneratorRate, (stack, ent) -> {
         FoodProperties stats = stack.getItem().getFoodProperties(stack, ent);
         if(stats == null) return 0;
-        return (int) (stats.getNutrition() * 200 + Math.pow(stats.getSaturationModifier(), 1.5) * 100);
+        return (int) (stats.nutrition() * 200 + Math.pow(stats.saturation(), 1.5) * 100);
     });
     public static final DeferredHolder<Perk, Perk> PERK_UNARMED_ATTACK = register("unarmed_attack", PerkUnarmedAttack::new);
     public static final DeferredHolder<Perk, Perk> PERK_FIST = register("fist", PerkFist::new);
