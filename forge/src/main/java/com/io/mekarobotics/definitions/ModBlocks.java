@@ -5,6 +5,7 @@ import com.io.mekarobotics.common.content.blocks.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.minecraft.core.registries.Registries;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -21,6 +22,9 @@ public class ModBlocks {
     public static final DeferredHolder<Block, Block> ROBOT_FACTORY = registerBlock("robot_factory", FactoryBlock::new);
     public static final DeferredHolder<Block, Block> CHARGER = registerBlock("charger", ChargerBlock::new);
     public static final DeferredHolder<Block, Block> MACHINE_ARM = registerBlock("machine_arm", MachineArmBlock::new);
+    public static final DeferredHolder<Block, Block> TUNGSTEN_ORE = registerBlock("tungsten_ore", () -> new Block(BlockBehaviour.Properties.of()
+            .strength(3.0F, 3.0F)
+            .requiresCorrectToolForDrops()));
 
     private static <T extends Block> DeferredHolder<Block, T> registerBlock(String name, Supplier<T> block) {
         DeferredHolder<Block, T> toReturn = BLOCKS.register(name, block);

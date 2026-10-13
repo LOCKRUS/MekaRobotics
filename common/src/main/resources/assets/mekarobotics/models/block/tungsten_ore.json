@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "mekarobotics:block/tungsten_ore"
+  }
+}
