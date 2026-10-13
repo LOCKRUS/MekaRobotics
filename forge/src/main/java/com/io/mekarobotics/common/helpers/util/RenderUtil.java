@@ -139,11 +139,6 @@ public class RenderUtil {
     public static void drawRotatingEntity(PoseStack posestack1, int posX, int posY, int scale, LivingEntity entity, float angle) {
         float f = 0;
         float f1 = 0;
-        PoseStack posestack = RenderSystem.getModelViewStack();
-        posestack.pushPose();
-        posestack.translate((float)posX, (float)posY, 10500.0F);
-        posestack.scale(1.0F, 1.0F, -1.0F);
-        RenderSystem.applyModelViewMatrix();
         posestack1.pushPose();
         posestack1.translate(0.0F, 0.0F, 10000.0F);
         posestack1.scale((float)scale, (float)scale, (float)scale);
@@ -179,9 +174,7 @@ public class RenderUtil {
         entity.setXRot(f4);
         entity.yHeadRotO = f5;
         entity.yHeadRot = f6;
-        posestack.popPose();
         posestack1.popPose();
-        RenderSystem.applyModelViewMatrix();
         Lighting.setupFor3DItems();
     }
 

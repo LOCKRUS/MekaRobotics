@@ -2,6 +2,7 @@ package com.io.mekarobotics.common.misc;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mojang.serialization.JsonOps;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.Collections;
@@ -23,7 +24,8 @@ public final class CountedIngredient {
         if (!element.isJsonObject()) return Ingredient.EMPTY;
         JsonObject json = element.getAsJsonObject();
         JsonElement ingredientJson = json.has("items") ? json.get("items") : json;
-        Ingredient ingredient = Ingredient.fromJson(ingredientJson);
+        Ingredient ingredient = Ingredient.CODEC.parse(JsonOps.INSTANCE, ingredientJson)
+                .result().orElse(Ingredient.EMPTY);
         int amount = json.has("amount") ? Math.max(1, json.get("amount").getAsInt()) : 1;
         COUNTS.put(ingredient, amount);
         return ingredient;

@@ -6,6 +6,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,6 +24,7 @@ public class ModifiableExplosion extends Explosion {
     protected final Entity source;
     protected final double x, y, z;
     protected final float radius, damage;
+    protected final DamageSource damageSource;
 
     public ModifiableExplosion(Entity entity, float damage, float radius, boolean fire, BlockInteraction blockInteraction) {
         super(entity.level(), entity, entity.getX(), entity.getY(), entity.getZ(), radius, fire, blockInteraction);
@@ -33,6 +35,7 @@ public class ModifiableExplosion extends Explosion {
         this.z = entity.getZ();
         this.radius = radius;
         this.damage = damage;
+        this.damageSource = Explosion.getDefaultDamageSource(level, entity);
     }
 
     //Mostly the vanilla code with modified damage & knockback
@@ -84,14 +87,14 @@ public class ModifiableExplosion extends Explosion {
         List<Entity> affectedEntities = level.getEntities(source, source.getBoundingBox().inflate(radius), ent -> ent.distanceTo(source) < radius);
         EventHooks.onExplosionDetonate(this.level, this, affectedEntities, radius * 2);
         for(Entity entity : affectedEntities) {
-            if(entity.ignoreExplosion()) continue;
-            if(entity.isInvulnerableTo(getDamageSource())) continue;
+            if(entity.ignoreExplosion(this)) continue;
+            if(entity.isInvulnerableTo(damageSource)) continue;
 
             // Hurt
             double relDistanceToCenter = entity.distanceTo(source) / (radius * 2d);
             double percEntExposedToExpl = getSeenPercent(source.position(), entity);
             double d10 = (1.0D - Math.pow(relDistanceToCenter, 3)) * percEntExposedToExpl;
-            entity.hurt(this.getDamageSource(), (int)(d10 * 7.0D * radius + damage));
+            entity.hurt(damageSource, (float)(d10 * 7.0D * radius + damage));
 
             // Knockback
             double knockbackForce;
