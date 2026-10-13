@@ -6,6 +6,7 @@
     "mekarobotics:robot_factory",
     "mekarobotics:robot_storage",
     "mekarobotics:charger",
-    "mekarobotics:machine_arm"
+    "mekarobotics:machine_arm",
+    "mekarobotics:tungsten_ore"
   ]
 }
