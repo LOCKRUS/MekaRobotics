@@ -16,8 +16,6 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.minecraft.core.Registry;
 import net.neoforged.neoforge.registries.RegistryBuilder;
@@ -28,7 +26,6 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 @SuppressWarnings("unused")
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME)
 public class ModPerks {
 
     public static final ResourceKey<Registry<Perk>> KEY = ResourceKey.createRegistryKey(ResourceLocation.fromNamespaceAndPath(Robotics.MODID, "perks"));
