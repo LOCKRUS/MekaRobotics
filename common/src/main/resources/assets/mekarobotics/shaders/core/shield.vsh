@@ -19,7 +19,7 @@ out float fresnel;
 out float vertexDistance;
 
 void main() {
-    gl_Position = ProjMat * vec4(Position, 1.0);
+    gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
 
     // Source https://kylehalladay.com/blog/tutorial/2014/02/18/Fresnel-Shaders-From-The-Ground-Up.html
     vec3 worldPos = IViewRotMat * Position + CameraPos;
@@ -27,6 +27,6 @@ void main() {
     vec3 vertexCameraDir = normalize(worldPos - CameraPos);
     fresnel = 0.7 * pow(1.0 + dot(vertexCameraDir, worldNormal), 4);
 
-    vertexDistance = fog_distance(ModelViewMat, IViewRotMat * Position, FogShape);
+    vertexDistance = fog_distance(IViewRotMat * Position, FogShape);
     color = vec4(mix(Color, vec3(1, 1, 1), 0.2 * float(Hit > 0)), 0.1 + 0.3 * Strength);
 }

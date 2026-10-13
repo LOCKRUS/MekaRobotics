@@ -85,7 +85,7 @@ public class ClientSetup {
 
     @SubscribeEvent
     public static void registerShaders(RegisterShadersEvent event) throws IOException {
-        event.registerShader(new ShaderInstance(event.getResourceProvider(), ResourceLocation.fromNamespaceAndPath(Robotics.MODID, "shield"), DefaultVertexFormat.POSITION_TEX_COLOR), SHADER_SHIELD::setInstance);
+        event.registerShader(new ShaderInstance(event.getResourceProvider(), ResourceLocation.fromNamespaceAndPath(Robotics.MODID, "shield"), DefaultVertexFormat.POSITION_COLOR_NORMAL), SHADER_SHIELD::setInstance);
     }
 
     public static class ShaderTracker implements Supplier<ShaderInstance> {
