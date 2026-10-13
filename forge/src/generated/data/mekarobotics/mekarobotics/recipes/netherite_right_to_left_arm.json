@@ -1,12 +1,12 @@
 {
-  "type": "forge:conditional",
+  "type": "neoforge:conditional",
   "recipes": [
     {
       "conditions": [
         {
-          "type": "forge:not",
+          "type": "neoforge:not",
           "value": {
-            "type": "forge:tag_empty",
+            "type": "neoforge:tag_empty",
             "tag": "forge:ingots/netherite"
           }
         }

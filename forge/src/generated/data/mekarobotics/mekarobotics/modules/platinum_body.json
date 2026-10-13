@@ -1,6 +1,6 @@
 {
   "items": {
-    "type": "forge:intersection",
+    "type": "neoforge:intersection",
     "children": [
       {
         "tag": "mekarobotics:material/platinum"
