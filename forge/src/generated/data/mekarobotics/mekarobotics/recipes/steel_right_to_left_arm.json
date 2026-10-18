@@ -1,27 +1,20 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:ingots/steel"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shapeless",
-        "category": "misc",
-        "ingredients": [
-          {
-            "item": "mekarobotics:steel_right_arm"
-          }
-        ],
-        "result": {
-          "item": "mekarobotics:steel_left_arm"
-        }
+      "item": "mekarobotics:steel_right_arm"
+    }
+  ],
+  "result": {
+    "item": "mekarobotics:steel_left_arm"
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:ingots/steel"
       }
     }
   ]

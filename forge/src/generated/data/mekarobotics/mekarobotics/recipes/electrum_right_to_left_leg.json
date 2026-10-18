@@ -1,27 +1,20 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:ingots/electrum"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shapeless",
-        "category": "misc",
-        "ingredients": [
-          {
-            "item": "mekarobotics:electrum_right_leg"
-          }
-        ],
-        "result": {
-          "item": "mekarobotics:electrum_left_leg"
-        }
+      "item": "mekarobotics:electrum_right_leg"
+    }
+  ],
+  "result": {
+    "item": "mekarobotics:electrum_left_leg"
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:ingots/electrum"
       }
     }
   ]

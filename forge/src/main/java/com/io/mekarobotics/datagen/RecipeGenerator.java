@@ -13,10 +13,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.crafting.ConditionalRecipe;
-import net.neoforged.neoforge.common.crafting.conditions.ICondition;
-import net.neoforged.neoforge.common.crafting.conditions.NotCondition;
-import net.neoforged.neoforge.common.crafting.conditions.TagEmptyCondition;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
@@ -35,8 +31,7 @@ public class RecipeGenerator extends RecipeProvider {
             ItemLike head = ModItems.MATERIALS.get(material).get(EnumRobotPart.HEAD).get();
             ItemLike body = ModItems.MATERIALS.get(material).get(EnumRobotPart.BODY).get();
 
-            ICondition condition = new NotCondition(new TagEmptyCondition(material.getMetal().location()));
-            Function<ResourceLocation, Consumer<FinishedRecipe>> requiresMaterial = loc -> recipe -> ConditionalRecipe.builder().addCondition(condition).addRecipe(recipe).build(writer, loc);
+            Function<ResourceLocation, Consumer<FinishedRecipe>> requiresMaterial = loc -> writer::accept;
             Function<ItemLike, Consumer<FinishedRecipe>> requiresMaterial2 = item -> requiresMaterial.apply(RecipeBuilder.getDefaultRecipeId(item));
             Function<EnumRobotPart, Consumer<FinishedRecipe>> requiresMaterial3 = part -> requiresMaterial2.apply(ModItems.MATERIALS.get(material).get(part).get());
 

@@ -1,39 +1,32 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "m": {
+      "item": "mekarobotics:servo_motor"
+    },
+    "p": {
+      "item": "mekarobotics:plate_iridium"
+    },
+    "w": {
+      "item": "mekarobotics:wiring"
+    }
+  },
+  "pattern": [
+    "pm ",
+    "pmw",
+    " pp"
+  ],
+  "result": {
+    "item": "mekarobotics:iridium_left_leg"
+  },
+  "show_notification": false,
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:ingots/iridium"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "misc",
-        "key": {
-          "m": {
-            "item": "mekarobotics:servo_motor"
-          },
-          "p": {
-            "item": "mekarobotics:plate_iridium"
-          },
-          "w": {
-            "item": "mekarobotics:wiring"
-          }
-        },
-        "pattern": [
-          "pm ",
-          "pmw",
-          " pp"
-        ],
-        "result": {
-          "item": "mekarobotics:iridium_left_leg"
-        },
-        "show_notification": false
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:ingots/iridium"
       }
     }
   ]

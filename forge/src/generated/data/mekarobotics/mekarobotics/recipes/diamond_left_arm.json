@@ -1,39 +1,32 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "m": {
+      "item": "mekarobotics:servo_motor"
+    },
+    "p": {
+      "item": "mekarobotics:plate_diamond"
+    },
+    "w": {
+      "item": "mekarobotics:wiring"
+    }
+  },
+  "pattern": [
+    " pm",
+    "pwp",
+    "mp "
+  ],
+  "result": {
+    "item": "mekarobotics:diamond_left_arm"
+  },
+  "show_notification": false,
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:gems/diamond"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "misc",
-        "key": {
-          "m": {
-            "item": "mekarobotics:servo_motor"
-          },
-          "p": {
-            "item": "mekarobotics:plate_diamond"
-          },
-          "w": {
-            "item": "mekarobotics:wiring"
-          }
-        },
-        "pattern": [
-          " pm",
-          "pwp",
-          "mp "
-        ],
-        "result": {
-          "item": "mekarobotics:diamond_left_arm"
-        },
-        "show_notification": false
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:gems/diamond"
       }
     }
   ]

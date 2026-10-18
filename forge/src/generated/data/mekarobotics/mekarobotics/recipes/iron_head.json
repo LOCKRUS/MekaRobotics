@@ -1,39 +1,32 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "c": {
+      "item": "mekarobotics:camera_unit"
+    },
+    "n": {
+      "item": "mekarobotics:neural_processing_unit"
+    },
+    "p": {
+      "item": "mekarobotics:plate_iron"
+    }
+  },
+  "pattern": [
+    "ppp",
+    "pnp",
+    " c "
+  ],
+  "result": {
+    "item": "mekarobotics:iron_head"
+  },
+  "show_notification": true,
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:ingots/iron"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "misc",
-        "key": {
-          "c": {
-            "item": "mekarobotics:camera_unit"
-          },
-          "n": {
-            "item": "mekarobotics:neural_processing_unit"
-          },
-          "p": {
-            "item": "mekarobotics:plate_iron"
-          }
-        },
-        "pattern": [
-          "ppp",
-          "pnp",
-          " c "
-        ],
-        "result": {
-          "item": "mekarobotics:iron_head"
-        },
-        "show_notification": true
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:ingots/iron"
       }
     }
   ]

@@ -1,39 +1,32 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "c": {
+      "item": "mekarobotics:camera_unit"
+    },
+    "n": {
+      "item": "mekarobotics:neural_processing_unit"
+    },
+    "p": {
+      "item": "mekarobotics:plate_diamond"
+    }
+  },
+  "pattern": [
+    "ppp",
+    "pnp",
+    " c "
+  ],
+  "result": {
+    "item": "mekarobotics:diamond_head"
+  },
+  "show_notification": true,
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:gems/diamond"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "misc",
-        "key": {
-          "c": {
-            "item": "mekarobotics:camera_unit"
-          },
-          "n": {
-            "item": "mekarobotics:neural_processing_unit"
-          },
-          "p": {
-            "item": "mekarobotics:plate_diamond"
-          }
-        },
-        "pattern": [
-          "ppp",
-          "pnp",
-          " c "
-        ],
-        "result": {
-          "item": "mekarobotics:diamond_head"
-        },
-        "show_notification": true
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:gems/diamond"
       }
     }
   ]

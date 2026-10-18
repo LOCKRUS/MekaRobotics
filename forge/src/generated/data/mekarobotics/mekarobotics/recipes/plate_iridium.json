@@ -1,29 +1,22 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "mekarobotics:assembler",
+  "energy": 50000,
+  "key": {
+    "i": {
+      "tag": "forge:ingots/iridium"
+    }
+  },
+  "pattern": "iiii",
+  "processing_time": 500,
+  "result": {
+    "item": "mekarobotics:plate_iridium"
+  },
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:ingots/iridium"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "mekarobotics:assembler",
-        "energy": 50000,
-        "key": {
-          "i": {
-            "tag": "forge:ingots/iridium"
-          }
-        },
-        "pattern": "iiii",
-        "processing_time": 500,
-        "result": {
-          "item": "mekarobotics:plate_iridium"
-        }
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:ingots/iridium"
       }
     }
   ]

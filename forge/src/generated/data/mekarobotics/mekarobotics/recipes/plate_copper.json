@@ -1,29 +1,22 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "mekarobotics:assembler",
+  "energy": 10000,
+  "key": {
+    "i": {
+      "tag": "forge:ingots/copper"
+    }
+  },
+  "pattern": "iiii",
+  "processing_time": 100,
+  "result": {
+    "item": "mekarobotics:plate_copper"
+  },
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:ingots/copper"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "mekarobotics:assembler",
-        "energy": 10000,
-        "key": {
-          "i": {
-            "tag": "forge:ingots/copper"
-          }
-        },
-        "pattern": "iiii",
-        "processing_time": 100,
-        "result": {
-          "item": "mekarobotics:plate_copper"
-        }
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:ingots/copper"
       }
     }
   ]

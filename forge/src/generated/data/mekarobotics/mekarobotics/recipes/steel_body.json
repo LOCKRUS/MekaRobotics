@@ -1,45 +1,38 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "mekarobotics:battery"
+    },
+    "c": {
+      "item": "mekarobotics:advanced_circuit"
+    },
+    "g": {
+      "tag": "forge:glass_panes"
+    },
+    "p": {
+      "item": "mekarobotics:plate_steel"
+    },
+    "w": {
+      "item": "mekarobotics:advanced_wiring"
+    }
+  },
+  "pattern": [
+    "pgp",
+    "bwb",
+    "pcp"
+  ],
+  "result": {
+    "item": "mekarobotics:steel_body"
+  },
+  "show_notification": true,
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:ingots/steel"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "misc",
-        "key": {
-          "b": {
-            "item": "mekarobotics:battery"
-          },
-          "c": {
-            "item": "mekarobotics:advanced_circuit"
-          },
-          "g": {
-            "tag": "forge:glass_panes"
-          },
-          "p": {
-            "item": "mekarobotics:plate_steel"
-          },
-          "w": {
-            "item": "mekarobotics:advanced_wiring"
-          }
-        },
-        "pattern": [
-          "pgp",
-          "bwb",
-          "pcp"
-        ],
-        "result": {
-          "item": "mekarobotics:steel_body"
-        },
-        "show_notification": true
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:ingots/steel"
       }
     }
   ]

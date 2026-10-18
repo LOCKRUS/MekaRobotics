@@ -1,27 +1,20 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:ingots/lead"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shapeless",
-        "category": "misc",
-        "ingredients": [
-          {
-            "item": "mekarobotics:lead_right_leg"
-          }
-        ],
-        "result": {
-          "item": "mekarobotics:lead_left_leg"
-        }
+      "item": "mekarobotics:lead_right_leg"
+    }
+  ],
+  "result": {
+    "item": "mekarobotics:lead_left_leg"
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:ingots/lead"
       }
     }
   ]

@@ -1,29 +1,22 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "mekarobotics:assembler",
+  "energy": 50000,
+  "key": {
+    "i": {
+      "tag": "forge:ingots/lead"
+    }
+  },
+  "pattern": "iiii",
+  "processing_time": 500,
+  "result": {
+    "item": "mekarobotics:plate_lead"
+  },
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:ingots/lead"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "mekarobotics:assembler",
-        "energy": 50000,
-        "key": {
-          "i": {
-            "tag": "forge:ingots/lead"
-          }
-        },
-        "pattern": "iiii",
-        "processing_time": 500,
-        "result": {
-          "item": "mekarobotics:plate_lead"
-        }
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:ingots/lead"
       }
     }
   ]

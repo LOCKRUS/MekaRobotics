@@ -1,27 +1,20 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:ingots/platinum"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shapeless",
-        "category": "misc",
-        "ingredients": [
-          {
-            "item": "mekarobotics:platinum_right_leg"
-          }
-        ],
-        "result": {
-          "item": "mekarobotics:platinum_left_leg"
-        }
+      "item": "mekarobotics:platinum_right_leg"
+    }
+  ],
+  "result": {
+    "item": "mekarobotics:platinum_left_leg"
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:ingots/platinum"
       }
     }
   ]

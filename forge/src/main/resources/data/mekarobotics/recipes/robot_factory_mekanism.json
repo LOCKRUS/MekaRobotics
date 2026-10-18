@@ -1,39 +1,32 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "oso",
+    " c ",
+    "bsb"
+  ],
+  "key": {
+    "o": {
+      "item": "mekanism:ingot_osmium"
+    },
+    "s": {
+      "item": "mekarobotics:battery"
+    },
+    "b": {
+      "item": "mekanism:alloy_reinforced"
+    },
+    "c": {
+      "item": "mekarobotics:complex_circuit"
+    }
+  },
+  "result": {
+    "item": "mekarobotics:robot_factory"
+  },
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:mod_loaded",
-          "modid": "mekanism"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "misc",
-        "pattern": [
-          "oso",
-          " c ",
-          "bsb"
-        ],
-        "key": {
-          "o": {
-            "item": "mekanism:ingot_osmium"
-          },
-          "s": {
-            "item": "mekarobotics:battery"
-          },
-          "b": {
-            "item": "mekanism:alloy_reinforced"
-          },
-          "c": {
-            "item": "mekarobotics:complex_circuit"
-          }
-        },
-        "result": {
-          "item": "mekarobotics:robot_factory"
-        }
-      }
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
     }
   ]
 }

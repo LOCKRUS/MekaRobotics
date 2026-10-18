@@ -1,39 +1,32 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "m": {
+      "item": "mekarobotics:servo_motor"
+    },
+    "p": {
+      "item": "mekarobotics:plate_signalum"
+    },
+    "w": {
+      "item": "mekarobotics:wiring"
+    }
+  },
+  "pattern": [
+    "mp ",
+    "pwp",
+    " pm"
+  ],
+  "result": {
+    "item": "mekarobotics:signalum_right_arm"
+  },
+  "show_notification": false,
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:ingots/signalum"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "misc",
-        "key": {
-          "m": {
-            "item": "mekarobotics:servo_motor"
-          },
-          "p": {
-            "item": "mekarobotics:plate_signalum"
-          },
-          "w": {
-            "item": "mekarobotics:wiring"
-          }
-        },
-        "pattern": [
-          "mp ",
-          "pwp",
-          " pm"
-        ],
-        "result": {
-          "item": "mekarobotics:signalum_right_arm"
-        },
-        "show_notification": false
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:ingots/signalum"
       }
     }
   ]

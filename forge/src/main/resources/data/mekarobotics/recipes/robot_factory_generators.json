@@ -1,24 +1,38 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "oco",
+    "gbg",
+    "srs"
+  ],
+  "key": {
+    "o": {
+      "item": "mekanism:ingot_osmium"
+    },
+    "c": {
+      "item": "mekanism:basic_control_circuit"
+    },
+    "g": {
+      "item": "mekanismgenerators:gas_burning_generator"
+    },
+    "b": {
+      "item": "mekarobotics:battery"
+    },
+    "s": {
+      "item": "mekanism:steel_casing"
+    },
+    "r": {
+      "item": "mekarobotics:complex_circuit"
+    }
+  },
+  "result": {
+    "item": "mekarobotics:robot_factory"
+  },
+  "neoforge:conditions": [
     {
-      "conditions": [
-        { "type": "neoforge:mod_loaded", "modid": "mekanismgenerators" }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "misc",
-        "pattern": ["oco", "gbg", "srs"],
-        "key": {
-          "o": { "item": "mekanism:ingot_osmium" },
-          "c": { "item": "mekanism:basic_control_circuit" },
-          "g": { "item": "mekanismgenerators:gas_burning_generator" },
-          "b": { "item": "mekarobotics:battery" },
-          "s": { "item": "mekanism:steel_casing" },
-          "r": { "item": "mekarobotics:complex_circuit" }
-        },
-        "result": { "item": "mekarobotics:robot_factory" }
-      }
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanismgenerators"
     }
   ]
 }

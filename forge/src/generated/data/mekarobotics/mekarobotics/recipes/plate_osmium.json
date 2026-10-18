@@ -1,29 +1,22 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "mekarobotics:assembler",
+  "energy": 30000,
+  "key": {
+    "i": {
+      "tag": "forge:ingots/osmium"
+    }
+  },
+  "pattern": "iiii",
+  "processing_time": 300,
+  "result": {
+    "item": "mekarobotics:plate_osmium"
+  },
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:ingots/osmium"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "mekarobotics:assembler",
-        "energy": 30000,
-        "key": {
-          "i": {
-            "tag": "forge:ingots/osmium"
-          }
-        },
-        "pattern": "iiii",
-        "processing_time": 300,
-        "result": {
-          "item": "mekarobotics:plate_osmium"
-        }
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:ingots/osmium"
       }
     }
   ]

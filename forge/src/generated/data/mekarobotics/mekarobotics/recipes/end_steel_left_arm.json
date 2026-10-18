@@ -1,39 +1,32 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "m": {
+      "item": "mekarobotics:servo_motor"
+    },
+    "p": {
+      "item": "mekarobotics:plate_end_steel"
+    },
+    "w": {
+      "item": "mekarobotics:wiring"
+    }
+  },
+  "pattern": [
+    " pm",
+    "pwp",
+    "mp "
+  ],
+  "result": {
+    "item": "mekarobotics:end_steel_left_arm"
+  },
+  "show_notification": false,
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:not",
-          "value": {
-            "type": "neoforge:tag_empty",
-            "tag": "forge:ingots/end_steel"
-          }
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "misc",
-        "key": {
-          "m": {
-            "item": "mekarobotics:servo_motor"
-          },
-          "p": {
-            "item": "mekarobotics:plate_end_steel"
-          },
-          "w": {
-            "item": "mekarobotics:wiring"
-          }
-        },
-        "pattern": [
-          " pm",
-          "pwp",
-          "mp "
-        ],
-        "result": {
-          "item": "mekarobotics:end_steel_left_arm"
-        },
-        "show_notification": false
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "forge:ingots/end_steel"
       }
     }
   ]

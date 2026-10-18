@@ -1,36 +1,29 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "rar",
+    "aca",
+    "rar"
+  ],
+  "key": {
+    "r": {
+      "item": "mekanism:alloy_reinforced"
+    },
+    "a": {
+      "item": "mekanism:ingot_osmium"
+    },
+    "c": {
+      "item": "mekarobotics:advanced_circuit"
+    }
+  },
+  "result": {
+    "item": "mekarobotics:complex_circuit"
+  },
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:mod_loaded",
-          "modid": "mekanism"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "misc",
-        "pattern": [
-          "rar",
-          "aca",
-          "rar"
-        ],
-        "key": {
-          "r": {
-            "item": "mekanism:alloy_reinforced"
-          },
-          "a": {
-            "item": "mekanism:ingot_osmium"
-          },
-          "c": {
-            "item": "mekarobotics:advanced_circuit"
-          }
-        },
-        "result": {
-          "item": "mekarobotics:complex_circuit"
-        }
-      }
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
     }
   ]
 }

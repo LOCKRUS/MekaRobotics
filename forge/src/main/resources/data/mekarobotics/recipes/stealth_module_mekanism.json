@@ -1,39 +1,32 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "eae",
+    "pcc",
+    "eae"
+  ],
+  "key": {
+    "e": {
+      "item": "minecraft:echo_shard"
+    },
+    "a": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "p": {
+      "item": "minecraft:ender_pearl"
+    },
+    "c": {
+      "item": "mekarobotics:complex_circuit"
+    }
+  },
+  "result": {
+    "item": "mekarobotics:stealth_module"
+  },
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:mod_loaded",
-          "modid": "mekanism"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "misc",
-        "pattern": [
-          "eae",
-          "pcc",
-          "eae"
-        ],
-        "key": {
-          "e": {
-            "item": "minecraft:echo_shard"
-          },
-          "a": {
-            "item": "minecraft:amethyst_shard"
-          },
-          "p": {
-            "item": "minecraft:ender_pearl"
-          },
-          "c": {
-            "item": "mekarobotics:complex_circuit"
-          }
-        },
-        "result": {
-          "item": "mekarobotics:stealth_module"
-        }
-      }
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
     }
   ]
 }
