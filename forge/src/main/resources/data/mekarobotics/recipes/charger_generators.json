@@ -1,0 +1,23 @@
+{
+  "type": "neoforge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        { "type": "neoforge:mod_loaded", "modid": "mekanismgenerators" }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": ["iri", "ece", "ibi"],
+        "key": {
+          "i": { "item": "mekanism:ingot_osmium" },
+          "r": { "item": "minecraft:redstone" },
+          "e": { "item": "mekanism:basic_energy_cube" },
+          "c": { "item": "mekarobotics:advanced_circuit" },
+          "b": { "item": "mekanismgenerators:solar_generator" }
+        },
+        "result": { "item": "mekarobotics:charger" }
+      }
+    }
+  ]
+}

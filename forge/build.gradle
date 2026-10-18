@@ -119,8 +119,8 @@ dependencies {
 
     // JEI
     modCompileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-    modCompileOnly("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
-    modRuntimeOnly("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+    modCompileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+    modRuntimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
     // CC Tweaked
     modImplementation("cc.tweaked:cc-tweaked-${minecraft_version}-forge:${cct_version}")
     implementation("cc.tweaked:cobalt:${cobalt_version}")

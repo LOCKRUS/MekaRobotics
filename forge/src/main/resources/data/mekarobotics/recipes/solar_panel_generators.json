@@ -1,0 +1,22 @@
+{
+  "type": "neoforge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        { "type": "neoforge:mod_loaded", "modid": "mekanismgenerators" }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": ["ggg", "sas", "pgp"],
+        "key": {
+          "g": { "item": "minecraft:glass_pane" },
+          "a": { "item": "mekarobotics:advanced_wiring" },
+          "s": { "item": "mekanismgenerators:solar_generator" },
+          "p": { "item": "mekanism:ingot_osmium" }
+        },
+        "result": { "item": "mekarobotics:solar_panel" }
+      }
+    }
+  ]
+}

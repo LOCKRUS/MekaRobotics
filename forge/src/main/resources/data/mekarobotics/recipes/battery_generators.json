@@ -1,0 +1,22 @@
+{
+  "type": "neoforge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        { "type": "neoforge:mod_loaded", "modid": "mekanismgenerators" }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": ["oco", "waw", "oco"],
+        "key": {
+          "o": { "item": "mekanism:ingot_osmium" },
+          "c": { "item": "mekarobotics:advanced_circuit" },
+          "w": { "item": "mekanismgenerators:wind_generator" },
+          "a": { "item": "mekanism:basic_induction_cell" }
+        },
+        "result": { "item": "mekarobotics:battery" }
+      }
+    }
+  ]
+}
