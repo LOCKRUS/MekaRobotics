@@ -118,10 +118,21 @@ dependencies {
     implementation 'mekanism:Mekanism:1.21.1-10.7.14.79'
     implementation 'mekanism:Mekanism:1.21.1-10.7.14.79:generators'
     implementation 'software.bernie.geckolib:geckolib-neoforge-1.21.1:4.7.3'
-    implementation files('libs/caliko-1.3.8.jar')
+    implementation files('vendor/caliko-1.3.8.jar')
     compileOnly 'mezz.jei:jei-1.21.1-neoforge-api:19.21.0.247'
     localRuntime 'mekanism:Mekanism:1.21.1-10.7.14.79'
     localRuntime 'mekanism:Mekanism:1.21.1-10.7.14.79:generators'
+}
+
+// Caliko is a library, not a NeoForge mod. Bundle it into MekaRobotics so it
+// must not be placed separately in the user's mods directory.
+tasks.named('jar', Jar).configure {
+    from sourceSets.main.output
+    from {
+        zipTree(file('vendor/caliko-1.3.8.jar')).matching {
+            exclude 'META-INF/**'
+        }
+    }
 }
 
 tasks.withType(JavaCompile).configureEach {

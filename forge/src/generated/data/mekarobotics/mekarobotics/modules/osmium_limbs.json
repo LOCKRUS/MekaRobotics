@@ -5,20 +5,23 @@
       {
         "tag": "mekarobotics:material/osmium"
       },
-      [
-        {
-          "tag": "mekarobotics:part/left_arm"
-        },
-        {
-          "tag": "mekarobotics:part/left_leg"
-        },
-        {
-          "tag": "mekarobotics:part/right_arm"
-        },
-        {
-          "tag": "mekarobotics:part/right_leg"
-        }
-      ]
+      {
+        "type": "neoforge:compound",
+        "children": [
+          {
+            "tag": "mekarobotics:part/left_arm"
+          },
+          {
+            "tag": "mekarobotics:part/left_leg"
+          },
+          {
+            "tag": "mekarobotics:part/right_arm"
+          },
+          {
+            "tag": "mekarobotics:part/right_leg"
+          }
+        ]
+      }
     ]
   },
   "perks": [

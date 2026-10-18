@@ -1,7 +1,0 @@
-{
-  "name": "mekarobotics:shield",
-  "maxLevel": 10,
-  "stackable": true,
-  "displayColor": "aqua",
-  "internalLogic": true
-}

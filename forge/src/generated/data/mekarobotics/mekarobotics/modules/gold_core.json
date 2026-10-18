@@ -5,14 +5,17 @@
       {
         "tag": "mekarobotics:material/gold"
       },
-      [
-        {
-          "tag": "mekarobotics:part/body"
-        },
-        {
-          "tag": "mekarobotics:part/head"
-        }
-      ]
+      {
+        "type": "neoforge:compound",
+        "children": [
+          {
+            "tag": "mekarobotics:part/body"
+          },
+          {
+            "tag": "mekarobotics:part/head"
+          }
+        ]
+      }
     ]
   },
   "perks": [

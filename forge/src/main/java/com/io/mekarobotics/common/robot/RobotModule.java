@@ -46,7 +46,7 @@ public class RobotModule {
             PerkMap.CODEC.optionalFieldOf("perks", new PerkMap()).forGetter(c -> (PerkMap) c.perks)
     ).apply(instance, RobotModule::initialize));
     public static final Codec<RobotModule> NETWORK_CODEC = RecordCodecBuilder.create(instance -> instance.group(
-            NETWORK_INGREDIENT_CODEC.fieldOf("items").forGetter(RobotModule::getItems),
+            INGREDIENT_CODEC.fieldOf("items").forGetter(RobotModule::getItems),
             Codec.list(StringRepresentable.fromEnum(EnumModuleSlot::values)).optionalFieldOf("slots", List.of()).forGetter(c -> c.getViableSlots().stream().toList()),
             ModActions.CODEC.optionalFieldOf("action", IAction.NO_ACTION).forGetter(RobotModule::getAction),
             ExtraCodecs.intRange(0, Integer.MAX_VALUE).optionalFieldOf("cooldown", 0).forGetter(RobotModule::getCooldown),

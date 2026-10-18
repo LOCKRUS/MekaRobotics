@@ -17,6 +17,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.neoforge.common.crafting.CompoundIngredient;
 import net.neoforged.neoforge.common.crafting.IntersectionIngredient;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -74,12 +75,12 @@ public abstract class ModuleProvider implements DataProvider {
     private static Ingredient limbsOf(EnumRobotMaterial material) {
         return IntersectionIngredient.of(
                 Ingredient.of(ModTags.MATERIAL_TAGS.get(material)),
-                Ingredient.merge(List.of(
+                CompoundIngredient.of(
                         Ingredient.of(ModTags.PART_TAGS.get(EnumModuleSlot.LEFT_ARM)),
                         Ingredient.of(ModTags.PART_TAGS.get(EnumModuleSlot.LEFT_LEG)),
                         Ingredient.of(ModTags.PART_TAGS.get(EnumModuleSlot.RIGHT_ARM)),
                         Ingredient.of(ModTags.PART_TAGS.get(EnumModuleSlot.RIGHT_LEG))
-                )));
+                ));
     }
 
     protected void stats(EnumRobotMaterial material, int headHealth, int headArmor, int headTough, int bodyHealth, int bodyArmor, int bodyTough, int health, int armor, int tough) {
@@ -127,10 +128,10 @@ public abstract class ModuleProvider implements DataProvider {
     protected void addLegPerk(EnumRobotMaterial material, Perk perk, int level) {
         Ingredient ingredient = IntersectionIngredient.of(
                 Ingredient.of(ModTags.MATERIAL_TAGS.get(material)),
-                Ingredient.merge(List.of(
+                CompoundIngredient.of(
                         Ingredient.of(ModTags.PART_TAGS.get(EnumModuleSlot.LEFT_LEG)),
                         Ingredient.of(ModTags.PART_TAGS.get(EnumModuleSlot.RIGHT_LEG))
-                )));
+                ));
         modules.put(Robotics.rl(material + "_legs"), new RobotModule.ModuleBuilder(ingredient).addPerk(perk, level).build());
     }
 
@@ -141,10 +142,10 @@ public abstract class ModuleProvider implements DataProvider {
     protected void addArmPerk(EnumRobotMaterial material, Perk perk, int level) {
         Ingredient ingredient = IntersectionIngredient.of(
                 Ingredient.of(ModTags.MATERIAL_TAGS.get(material)),
-                Ingredient.merge(List.of(
+                CompoundIngredient.of(
                         Ingredient.of(ModTags.PART_TAGS.get(EnumModuleSlot.LEFT_ARM)),
                         Ingredient.of(ModTags.PART_TAGS.get(EnumModuleSlot.RIGHT_ARM))
-                )));
+                ));
         modules.put(Robotics.rl(material + "_arms"), new RobotModule.ModuleBuilder(ingredient).addPerk(perk, level).build());
     }
 
@@ -155,10 +156,10 @@ public abstract class ModuleProvider implements DataProvider {
     protected void addCorePerk(EnumRobotMaterial material, Perk perk, int level) {
         Ingredient ingredient = IntersectionIngredient.of(
                 Ingredient.of(ModTags.MATERIAL_TAGS.get(material)),
-                Ingredient.merge(List.of(
+                CompoundIngredient.of(
                         Ingredient.of(ModTags.PART_TAGS.get(EnumModuleSlot.BODY)),
                         Ingredient.of(ModTags.PART_TAGS.get(EnumModuleSlot.HEAD))
-                )));
+                ));
         modules.put(Robotics.rl(material + "_core"), new RobotModule.ModuleBuilder(ingredient).addPerk(perk, level).build());
     }
 

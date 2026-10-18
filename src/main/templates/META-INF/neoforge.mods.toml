@@ -41,6 +41,13 @@ ordering="AFTER"
 side="BOTH"
 
 [[dependencies.${mod_id}]]
+modId="mekanismgenerators"
+type="required"
+versionRange="[10.7.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
 modId="computercraft"
 type="optional"
 versionRange="[1.115.0,)"
