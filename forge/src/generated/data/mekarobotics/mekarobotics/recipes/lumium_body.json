@@ -24,7 +24,7 @@
     "pcp"
   ],
   "result": {
-    "item": "mekarobotics:lumium_body"
+    "id": "mekarobotics:lumium_body"
   },
   "show_notification": true,
   "neoforge:conditions": [

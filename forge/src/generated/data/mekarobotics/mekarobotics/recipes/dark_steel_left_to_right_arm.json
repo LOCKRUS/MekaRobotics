@@ -7,7 +7,7 @@
     }
   ],
   "result": {
-    "item": "mekarobotics:dark_steel_right_arm"
+    "id": "mekarobotics:dark_steel_right_arm"
   },
   "neoforge:conditions": [
     {

@@ -7,7 +7,7 @@
     }
   ],
   "result": {
-    "item": "mekarobotics:psimetal_left_leg"
+    "id": "mekarobotics:psimetal_left_leg"
   },
   "neoforge:conditions": [
     {

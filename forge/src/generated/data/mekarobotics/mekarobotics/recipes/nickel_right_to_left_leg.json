@@ -7,7 +7,7 @@
     }
   ],
   "result": {
-    "item": "mekarobotics:nickel_left_leg"
+    "id": "mekarobotics:nickel_left_leg"
   },
   "neoforge:conditions": [
     {

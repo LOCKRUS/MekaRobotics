@@ -1,23 +1,23 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "category": "misc",
-    "pattern": [
-        "   ",
-        " c ",
-        "bsb"
-    ],
-    "key": {
-        "b": {
-            "item": "mekarobotics:plate_iron"
-        },
-		"s": {
-            "item": "mekarobotics:battery"
-        },
-		"c": {
-            "item": "mekarobotics:complex_circuit"
-        }
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "   ",
+    " c ",
+    "bsb"
+  ],
+  "key": {
+    "b": {
+      "item": "mekarobotics:plate_iron"
     },
-    "result": {
-        "item": "mekarobotics:robot_factory"
+    "s": {
+      "item": "mekarobotics:battery"
+    },
+    "c": {
+      "item": "mekarobotics:complex_circuit"
     }
+  },
+  "result": {
+    "id": "mekarobotics:robot_factory"
+  }
 }

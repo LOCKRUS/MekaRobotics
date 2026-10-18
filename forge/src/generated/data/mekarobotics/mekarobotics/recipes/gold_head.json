@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:gold_head"
+    "id": "mekarobotics:gold_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

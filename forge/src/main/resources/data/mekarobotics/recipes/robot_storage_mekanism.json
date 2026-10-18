@@ -18,7 +18,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:robot_storage"
+    "id": "mekarobotics:robot_storage"
   },
   "neoforge:conditions": [
     {

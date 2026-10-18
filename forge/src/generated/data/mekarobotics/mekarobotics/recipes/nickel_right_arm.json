@@ -18,7 +18,7 @@
     " pm"
   ],
   "result": {
-    "item": "mekarobotics:nickel_right_arm"
+    "id": "mekarobotics:nickel_right_arm"
   },
   "show_notification": false,
   "neoforge:conditions": [

@@ -18,7 +18,7 @@
     "pp "
   ],
   "result": {
-    "item": "mekarobotics:aluminium_right_leg"
+    "id": "mekarobotics:aluminium_right_leg"
   },
   "show_notification": false,
   "neoforge:conditions": [

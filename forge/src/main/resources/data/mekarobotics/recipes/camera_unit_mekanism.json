@@ -18,7 +18,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:camera_unit"
+    "id": "mekarobotics:camera_unit"
   },
   "neoforge:conditions": [
     {

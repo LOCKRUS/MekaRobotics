@@ -24,7 +24,7 @@
     "pcp"
   ],
   "result": {
-    "item": "mekarobotics:iridium_body"
+    "id": "mekarobotics:iridium_body"
   },
   "show_notification": true,
   "neoforge:conditions": [

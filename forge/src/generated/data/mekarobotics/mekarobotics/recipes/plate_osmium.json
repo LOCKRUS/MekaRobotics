@@ -9,7 +9,7 @@
   "pattern": "iiii",
   "processing_time": 300,
   "result": {
-    "item": "mekarobotics:plate_osmium"
+    "id": "mekarobotics:plate_osmium"
   },
   "neoforge:conditions": [
     {

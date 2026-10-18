@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:silver_head"
+    "id": "mekarobotics:silver_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

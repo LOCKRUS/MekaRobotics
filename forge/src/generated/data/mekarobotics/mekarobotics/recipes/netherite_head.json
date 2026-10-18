@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:netherite_head"
+    "id": "mekarobotics:netherite_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

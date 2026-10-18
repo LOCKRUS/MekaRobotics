@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "result": {
-    "item": "mekarobotics:advanced_wiring"
+    "id": "mekarobotics:advanced_wiring"
   },
   "pattern": [
     " s ",
@@ -16,7 +16,7 @@
     "s": {
       "item": "mekarobotics:silver_wire"
     },
-	"w": {
+    "w": {
       "item": "mekarobotics:wiring"
     }
   }

@@ -9,7 +9,7 @@
   "pattern": "iiii",
   "processing_time": 100,
   "result": {
-    "item": "mekarobotics:plate_lumium"
+    "id": "mekarobotics:plate_lumium"
   },
   "neoforge:conditions": [
     {

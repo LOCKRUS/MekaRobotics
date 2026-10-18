@@ -11,7 +11,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:iron_rod",
-    "count": 4
+    "count": 4,
+    "id": "mekarobotics:iron_rod"
   }
 }

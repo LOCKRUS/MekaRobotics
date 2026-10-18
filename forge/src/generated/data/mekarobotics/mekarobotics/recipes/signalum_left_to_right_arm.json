@@ -7,7 +7,7 @@
     }
   ],
   "result": {
-    "item": "mekarobotics:signalum_right_arm"
+    "id": "mekarobotics:signalum_right_arm"
   },
   "neoforge:conditions": [
     {

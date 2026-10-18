@@ -21,7 +21,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:circuit"
+    "id": "mekarobotics:circuit"
   },
   "neoforge:conditions": [
     {

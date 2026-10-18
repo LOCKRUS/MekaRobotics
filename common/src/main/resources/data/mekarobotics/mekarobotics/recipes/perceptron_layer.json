@@ -1,18 +1,18 @@
 {
-    "type": "mekarobotics:assembler",
-    "category": "misc",
-	"pattern": "cici",
-    "key": {
-        "c": {
-            "item": "mekarobotics:circuit"
-        }, 
-		"i": {
-            "tag": "forge:nuggets/iron"
-        }
-    }, 
-	"energy": 100000,
-	"processing_time": 500,
-    "result": {
-        "item": "mekarobotics:perceptron_layer"
+  "type": "mekarobotics:assembler",
+  "category": "misc",
+  "pattern": "cici",
+  "key": {
+    "c": {
+      "item": "mekarobotics:circuit"
+    },
+    "i": {
+      "tag": "forge:nuggets/iron"
     }
+  },
+  "energy": 100000,
+  "processing_time": 500,
+  "result": {
+    "id": "mekarobotics:perceptron_layer"
+  }
 }

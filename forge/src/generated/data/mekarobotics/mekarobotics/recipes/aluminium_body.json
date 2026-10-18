@@ -24,7 +24,7 @@
     "pcp"
   ],
   "result": {
-    "item": "mekarobotics:aluminium_body"
+    "id": "mekarobotics:aluminium_body"
   },
   "show_notification": true,
   "neoforge:conditions": [

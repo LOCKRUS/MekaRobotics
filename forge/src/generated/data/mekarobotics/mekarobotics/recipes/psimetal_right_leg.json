@@ -18,7 +18,7 @@
     "pp "
   ],
   "result": {
-    "item": "mekarobotics:psimetal_right_leg"
+    "id": "mekarobotics:psimetal_right_leg"
   },
   "show_notification": false,
   "neoforge:conditions": [

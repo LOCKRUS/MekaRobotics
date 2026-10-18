@@ -18,7 +18,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:servo_motor"
+    "id": "mekarobotics:servo_motor"
   },
   "neoforge:conditions": [
     {

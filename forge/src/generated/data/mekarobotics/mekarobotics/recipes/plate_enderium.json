@@ -9,7 +9,7 @@
   "pattern": "iiii",
   "processing_time": 500,
   "result": {
-    "item": "mekarobotics:plate_enderium"
+    "id": "mekarobotics:plate_enderium"
   },
   "neoforge:conditions": [
     {

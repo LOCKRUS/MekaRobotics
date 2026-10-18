@@ -21,7 +21,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:ender_module"
+    "id": "mekarobotics:ender_module"
   },
   "neoforge:conditions": [
     {

@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:iron_head"
+    "id": "mekarobotics:iron_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

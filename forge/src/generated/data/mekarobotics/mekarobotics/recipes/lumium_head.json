@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:lumium_head"
+    "id": "mekarobotics:lumium_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

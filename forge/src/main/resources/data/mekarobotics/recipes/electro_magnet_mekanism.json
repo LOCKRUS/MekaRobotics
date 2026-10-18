@@ -21,7 +21,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:electro_magnet"
+    "id": "mekarobotics:electro_magnet"
   },
   "neoforge:conditions": [
     {

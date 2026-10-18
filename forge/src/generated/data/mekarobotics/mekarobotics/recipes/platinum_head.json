@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:platinum_head"
+    "id": "mekarobotics:platinum_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

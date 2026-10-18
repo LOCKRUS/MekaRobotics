@@ -9,7 +9,7 @@
   "pattern": "iiii",
   "processing_time": 300,
   "result": {
-    "item": "mekarobotics:plate_bronze"
+    "id": "mekarobotics:plate_bronze"
   },
   "neoforge:conditions": [
     {

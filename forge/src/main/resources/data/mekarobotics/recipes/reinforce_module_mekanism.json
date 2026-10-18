@@ -21,7 +21,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:reinforce_module"
+    "id": "mekarobotics:reinforce_module"
   },
   "neoforge:conditions": [
     {

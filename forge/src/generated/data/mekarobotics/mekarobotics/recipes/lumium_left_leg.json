@@ -18,7 +18,7 @@
     " pp"
   ],
   "result": {
-    "item": "mekarobotics:lumium_left_leg"
+    "id": "mekarobotics:lumium_left_leg"
   },
   "show_notification": false,
   "neoforge:conditions": [

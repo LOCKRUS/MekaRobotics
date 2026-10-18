@@ -7,7 +7,7 @@
     }
   ],
   "result": {
-    "item": "mekarobotics:netherite_left_arm"
+    "id": "mekarobotics:netherite_left_arm"
   },
   "neoforge:conditions": [
     {

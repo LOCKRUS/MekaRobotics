@@ -18,7 +18,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:dash_module"
+    "id": "mekarobotics:dash_module"
   },
   "neoforge:conditions": [
     {

@@ -7,7 +7,7 @@
     }
   ],
   "result": {
-    "item": "mekarobotics:iridium_right_leg"
+    "id": "mekarobotics:iridium_right_leg"
   },
   "neoforge:conditions": [
     {

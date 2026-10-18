@@ -24,7 +24,7 @@
     "pcp"
   ],
   "result": {
-    "item": "mekarobotics:electrum_body"
+    "id": "mekarobotics:electrum_body"
   },
   "show_notification": true,
   "neoforge:conditions": [

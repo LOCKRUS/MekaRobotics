@@ -18,7 +18,7 @@
     " pm"
   ],
   "result": {
-    "item": "mekarobotics:psimetal_right_arm"
+    "id": "mekarobotics:psimetal_right_arm"
   },
   "show_notification": false,
   "neoforge:conditions": [

@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:psimetal_head"
+    "id": "mekarobotics:psimetal_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

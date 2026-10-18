@@ -7,7 +7,7 @@
     }
   ],
   "result": {
-    "item": "mekarobotics:iridium_right_arm"
+    "id": "mekarobotics:iridium_right_arm"
   },
   "neoforge:conditions": [
     {

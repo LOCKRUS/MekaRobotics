@@ -18,7 +18,7 @@
     "mp "
   ],
   "result": {
-    "item": "mekarobotics:signalum_left_arm"
+    "id": "mekarobotics:signalum_left_arm"
   },
   "show_notification": false,
   "neoforge:conditions": [

@@ -7,7 +7,7 @@
     }
   ],
   "result": {
-    "item": "mekarobotics:iron_left_arm"
+    "id": "mekarobotics:iron_left_arm"
   },
   "neoforge:conditions": [
     {

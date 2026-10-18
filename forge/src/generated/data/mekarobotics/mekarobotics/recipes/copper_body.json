@@ -24,7 +24,7 @@
     "pcp"
   ],
   "result": {
-    "item": "mekarobotics:copper_body"
+    "id": "mekarobotics:copper_body"
   },
   "show_notification": true,
   "neoforge:conditions": [

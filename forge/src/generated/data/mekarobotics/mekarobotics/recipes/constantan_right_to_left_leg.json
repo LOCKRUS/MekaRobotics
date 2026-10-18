@@ -7,7 +7,7 @@
     }
   ],
   "result": {
-    "item": "mekarobotics:constantan_left_leg"
+    "id": "mekarobotics:constantan_left_leg"
   },
   "neoforge:conditions": [
     {

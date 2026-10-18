@@ -21,7 +21,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:stealth_module"
+    "id": "mekarobotics:stealth_module"
   },
   "neoforge:conditions": [
     {

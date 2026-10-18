@@ -24,7 +24,7 @@
     "pcp"
   ],
   "result": {
-    "item": "mekarobotics:signalum_body"
+    "id": "mekarobotics:signalum_body"
   },
   "show_notification": true,
   "neoforge:conditions": [

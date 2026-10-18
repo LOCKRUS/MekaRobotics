@@ -1,17 +1,17 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "category": "misc",
-    "pattern": [
-        " i ",
-        " i ",
-        " i "
-    ],
-    "key": {
-        "i": {
-            "tag": "forge:ingots/iron"
-        }
-    },
-    "result": {
-        "item": "mekarobotics:iron_rod"
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " i ",
+    " i ",
+    " i "
+  ],
+  "key": {
+    "i": {
+      "tag": "forge:ingots/iron"
     }
+  },
+  "result": {
+    "id": "mekarobotics:iron_rod"
+  }
 }

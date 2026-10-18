@@ -1,28 +1,28 @@
 {
-    "type": "mekarobotics:assembler",
-    "category": "misc",
-	"pattern": "rwiv",
-    "key": {
-        "r": {
-          "type": "mekarobotics:counted",
-          "items": {
-            "tag": "forge:dusts/redstone"
-          },
-          "amount": 3
-        }, 
-		"w": {
-            "item": "mekarobotics:complex_wiring"
-        },
-		"i": {
-            "tag": "forge:ingots/iron"
-        }, 
-		"v": {
-			"item": "mekarobotics:advanced_circuit"
-		}
-    }, 
-	"energy": 10000,
-	"processing_time": 200,
-    "result": {
-        "item": "mekarobotics:complex_circuit"
+  "type": "mekarobotics:assembler",
+  "category": "misc",
+  "pattern": "rwiv",
+  "key": {
+    "r": {
+      "type": "mekarobotics:counted",
+      "items": {
+        "tag": "forge:dusts/redstone"
+      },
+      "amount": 3
+    },
+    "w": {
+      "item": "mekarobotics:complex_wiring"
+    },
+    "i": {
+      "tag": "forge:ingots/iron"
+    },
+    "v": {
+      "item": "mekarobotics:advanced_circuit"
     }
+  },
+  "energy": 10000,
+  "processing_time": 200,
+  "result": {
+    "id": "mekarobotics:complex_circuit"
+  }
 }

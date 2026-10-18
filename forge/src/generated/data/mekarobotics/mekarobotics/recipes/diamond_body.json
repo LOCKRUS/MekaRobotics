@@ -24,7 +24,7 @@
     "pcp"
   ],
   "result": {
-    "item": "mekarobotics:diamond_body"
+    "id": "mekarobotics:diamond_body"
   },
   "show_notification": true,
   "neoforge:conditions": [

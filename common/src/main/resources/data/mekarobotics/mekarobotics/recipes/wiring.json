@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "result": {
-    "item": "mekarobotics:wiring",
-    "count": 3
+    "count": 3,
+    "id": "mekarobotics:wiring"
   },
   "pattern": [
     " c ",

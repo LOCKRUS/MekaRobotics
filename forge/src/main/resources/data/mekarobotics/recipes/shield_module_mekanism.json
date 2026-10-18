@@ -21,7 +21,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:shield_module"
+    "id": "mekarobotics:shield_module"
   },
   "neoforge:conditions": [
     {

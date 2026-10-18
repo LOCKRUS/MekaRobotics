@@ -18,7 +18,7 @@
     "mp "
   ],
   "result": {
-    "item": "mekarobotics:lumium_left_arm"
+    "id": "mekarobotics:lumium_left_arm"
   },
   "show_notification": false,
   "neoforge:conditions": [

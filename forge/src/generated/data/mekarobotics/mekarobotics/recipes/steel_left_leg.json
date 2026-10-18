@@ -18,7 +18,7 @@
     " pp"
   ],
   "result": {
-    "item": "mekarobotics:steel_left_leg"
+    "id": "mekarobotics:steel_left_leg"
   },
   "show_notification": false,
   "neoforge:conditions": [

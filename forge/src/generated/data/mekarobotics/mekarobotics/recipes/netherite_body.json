@@ -24,7 +24,7 @@
     "pcp"
   ],
   "result": {
-    "item": "mekarobotics:netherite_body"
+    "id": "mekarobotics:netherite_body"
   },
   "show_notification": true,
   "neoforge:conditions": [

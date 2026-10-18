@@ -18,7 +18,7 @@
     " pm"
   ],
   "result": {
-    "item": "mekarobotics:enderium_right_arm"
+    "id": "mekarobotics:enderium_right_arm"
   },
   "show_notification": false,
   "neoforge:conditions": [

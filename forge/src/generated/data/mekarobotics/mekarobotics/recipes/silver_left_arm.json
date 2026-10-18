@@ -18,7 +18,7 @@
     "mp "
   ],
   "result": {
-    "item": "mekarobotics:silver_left_arm"
+    "id": "mekarobotics:silver_left_arm"
   },
   "show_notification": false,
   "neoforge:conditions": [

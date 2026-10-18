@@ -24,7 +24,7 @@
     "pcp"
   ],
   "result": {
-    "item": "mekarobotics:enderium_body"
+    "id": "mekarobotics:enderium_body"
   },
   "show_notification": true,
   "neoforge:conditions": [

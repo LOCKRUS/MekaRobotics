@@ -21,7 +21,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:advanced_wiring"
+    "id": "mekarobotics:advanced_wiring"
   },
   "neoforge:conditions": [
     {

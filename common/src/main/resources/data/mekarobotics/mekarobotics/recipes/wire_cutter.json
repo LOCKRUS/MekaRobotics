@@ -1,26 +1,26 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "category": "misc",
-    "pattern": [
-        "ipi",
-        "btb",
-        "ipi"
-    ],
-    "key": {
-        "i": {
-            "tag": "forge:ingots/steel"
-        },
-        "p": {
-            "item": "minecraft:piston"
-        },
-		"b": {
-            "item": "minecraft:iron_bars"
-        },
-		"t": {
-            "item": "minecraft:iron_trapdoor"
-        }
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ipi",
+    "btb",
+    "ipi"
+  ],
+  "key": {
+    "i": {
+      "tag": "forge:ingots/steel"
     },
-    "result": {
-        "item": "mekarobotics:wire_cutter"
+    "p": {
+      "item": "minecraft:piston"
+    },
+    "b": {
+      "item": "minecraft:iron_bars"
+    },
+    "t": {
+      "item": "minecraft:iron_trapdoor"
     }
+  },
+  "result": {
+    "id": "mekarobotics:wire_cutter"
+  }
 }

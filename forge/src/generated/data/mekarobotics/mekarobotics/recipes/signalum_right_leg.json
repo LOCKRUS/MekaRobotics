@@ -18,7 +18,7 @@
     "pp "
   ],
   "result": {
-    "item": "mekarobotics:signalum_right_leg"
+    "id": "mekarobotics:signalum_right_leg"
   },
   "show_notification": false,
   "neoforge:conditions": [

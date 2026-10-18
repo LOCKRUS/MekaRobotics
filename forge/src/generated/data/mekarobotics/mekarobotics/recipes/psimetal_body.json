@@ -24,7 +24,7 @@
     "pcp"
   ],
   "result": {
-    "item": "mekarobotics:psimetal_body"
+    "id": "mekarobotics:psimetal_body"
   },
   "show_notification": true,
   "neoforge:conditions": [

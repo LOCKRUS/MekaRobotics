@@ -7,7 +7,7 @@
     }
   ],
   "result": {
-    "item": "mekarobotics:gold_left_leg"
+    "id": "mekarobotics:gold_left_leg"
   },
   "neoforge:conditions": [
     {

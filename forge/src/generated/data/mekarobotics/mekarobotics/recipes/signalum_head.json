@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:signalum_head"
+    "id": "mekarobotics:signalum_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

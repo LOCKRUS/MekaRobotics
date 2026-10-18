@@ -18,7 +18,7 @@
     " pm"
   ],
   "result": {
-    "item": "mekarobotics:lead_right_arm"
+    "id": "mekarobotics:lead_right_arm"
   },
   "show_notification": false,
   "neoforge:conditions": [

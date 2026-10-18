@@ -18,7 +18,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:fist"
+    "id": "mekarobotics:fist"
   },
   "neoforge:conditions": [
     {

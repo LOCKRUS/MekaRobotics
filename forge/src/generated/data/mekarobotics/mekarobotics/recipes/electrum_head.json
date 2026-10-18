@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:electrum_head"
+    "id": "mekarobotics:electrum_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

@@ -18,7 +18,7 @@
     " pm"
   ],
   "result": {
-    "item": "mekarobotics:aluminium_right_arm"
+    "id": "mekarobotics:aluminium_right_arm"
   },
   "show_notification": false,
   "neoforge:conditions": [

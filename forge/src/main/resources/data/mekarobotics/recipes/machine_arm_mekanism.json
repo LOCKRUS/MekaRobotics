@@ -24,7 +24,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:machine_arm"
+    "id": "mekarobotics:machine_arm"
   },
   "neoforge:conditions": [
     {

@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:nickel_head"
+    "id": "mekarobotics:nickel_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

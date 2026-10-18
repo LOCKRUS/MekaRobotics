@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:osmium_head"
+    "id": "mekarobotics:osmium_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

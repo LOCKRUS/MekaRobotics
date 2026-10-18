@@ -7,7 +7,7 @@
     }
   ],
   "result": {
-    "item": "mekarobotics:silver_right_arm"
+    "id": "mekarobotics:silver_right_arm"
   },
   "neoforge:conditions": [
     {

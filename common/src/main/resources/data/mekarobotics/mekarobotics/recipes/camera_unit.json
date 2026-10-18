@@ -1,27 +1,26 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "category": "misc",
-    "pattern": [
-        "ncn",
-        "gdg",
-        "ngn"
-    ],
-    "key": {
-        "n": {
-            "tag": "forge:nuggets/iron"
-        },
-		"d": {
-            "item": "minecraft:daylight_detector"
-        }, 
-		"g": {
-            "tag": "forge:glass_panes"
-        },
-
-		"c": {
-            "item": "mekarobotics:circuit"
-        }
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ncn",
+    "gdg",
+    "ngn"
+  ],
+  "key": {
+    "n": {
+      "tag": "forge:nuggets/iron"
     },
-    "result": {
-        "item": "mekarobotics:camera_unit"
+    "d": {
+      "item": "minecraft:daylight_detector"
+    },
+    "g": {
+      "tag": "forge:glass_panes"
+    },
+    "c": {
+      "item": "mekarobotics:circuit"
     }
+  },
+  "result": {
+    "id": "mekarobotics:camera_unit"
+  }
 }

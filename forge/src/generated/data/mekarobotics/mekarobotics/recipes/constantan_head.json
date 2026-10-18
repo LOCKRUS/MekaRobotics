@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:constantan_head"
+    "id": "mekarobotics:constantan_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

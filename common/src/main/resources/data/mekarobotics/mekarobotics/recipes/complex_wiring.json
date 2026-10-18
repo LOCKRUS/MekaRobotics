@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "result": {
-    "item": "mekarobotics:complex_wiring"
+    "id": "mekarobotics:complex_wiring"
   },
   "pattern": [
     " w ",
@@ -13,7 +13,7 @@
     "g": {
       "item": "minecraft:diamond"
     },
-	"w": {
+    "w": {
       "item": "mekarobotics:advanced_wiring"
     }
   }

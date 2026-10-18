@@ -24,7 +24,7 @@
     "pcp"
   ],
   "result": {
-    "item": "mekarobotics:end_steel_body"
+    "id": "mekarobotics:end_steel_body"
   },
   "show_notification": true,
   "neoforge:conditions": [

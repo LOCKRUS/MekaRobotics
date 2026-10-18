@@ -18,7 +18,7 @@
     "pp "
   ],
   "result": {
-    "item": "mekarobotics:diamond_right_leg"
+    "id": "mekarobotics:diamond_right_leg"
   },
   "show_notification": false,
   "neoforge:conditions": [

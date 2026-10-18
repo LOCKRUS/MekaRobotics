@@ -21,7 +21,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:assembler"
+    "id": "mekarobotics:assembler"
   },
   "neoforge:conditions": [
     {

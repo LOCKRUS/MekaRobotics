@@ -18,7 +18,7 @@
     "mp "
   ],
   "result": {
-    "item": "mekarobotics:iridium_left_arm"
+    "id": "mekarobotics:iridium_left_arm"
   },
   "show_notification": false,
   "neoforge:conditions": [

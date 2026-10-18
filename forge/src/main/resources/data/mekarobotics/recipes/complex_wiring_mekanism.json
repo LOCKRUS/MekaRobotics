@@ -21,7 +21,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:complex_wiring"
+    "id": "mekarobotics:complex_wiring"
   },
   "neoforge:conditions": [
     {

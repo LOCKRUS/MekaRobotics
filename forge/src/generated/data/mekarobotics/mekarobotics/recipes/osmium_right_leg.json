@@ -18,7 +18,7 @@
     "pp "
   ],
   "result": {
-    "item": "mekarobotics:osmium_right_leg"
+    "id": "mekarobotics:osmium_right_leg"
   },
   "show_notification": false,
   "neoforge:conditions": [

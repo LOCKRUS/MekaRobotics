@@ -24,7 +24,7 @@
     "pcp"
   ],
   "result": {
-    "item": "mekarobotics:nickel_body"
+    "id": "mekarobotics:nickel_body"
   },
   "show_notification": true,
   "neoforge:conditions": [

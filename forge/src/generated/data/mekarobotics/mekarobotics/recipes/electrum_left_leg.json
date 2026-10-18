@@ -18,7 +18,7 @@
     " pp"
   ],
   "result": {
-    "item": "mekarobotics:electrum_left_leg"
+    "id": "mekarobotics:electrum_left_leg"
   },
   "show_notification": false,
   "neoforge:conditions": [

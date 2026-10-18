@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:enderium_head"
+    "id": "mekarobotics:enderium_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

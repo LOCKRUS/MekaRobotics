@@ -24,7 +24,7 @@
     "pcp"
   ],
   "result": {
-    "item": "mekarobotics:dark_steel_body"
+    "id": "mekarobotics:dark_steel_body"
   },
   "show_notification": true,
   "neoforge:conditions": [

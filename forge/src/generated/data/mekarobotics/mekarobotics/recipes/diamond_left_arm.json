@@ -18,7 +18,7 @@
     "mp "
   ],
   "result": {
-    "item": "mekarobotics:diamond_left_arm"
+    "id": "mekarobotics:diamond_left_arm"
   },
   "show_notification": false,
   "neoforge:conditions": [

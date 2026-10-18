@@ -7,7 +7,7 @@
     }
   ],
   "result": {
-    "item": "mekarobotics:tin_left_leg"
+    "id": "mekarobotics:tin_left_leg"
   },
   "neoforge:conditions": [
     {

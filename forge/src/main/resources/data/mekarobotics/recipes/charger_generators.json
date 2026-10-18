@@ -24,7 +24,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:charger"
+    "id": "mekarobotics:charger"
   },
   "neoforge:conditions": [
     {

@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:iridium_head"
+    "id": "mekarobotics:iridium_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

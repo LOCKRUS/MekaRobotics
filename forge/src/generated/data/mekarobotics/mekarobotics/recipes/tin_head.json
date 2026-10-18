@@ -18,7 +18,7 @@
     " c "
   ],
   "result": {
-    "item": "mekarobotics:tin_head"
+    "id": "mekarobotics:tin_head"
   },
   "show_notification": true,
   "neoforge:conditions": [

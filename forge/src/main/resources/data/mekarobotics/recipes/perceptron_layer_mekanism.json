@@ -21,7 +21,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:perceptron_layer"
+    "id": "mekarobotics:perceptron_layer"
   },
   "neoforge:conditions": [
     {

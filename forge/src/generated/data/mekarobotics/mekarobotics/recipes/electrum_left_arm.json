@@ -18,7 +18,7 @@
     "mp "
   ],
   "result": {
-    "item": "mekarobotics:electrum_left_arm"
+    "id": "mekarobotics:electrum_left_arm"
   },
   "show_notification": false,
   "neoforge:conditions": [

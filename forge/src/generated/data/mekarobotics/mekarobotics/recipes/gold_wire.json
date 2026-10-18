@@ -11,6 +11,6 @@
   "processing_time": 100,
   "result": {
     "count": 3,
-    "item": "mekarobotics:gold_wire"
+    "id": "mekarobotics:gold_wire"
   }
 }

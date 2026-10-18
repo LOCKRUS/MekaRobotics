@@ -18,7 +18,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:wiring"
+    "id": "mekarobotics:wiring"
   },
   "neoforge:conditions": [
     {

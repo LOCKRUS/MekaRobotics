@@ -24,7 +24,7 @@
     }
   },
   "result": {
-    "item": "mekarobotics:neural_processing_unit"
+    "id": "mekarobotics:neural_processing_unit"
   },
   "neoforge:conditions": [
     {
