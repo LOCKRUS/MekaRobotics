@@ -9,7 +9,11 @@ import com.io.mekarobotics.common.robot.EnumRobotPart;
 import com.io.mekarobotics.definitions.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
@@ -111,6 +115,16 @@ public class RecipeGenerator extends RecipeProvider {
         }
 
         for(EnumRobotMaterial material : ModItems.WIRES.keySet()) {
+            if (material == EnumRobotMaterial.GOLD) {
+                TagKey<Item> goldIngots = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/gold"));
+                Item plastic = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("mekanism", "hdpe_sheet"));
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WIRES.get(material).get(), 2)
+                        .define('g', goldIngots)
+                        .define('p', plastic)
+                        .pattern("gpg")
+                        .save(writer, Robotics.rl("gold_wire"));
+                continue;
+            }
             new WireCutterRecipeBuilder(ModItems.WIRES.get(material).get(), 3)
                     .input(new CountedIngredient(new Ingredient.TagValue(material.getMetal()), 2))
                     .energyRequirement(10000 * material.getStiffness())

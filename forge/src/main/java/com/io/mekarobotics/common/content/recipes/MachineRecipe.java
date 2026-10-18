@@ -41,7 +41,7 @@ public class MachineRecipe<T extends RecipeInput> implements Recipe<T> {
 	@Override
 	public boolean matches(T inv, Level worldIn) {
 		for (int i = 0; i < inputs.length; i++) {
-			if (!this.inputs[i].test(inv.getItem(i))) {
+			if (this.inputs[i] != null && !this.inputs[i].isEmpty() && !this.inputs[i].test(inv.getItem(i))) {
 				return false;
 			}
 		}

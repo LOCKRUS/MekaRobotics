@@ -1,0 +1,23 @@
+{
+  "type": "mekarobotics:assembler",
+  "energy": 5000,
+  "processing_time": 100,
+  "pattern": "grtrc",
+  "key": {
+    "g": {
+      "item": "mekarobotics:gold_wire"
+    },
+    "r": {
+      "item": "mekanism:enriched_redstone"
+    },
+    "t": {
+      "item": "mekarobotics:tungsten_powder"
+    },
+    "c": {
+      "item": "mekanism:basic_control_circuit"
+    }
+  },
+  "result": {
+    "id": "mekarobotics:circuit"
+  }
+}

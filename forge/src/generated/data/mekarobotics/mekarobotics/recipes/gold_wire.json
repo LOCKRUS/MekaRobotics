@@ -1,16 +1,19 @@
 {
-  "type": "mekarobotics:wire_cutter",
-  "energy": 10000,
-  "ingredient": {
-    "type": "mekarobotics:counted",
-    "amount": 2,
-    "items": {
-      "tag": "forge:ingots/gold"
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "gpg"
+  ],
+  "key": {
+    "g": {
+      "tag": "c:ingots/gold"
+    },
+    "p": {
+      "item": "mekanism:hdpe_sheet"
     }
   },
-  "processing_time": 100,
   "result": {
-    "count": 3,
-    "id": "mekarobotics:gold_wire"
+    "id": "mekarobotics:gold_wire",
+    "count": 2
   }
 }

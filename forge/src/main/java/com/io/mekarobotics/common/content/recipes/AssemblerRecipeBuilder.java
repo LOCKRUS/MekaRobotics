@@ -122,7 +122,7 @@ public class AssemblerRecipeBuilder implements RecipeBuilder {
             }
             json.add("key", jsonKeys);
             JsonObject result = new JsonObject();
-            result.addProperty("item", Registries.ITEM.getKey(this.result).toString());
+            result.addProperty("id", Registries.ITEM.getKey(this.result).toString());
             if (this.count > 1) {
                 result.addProperty("count", this.count);
             }

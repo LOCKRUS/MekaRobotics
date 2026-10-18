@@ -24,8 +24,8 @@ public class AssemblerBlockEntity extends MachineBlockEntity {
     private byte activeArrows = 0;
 
     public AssemblerBlockEntity(BlockPos pos, BlockState state) {
-        super(ModMachines.ASSEMBLER, pos, state, 5, new int[]{0, 1, 2, 3}, new int[]{4});
-        inventory.setOutputSlots(4);
+        super(ModMachines.ASSEMBLER, pos, state, 6, new int[]{0, 1, 2, 3, 4}, new int[]{5});
+        inventory.setOutputSlots(5);
         inventory.setAllSlotsAccessibleByDefault();
     }
 
@@ -59,7 +59,7 @@ public class AssemblerBlockEntity extends MachineBlockEntity {
     private void setActiveArrows() {
         if(hasRecipe()) {
             activeArrows = 0;
-            for(int i = 0; i < 4; i++) {
+            for(int i = 0; i < 5; i++) {
                 if(!getRecipeUsed().getIngredients().get(i).isEmpty()) {
                     activeArrows += (byte) Math.pow(2, i);
                 }

@@ -84,10 +84,12 @@ public class AssemblerRecipeCategory extends MachineRecipeCategory {
 				.addIngredients(recipe.getIngredients().get(1));
 		builder.addSlot(RecipeIngredientRole.INPUT, AssemblerMenu.slot_bot.x - 7, AssemblerMenu.slot_bot.y - 4)
 				.addIngredients(recipe.getIngredients().get(2));
-		builder.addSlot(RecipeIngredientRole.INPUT, AssemblerMenu.slot_left.x - 7, AssemblerMenu.slot_left.y - 4)
-				.addIngredients(recipe.getIngredients().get(3));
+			builder.addSlot(RecipeIngredientRole.INPUT, AssemblerMenu.slot_left.x - 7, AssemblerMenu.slot_left.y - 4)
+					.addIngredients(recipe.getIngredients().get(3));
+			builder.addSlot(RecipeIngredientRole.INPUT, AssemblerMenu.slot_center.x - 7, AssemblerMenu.slot_center.y - 4)
+					.addIngredients(recipe.getIngredients().get(4));
 
-		builder.addSlot(RecipeIngredientRole.OUTPUT, AssemblerMenu.slot_out.x - 7, AssemblerMenu.slot_out.y - 4)
+			builder.addSlot(RecipeIngredientRole.OUTPUT, AssemblerMenu.slot_out.x - 7, AssemblerMenu.slot_out.y - 4)
 				.addIngredient(VanillaTypes.ITEM_STACK, recipe.getOutputs()[0]);
 	}
 

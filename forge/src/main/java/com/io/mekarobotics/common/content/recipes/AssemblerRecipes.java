@@ -18,6 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -25,7 +26,7 @@ import java.util.Set;
 @ParametersAreNonnullByDefault
 public class AssemblerRecipes implements IRecipeSerializer<MachineRecipe<?>> {
 
-    public static final int INPUT_SIZE = 4;
+    public static final int INPUT_SIZE = 5;
     public static final int OUTPUT_SIZE = 1;
     public static List<MachineRecipe<?>> recipes = new ArrayList<>();
 
@@ -88,6 +89,7 @@ public class AssemblerRecipes implements IRecipeSerializer<MachineRecipe<?>> {
         // Ingredients
         int i = 0;
         Ingredient[] ingredients = new Ingredient[INPUT_SIZE];
+        Arrays.fill(ingredients, Ingredient.EMPTY);
         for (char chr : pattern.toCharArray()) {
             Ingredient ing = ingMap.get(chr);
             if (ing == null)
