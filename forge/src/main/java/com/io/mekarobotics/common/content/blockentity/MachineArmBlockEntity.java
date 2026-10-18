@@ -239,7 +239,11 @@ public class MachineArmBlockEntity extends BlockEntity {
         }
         tag.put("rotations", list);
         tag.put("target", NBTUtil.serializeVec(target));
-        tag.put("grabbed", grabbedItem.save(provider));
+        if (grabbedItem.isEmpty()) {
+            tag.remove("grabbed");
+        } else {
+            tag.put("grabbed", grabbedItem.save(provider));
+        }
         tag.putByte("state", state.getId());
         return tag;
     }

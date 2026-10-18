@@ -21,7 +21,10 @@
   "container.wire_cutter": "Wire Cutter",
   "container.robot_factory": "Robot Factory",
   "container.robot_storage": "Robot Storage",
+  "container.mekarobotics.charger": "Robot Charger",
   "container.robot_factory.modules": "Robot Factory",
+
+  "gui.mekarobotics.charger.description": "Charges nearby robots",
 
   "mekarobotics.assembler": "Assembling",
   "mekarobotics.wire_cutter": "Wire Cutting",

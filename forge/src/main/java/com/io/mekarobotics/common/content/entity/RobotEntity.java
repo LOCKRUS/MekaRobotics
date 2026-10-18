@@ -76,6 +76,23 @@ public class RobotEntity extends PathfinderMob implements GeoEntity {
     public static final EntityDataAccessor<Integer> SWELLING = SynchedEntityData.defineId(RobotEntity.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Float> SHIELD_HEALTH = SynchedEntityData.defineId(RobotEntity.class, EntityDataSerializers.FLOAT);
 
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(COLOR, 0);
+        for (EntityDataAccessor<Integer> bodyPart : BODY_PARTS) {
+            builder.define(bodyPart, EnumRobotMaterial.NONE.getID());
+        }
+        builder.define(RENDER_OVERLAYS, 0);
+        builder.define(ACTIVATED, false);
+        builder.define(MUTED, false);
+        builder.define(LOAD_CHUNK, 0);
+        builder.define(PICKUP_STATE, 0);
+        builder.define(COMMAND_GROUP, 0);
+        builder.define(SWELLING, 0);
+        builder.define(SHIELD_HEALTH, 0.0F);
+    }
+
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     private int swingTime = 0;

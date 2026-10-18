@@ -6,6 +6,13 @@ import com.io.mekarobotics.common.content.blockentity.ChargerBlockEntity;
 import com.io.mekarobotics.definitions.ModMachines;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -19,6 +26,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -47,6 +55,26 @@ public class ChargerBlock extends BaseEntityBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
         if(level.isClientSide()) return null;
         return createTickerHelper(type, ModMachines.CHARGER.get(), ChargerBlockEntity::serverTick);
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        return openMenu(level, pos, player);
+    }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        openMenu(level, pos, player);
+        return ItemInteractionResult.sidedSuccess(level.isClientSide());
+    }
+
+    private InteractionResult openMenu(Level level, BlockPos pos, Player player) {
+        if(level.isClientSide()) return InteractionResult.SUCCESS;
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if(blockEntity instanceof MenuProvider provider && player instanceof ServerPlayer serverPlayer) {
+            serverPlayer.openMenu(provider, pos);
+        }
+        return InteractionResult.CONSUME;
     }
 
     @Override

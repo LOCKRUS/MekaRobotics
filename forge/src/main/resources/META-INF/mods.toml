@@ -28,9 +28,9 @@ issueTrackerURL = "${mod_github}/issues"
     versionRange = "${minecraft_version}"
     side="BOTH"
 [[dependencies.mekarobotics]]
-    modId="forge"
+    modId="neoforge"
     mandatory=true
-    versionRange="${forge_version}"
+    versionRange="${neo_version_range}"
     side="BOTH"
 [[dependencies.mekarobotics]]
     modId="geckolib"
@@ -45,7 +45,13 @@ issueTrackerURL = "${mod_github}/issues"
     side="BOTH"
 [[dependencies.mekarobotics]]
     modId="mekanism"
-    mandatory=false
-    versionRange="[10.4,)"
+    mandatory=true
+    versionRange="${mekanism_version_range}"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.mekarobotics]]
+    modId="mekanismgenerators"
+    mandatory=true
+    versionRange="${mekanism_version_range}"
     ordering="AFTER"
     side="BOTH"

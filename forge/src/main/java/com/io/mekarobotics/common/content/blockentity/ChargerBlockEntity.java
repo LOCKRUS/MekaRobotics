@@ -3,14 +3,22 @@ package com.io.mekarobotics.common.content.blockentity;
 import com.io.mekarobotics.common.capabilities.ModCapabilities;
 import com.io.mekarobotics.common.capabilities.impl.EnergyStorage;
 import com.io.mekarobotics.common.content.blocks.ChargerBlock;
+import com.io.mekarobotics.common.content.menu.BaseMenu;
+import com.io.mekarobotics.common.content.menu.ChargerMenu;
 import com.io.mekarobotics.common.helpers.EntityFinder;
 import com.io.mekarobotics.definitions.ModMachines;
+import com.io.mekarobotics.network.container.SyncableInt;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -22,7 +30,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 @ParametersAreNonnullByDefault
-public class ChargerBlockEntity extends BlockEntity {
+public class ChargerBlockEntity extends BlockEntity implements MenuProvider {
 
     protected EnergyStorage storage;
 
@@ -64,6 +72,22 @@ public class ChargerBlockEntity extends BlockEntity {
 
     public EnergyStorage energyStorage() {
         return storage;
+    }
+
+    public void addTrackingData(BaseMenu menu) {
+        menu.track(SyncableInt.create(storage::getEnergyStored, storage::setEnergy));
+        menu.track(SyncableInt.create(storage::getMaxEnergyStored, storage::setMaxEnergyStored));
+    }
+
+    @Override
+    public Component getDisplayName() {
+        return Component.translatable("container.mekarobotics.charger");
+    }
+
+    @Nullable
+    @Override
+    public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+        return new ChargerMenu(id, inventory, this);
     }
 
 }

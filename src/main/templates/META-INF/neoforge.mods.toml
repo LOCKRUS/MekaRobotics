@@ -36,14 +36,14 @@ side="BOTH"
 [[dependencies.${mod_id}]]
 modId="mekanism"
 type="required"
-versionRange="[10.7.0,)"
+versionRange="${mekanism_version_range}"
 ordering="AFTER"
 side="BOTH"
 
 [[dependencies.${mod_id}]]
 modId="mekanismgenerators"
 type="required"
-versionRange="[10.7.0,)"
+versionRange="${mekanism_version_range}"
 ordering="AFTER"
 side="BOTH"
 

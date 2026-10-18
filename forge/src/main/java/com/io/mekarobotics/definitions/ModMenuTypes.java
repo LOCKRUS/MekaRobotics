@@ -19,6 +19,7 @@ public class ModMenuTypes {
     public static final DeferredHolder<MenuType<?>, MenuType<WireCutterMenu>> WIRE_CUTTER = registerMenuType(WireCutterMenu::new, "wire_cutter_menu");
     public static final DeferredHolder<MenuType<?>, MenuType<FactoryMenu>> FACTORY = registerMenuType(FactoryMenu::new, "factory_menu");
     public static final DeferredHolder<MenuType<?>, MenuType<StorageMenu>> STORAGE = registerMenuType(StorageMenu::new, "storage_menu");
+    public static final DeferredHolder<MenuType<?>, MenuType<ChargerMenu>> CHARGER = registerMenuType(ChargerMenu::new, "charger_menu");
     public static final DeferredHolder<MenuType<?>, MenuType<RobotMenu>> ROBOT = registerMenuType(RobotMenu::new, "robot_menu");
     public static final DeferredHolder<MenuType<?>, MenuType<RobotInfoMenu>> ROBOT_INFO = registerMenuType(RobotInfoMenu::new, "robot_info_menu");
     public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> ROBOT_INVENTORY = registerMenuType((id, inv, buf) -> null, "robot_inventory_menu");

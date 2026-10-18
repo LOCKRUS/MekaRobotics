@@ -44,6 +44,7 @@ public class ClientSetup {
             event.register(ModMenuTypes.ASSEMBLER.get(), AssemblerScreen::new);
             event.register(ModMenuTypes.FACTORY.get(), FactoryScreen::new);
             event.register(ModMenuTypes.STORAGE.get(), StorageScreen::new);
+            event.register(ModMenuTypes.CHARGER.get(), ChargerScreen::new);
             event.register(ModMenuTypes.ROBOT.get(), RobotScreen::new);
             event.register(ModMenuTypes.ROBOT_INFO.get(), RobotInfoScreen::new);
             event.register(ModMenuTypes.ROBOT_COMMANDS.get(), RobotCommandScreen::new);
